@@ -1,0 +1,283 @@
+<p></p>
+
+
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5">
+          <div class="card-header card-primary card-outline">
+            <h6 style="text-align: center;">Documents</h6>
+          </div>
+          <ngb-tabset>
+            <ngb-tab>
+              <ng-template ngbTabTitle>MedWatch_{{caseId}}</ng-template>
+              <ng-template ngbTabContent>
+                <div class="pdf-container" style="height: 600px;">
+                  <pdf-viewer [src]="med_watch_src" 
+                  [original-size]="false"
+                    [autoresize]="true" 
+                    [fit-to-page]="true" ></pdf-viewer>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+              <ng-template ngbTabTitle>Leb Test_{{caseId}}</ng-template>
+              <ng-template ngbTabContent>
+                <div class="pdf-container" style="height: 600px;">
+                  <pdf-viewer [src]="lab_test_watch_src" 
+                  [original-size]="false"
+                  [autoresize]="true" 
+                  [fit-to-page]="true"></pdf-viewer>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+              <ng-template ngbTabTitle>ECG_{{caseId}}</ng-template>
+              <ng-template ngbTabContent>
+                <div class="pdf-container" style="height: 600px;">
+                  <pdf-viewer [src]="ecg_watch_src" 
+                  [original-size]="false"
+                  [autoresize]="true" 
+                  [fit-to-page]="true"></pdf-viewer>
+                </div>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset> 
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <div class="card-header card-primary card-outline">
+                
+            <h3 class="card-title float-center">Case Information</h3>
+            <a class="card-title float-right"><i class="fas fa-file-signature" style="font-size: 40px;"></i></a>
+                          </div>
+
+          <div class="container">
+            <div id="summary" class="content text-center">
+              <div class="col-sm-12">
+                <div class="card  collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">General Information</h3>
+      
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="card-body" style="text-align: left;">
+                    <strong> About The Product</strong>
+                      
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <p class="text-muted">
+                          <Strong>Generic Name : </Strong> Wonder Drug
+                         </p>
+                      </div>
+                      <div class="col-sm-4">
+                        <p class="text-muted">
+                          <Strong>Product Type : </Strong>  Drug
+                         </p>
+                      </div>
+                      <div class="col-sm-4">
+                        <p class="text-muted">
+                          <Strong>Product Event Assessment : </Strong> Suspect
+                         </p>
+                      </div>
+                    </div>
+                  
+                    <strong>Product Intake</strong>
+    
+                    <p class="text-muted">
+                      <Strong>Product Duration : </Strong> Start Date: 12-02-2019,   End Date: 23-09-2019
+                     </p> 
+                     <p class="text-muted">
+                      <Strong>Indication : </Strong> ---
+                     </p>
+
+                     <strong>Formulation and Administration</strong>
+
+                     <div class="row">
+                      <div class="col-sm-4">
+                        <p class="text-muted">
+                          <Strong>Formulation : </Strong> Wonder Drug
+                         </p>
+                      </div>
+                      <div class="col-sm-4">
+                        <p class="text-muted">
+                          <Strong>Route of Administration : </Strong>  Drug
+                         </p>
+                      </div>
+                      <div class="col-sm-4">
+                        
+                      </div>
+                    </div>
+                    <p class="text-muted">
+                      <Strong>Dose : </Strong>  50mg
+                     </p>
+                     
+                     <p class="text-muted">
+                      <Strong>Frequency : </Strong>  Twice a day
+                     </p>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <div class="card  collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Product</h3>
+      
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-plus"></i></button>
+                    </div>
+                  </div>
+                    
+                    <!-- /.card-body -->
+                    <div class="card-body" >
+                      <div class="card" style="text-align: left;">
+                        <div class="info-box bg-info" style="min-height: 100%;">   
+                          <span class="info-box-text">Wonder Drug1</span>
+                      </div>
+                      <strong> About The Product</strong>
+                  
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <p class="text-muted">
+                            <Strong>Generic Name : </Strong> Wonder Drug
+                           </p>
+                        </div>
+                        <div class="col-sm-4">
+                          <p class="text-muted">
+                            <Strong>Product Type : </Strong>  Drug
+                           </p>
+                        </div>
+                        <div class="col-sm-4">
+                          <p class="text-muted">
+                            <Strong>Product Event Assessment : </Strong> Suspect
+                           </p>
+                        </div>
+                      </div>
+                    
+                      <strong>Product Intake</strong>
+      
+                      <p class="text-muted">
+                        <Strong>Product Duration : </Strong> Start Date: 12-02-2019,   End Date: 23-09-2019
+                       </p> 
+                       <p class="text-muted">
+                        <Strong>Indication : </Strong> ---
+                       </p>
+  
+                       <strong>Formulation and Administration</strong>
+  
+                       <div class="row">
+                        <div class="col-sm-4">
+                          <p class="text-muted">
+                            <Strong>Formulation : </Strong> Wonder Drug
+                           </p>
+                        </div>
+                        <div class="col-sm-4">
+                          <p class="text-muted">
+                            <Strong>Route of Administration : </Strong>  Drug
+                           </p>
+                        </div>
+                        <div class="col-sm-4">
+                          
+                        </div>
+                      </div>
+                      <p class="text-muted">
+                        <Strong>Dose : </Strong>  50mg
+                       </p>
+                       
+                       <p class="text-muted">
+                        <Strong>Frequency : </Strong>  Twice a day
+                       </p>
+                       </div>
+                       <div class="info-box bg-primary" style="min-height: 100%;">   
+                        <span class="info-box-text">Wonder Drug2</span>
+                    </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <div class="card  collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Adverse Event</h3>
+      
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="card-body" style="display: none;">
+                    <div class="form-group">
+                      <label for="inputEstimatedBudget">Estimated budget</label>
+                      <input type="number" id="inputEstimatedBudget" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputSpentBudget">Total amount spent</label>
+                      <input type="number" id="inputSpentBudget" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEstimatedDuration">Estimated project duration</label>
+                      <input type="number" id="inputEstimatedDuration" class="form-control">
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <div class="card  collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Patient</h3>
+      
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="card-body" style="display: none;">
+                    <div class="form-group">
+                      <label for="inputEstimatedBudget">Estimated budget</label>
+                      <input type="number" id="inputEstimatedBudget" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputSpentBudget">Total amount spent</label>
+                      <input type="number" id="inputSpentBudget" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEstimatedDuration">Estimated project duration</label>
+                      <input type="number" id="inputEstimatedDuration" class="form-control">
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <div class="card  collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Reporter</h3>
+      
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="card-body" style="display: none;">
+                    <div class="form-group">
+                      <label for="inputEstimatedBudget">Estimated budget</label>
+                      <input type="number" id="inputEstimatedBudget" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputSpentBudget">Total amount spent</label>
+                      <input type="number" id="inputSpentBudget" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEstimatedDuration">Estimated project duration</label>
+                      <input type="number" id="inputEstimatedDuration" class="form-control">
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+ 

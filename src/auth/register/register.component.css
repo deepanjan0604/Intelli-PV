@@ -1,0 +1,17 @@
+.register-page {
+    -webkit-box-align: center !important;
+    align-items: center !important;
+    background: #e9ecef !important;
+    display: -webkit-box !important;
+    display: flex !important;
+    height: 80vh !important;
+    -webkit-box-pack: center !important;
+    justify-content: center !important;
+}
+
+.main-footer1 {
+    background: #17a2b8 !important;
+    border-top: 1px solid #dee2e6 !important;
+    color: #ffffff !important;
+    padding: 1rem !important;
+}

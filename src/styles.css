@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(./assets/plugins/fontawesome-free/css/all.min.css);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(./assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css);
+@import url(./assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css);
+@import url(./assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css);
+@import url(./assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css);
+@import url(./assets/dist/css/adminlte.min.css);
+@import url(./assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css);
+@import url(./assets/plugins/daterangepicker/daterangepicker.css);
+@import url(./assets/plugins/summernote/summernote-bs4.css);
+@import url(./assets/plugins/chart.js/Chart.css);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700);
+@import '~bs-stepper/dist/css/bs-stepper.min.css';
+
+body {
+    margin: 0;
+    font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 0.9rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #17a2b8 !important;
+    text-align: left !important;
+    background-color: #fff !important;
+}
+
+.main-footer {
+    background: #17a2b8 !important;
+    border-top: 1px solid #dee2e6 !important;
+    color: #ffffff !important;
+    padding: 1rem !important;
+}
+
+[class*=sidebar-dark-] {
+    background-color: #17a2b8 !important;
+}
+
+a {
+    color: #f7f7f7 !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+}

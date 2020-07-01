@@ -1,0 +1,217 @@
+<app-header></app-header>
+<app-right-nav></app-right-nav>
+<p></p>
+<div class="content-wrapper">
+  <section class="content">
+      <div class="row">
+        <div class="col-12" style="display:none">
+            <div class="card">
+                <div class="card-header">
+                    <button type="button" class="btn btn-default btn-sm" (click)="openSearchModel(content)">Search</button>
+                </div>
+                </div>
+        </div>
+
+
+          <!-- /.modal -->
+
+          <ng-template #content let-modal>
+            <div class="modal-header">
+              <h6 class="modal-title" id="modal-basic-title">Filter Records</h6>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="on" class="form" role="form">
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">Rcvd Date Within</label>
+                      <div class="col-lg-9">
+                        <select class="form-control">
+                            <option value="allMail">All Mail</option>
+                            <option value="allMail"> New Mail</option>
+                               <option value="allMail"> Mail By Week </option>
+                               <option value="allMail">Mail By Month</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">Intake Channel</label>
+                      <div class="col-lg-9">
+                        <select class="form-control">
+                            <option value="allMail">All</option>
+                            <option value="allMail"> New Mail</option>
+                               <option value="allMail"> Mail By Week </option>
+                               <option value="allMail">Mail By Month</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">
+                        <input type="checkbox">
+                      </label>
+                      <div class="col-lg-9">
+                        Has Attachments
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">Size</label>
+                      <div class="col-lg-9">
+                          <div class="row">
+                              <div class="col-lg-4">
+                                <select class="form-control">
+                                    <option value="Greater Then">Greater Then</option>
+                                    <option value="Less Then"> Less Then</option>
+                                  </select>
+                              </div>
+                              <div class="col-lg-3">
+                                <input class="form-control" type="text" placeholder="enter size">
+                              </div>
+                              <div class="col-lg-2">
+                                <select class="form-control" style="width: 100px;">
+                                    <option value="KB">KB</option>
+                                    <option value="MB">MB</option>
+                                    <option value="GB">GB</option>
+                                  </select>
+                              </div>
+                          </div>
+                       
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">Assign To</label>
+                      <div class="col-lg-9">
+                        <select class="form-control">
+                            <option value="all">All</option>
+                            <option value="Kunwar">Kunwar</option>
+                            <option value="Prashant">Prashant</option>
+                            <option value="Kinshuk">Kinshuk</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">Source Type</label>
+                      <div class="col-lg-9">
+                        <select class="form-control">
+                            <option value="all">All</option>
+                            <option value="Spontaneous">Spontaneous</option>
+                            <option value="Study Program">Study Program</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Literature">Literature</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">Case Ids</label>
+                      <div class="col-lg-9">
+                        <input class="form-control" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-lg-3 col-form-label form-control-label">Status</label>
+                      <div class="col-lg-9">
+                        <select class="form-control">
+                            <option value="all">All</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Approve">Approve</option>
+                            <option value="Rejected">Rejected</option>
+                          </select>
+                      </div>
+                    </div>
+                 
+                    <div class="form-group float-right">
+                        <button type="button" class="btn btn-secondary btn-sm" (click)="modal.close('Save click')" > Clear Filter</button>
+                        &nbsp;
+                        &nbsp;
+                        <button type="submit" class="btn btn-primary btn-sm" >Search</button>                        
+                    </div>
+                  </form>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+            </div> -->
+          </ng-template>
+          <div class="col-12">
+           
+              <div class="card">
+                  <!-- <div class="card-header">
+                      <h3 class="card-title">DataTable with default features</h3>
+                  </div> -->
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                      <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                          <div class="row">
+                              <div class="col-sm-12 col-md-6">
+                                  <div class="dataTables_length" id="example1_length">
+                                      <label>Show
+                                          <select name="example1_length" (change)="clickItemsPerPage($event.target.value)" class="custom-select custom-select-sm form-control form-control-sm">
+                                              <option  value="10">10</option>
+                                              <option  value="25">25</option>
+                                              <option value="50">50</option>
+                                              <option value="100">100</option>
+                                          </select> entries</label>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12 col-md-6">
+                                  <div id="example1_filter" class="dataTables_filter">
+                                      <label>Search:
+                                          <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1" [(ngModel)]="filterRecords">
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                      <thead>
+                                          <tr>
+                                              <th><input type="checkbox"></th>
+                                              <th *ngFor="let data Of heaerList ">{{data}}</th>
+                                              
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let data Of document_view_records |filter:filterRecords| paginate: { itemsPerPage: isItemsPerPage, currentPage: p }" >
+                                              <td><input type="checkbox"></td>
+                                              <td>{{data.caseNumber}}</td>
+                                              <td>{{data.safetyId}}</td>
+                                              <td>{{data.rcvdDate}}</td>
+                                              <td>{{data.srcType}}</td>
+                                              <td>{{data.reporterType}}</td>
+                                              <td>{{data.triageStatus}}</td>
+                                              <td>{{data.status}}</td>
+                                              <td>{{data.assignTo}}</td>
+                                              <td><a type="button" class="" [routerLink]="['/user/document-details',data.caseNumber]" target="_blank">
+                                                <svg class="bi bi-eye" width="3em" height="3em" viewBox="0 0 20 20" fill="currentColor" 
+                                                 style="color: #007bff !important;">
+                                              <path fill-rule="evenodd" d="M18 10s-3-5.5-8-5.5S2 10 2 10s3 5.5 8 5.5 8-5.5 8-5.5zM3.173 10a13.133 13.133 0 001.66 2.043C6.12 13.332 7.88 14.5 10 14.5c2.12 0 3.879-1.168 5.168-2.457A13.133 13.133 0 0016.828 10a13.133 13.133 0 00-1.66-2.043C13.879 6.668 12.119 5.5 10 5.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 003.172 10z" clip-rule="evenodd"></path>
+                                              <path fill-rule="evenodd" d="M10 7.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM6.5 10a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                              </a>
+                                            </td>
+                                          </tr>  
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-12 col-md-7">
+                                  <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                    <ul class="pagination">  
+                                        <pagination-controls (pageChange)="p = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>  
+                                        </ul>  
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+          </div>
+          <!-- /.col -->
+      </div>
+      <!-- /.row -->
+  </section>
+</div>
+<app-footer></app-footer>
