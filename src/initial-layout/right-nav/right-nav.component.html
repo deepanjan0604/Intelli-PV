@@ -33,26 +33,26 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>  {{'LANG.DASHBOARD' | translate }} 1</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">  {{'LANG.DASHBOARD' | translate }} 1</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="pages/layout/boxed.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>  {{'LANG.DASHBOARD' | translate }} 2</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">  {{'LANG.DASHBOARD' | translate }} 2</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>  {{'LANG.DASHBOARD' | translate }} 3</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">  {{'LANG.DASHBOARD' | translate }} 3</p>
               </a>
             </li>
           </ul>
         </li>
         <li class="nav-item has-treeview">
-          <a  class="nav-link">
+          <a [routerLink]="['/user/doc-view']" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>
               {{'LANG.Document_View' | translate}}
@@ -62,26 +62,26 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a [routerLink]="['/user/inbox']" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Inbox</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">Inbox</p>
               </a>
             </li>
             <li class="nav-item">
               <a [routerLink]="['/user/sent']" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Sent</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">Sent</p>
               </a>
             </li>
             <li class="nav-item">
               <a [routerLink]="['/user/rejected']" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Rejected</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">Rejected</p>
               </a>
             </li>
             <li class="nav-item">
               <a [routerLink]="['/user/archive']" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Archive</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">Archive</p>
               </a>
             </li>
           </ul>
@@ -97,15 +97,15 @@
           <ul class="nav nav-treeview">
             <li  class="nav-item">
               <a  [routerLink]="['/user/case-view']" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Case View List</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">Case View List</p>
               </a>
             </li>
             
             <li class="nav-item" *ngFor="let data Of caseviewFoldersList " >
               <a  class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>{{data.categoryName}}</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">{{data.categoryName}}</p>
               </a>
             </li>
         
@@ -113,7 +113,7 @@
         </li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-male"></i>
+            <i class="nav-icon fas fa-cog fa-spin"></i>
             <p>
               Administration
               <i class="fas fa-angle-left right"></i>
@@ -122,20 +122,20 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="pages/forms/general.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>General Elements</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">General Elements</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="pages/forms/advanced.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Advanced Elements</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">Advanced Elements</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="pages/forms/editors.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Editors</p>
+                <!-- <i class="far fa-circle nav-icon"></i> -->
+                <p id="sub-menu">Editors</p>
               </a>
             </li>
           </ul>
@@ -148,6 +148,7 @@
             </p>
           </a>
         </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

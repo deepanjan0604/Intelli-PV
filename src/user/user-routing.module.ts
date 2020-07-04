@@ -9,6 +9,7 @@ import { CaseViewListComponent } from './case-view-list/case-view-list.component
 import { DocumentRejectComponent } from './document-reject/document-reject.component';
 import { DocumentSentComponent } from './document-sent/document-sent.component';
 import { DocumentArchiveComponent } from './document-archive/document-archive.component';
+import { DocumentViewModel } from 'src/_models/document-view-model';
 
 const routes: Routes = [
   {path: 'dashbaord', component: DashboardComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'archive', component: DocumentArchiveComponent},
   {path: 'create-case/:id', component: CreateCaseComponent},
   {path: 'case-summary/:id', component: CaseSummaryComponent},
-  {path:'case-view', component: CaseViewListComponent}
+  {path:'case-view', component: CaseViewListComponent},
+  {path:'doc-view', component: DocumentsDetailsComponent}
 ];
 
 @NgModule({

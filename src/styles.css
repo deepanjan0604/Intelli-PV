@@ -19,20 +19,20 @@ body {
     font-size: 0.9rem !important;
     font-weight: 400 !important;
     line-height: 1.5 !important;
-    color: #17a2b8 !important;
+    color: #27242a !important;
     text-align: left !important;
     background-color: #fff !important;
 }
 
 .main-footer {
-    background: #17a2b8 !important;
+    background: #27242a !important;
     border-top: 1px solid #dee2e6 !important;
     color: #ffffff !important;
     padding: 1rem !important;
 }
 
 [class*=sidebar-dark-] {
-    background-color: #17a2b8 !important;
+    background-color: #27242a !important;
 }
 
 a {
