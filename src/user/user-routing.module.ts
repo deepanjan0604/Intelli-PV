@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'archive', component: DocumentArchiveComponent},
   {path: 'create-case/:id', component: CreateCaseComponent},
   {path: 'case-summary/:id', component: CaseSummaryComponent},
-  {path:'case-view', component: CaseViewListComponent},
+  {path:'case-view/:type', component: CaseViewListComponent},
   {path:'doc-view', component: DocumentsDetailsComponent}
 ];
 

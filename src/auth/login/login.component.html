@@ -59,6 +59,9 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
+                         <!--    <a [routerLink]="['/auth/register']" class="btn btn-block btn-danger">
+                               Register
+                            </a> -->
                             <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
                         </div>
                         <div class="col-5">
@@ -76,15 +79,21 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
+                
                 <div class="social-auth-links text-center mb-3">
                     <p>- OR -</p>
-                    <button  class="btn btn-block btn-primary">
-                        CONTINUE AS GUEST
-                    </button>
-                    <button [routerLink]="['/auth/register']" class="btn btn-block btn-danger">
+                        <button type="submit" class="btn btn-block btn-primary">Sign In</button>
+                    
+                   
+                        <button  class="btn btn-block btn-primary">
+                            CONTINUE AS GUEST
+                        </button>
+              
+                    
+                   
+                   <!--  <button [routerLink]="['/auth/register']" class="btn btn-block btn-danger">
                         CREATE AN ACCOUNT
-                    </button>
+                    </button> -->
                 </div>
                 <!-- /.social-auth-links -->
             </div>

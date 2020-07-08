@@ -1,12 +1,13 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
+  <div class="main-sidebar-head">
   <a [routerLink]="['/user/dashbaord']" class="brand-link">
     <img src="./assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
         
     <span class="brand-text font-weight-light">Intelli PV</span>
   </a>
-
+  </div>
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -87,26 +88,31 @@
           </ul>
         </li>
         <li class="nav-item has-treeview">
-          <a [routerLink]="['/user/case-view']" class="nav-link">
+         <!--  <a [routerLink]="['/user/case-view']" class="nav-link"> -->
+          <a href="#" class="nav-link">
             <i class="nav-icon fas fa-clipboard"></i>
             <p>
             {{'LANG.Case_View'| translate }}
               <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
+            </p></a>
+        <!--   </a> -->
           <ul class="nav nav-treeview">
-            <li  class="nav-item">
-              <a  [routerLink]="['/user/case-view']" class="nav-link">
-                <!-- <i class="far fa-circle nav-icon"></i> -->
+          <!--   <li  class="nav-item">
+              <a  [routerLink]="['/user/case-view']" class="nav-link"> 
+                <span class="nav-link">
+                <i class="far fa-circle nav-icon"></i> 
                 <p id="sub-menu">Case View List</p>
-              </a>
-            </li>
+              </a> </span>
+
+            </li> -->
             
             <li class="nav-item" *ngFor="let data Of caseviewFoldersList " >
-              <a  class="nav-link">
+             
+                <a  [routerLink]="['/user/case-view',data.categoryId]" class="nav-link">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
                 <p id="sub-menu">{{data.categoryName}}</p>
-              </a>
+                </a>
+             
             </li>
         
           </ul>

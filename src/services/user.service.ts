@@ -45,8 +45,8 @@ export class UserService {
     return this.http.get(this.baseUrl + 'case/categories/list', {headers: this.headers}).pipe(catchError(this.errorHandler));
   }
 
-  getCaseListData(){
-    return this.http.post<any>(this.baseUrl + 'case/list/1 ',  {"pageSize":10,"pageNum" : 1}
+  getCaseListData(type:any){
+    return this.http.post<any>(this.baseUrl + 'case/list/'+type,  {"pageSize":10,"pageNum" : 1}
       , {headers: this.headers})
       .pipe(catchError(this.errorHandler));
   }

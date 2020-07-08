@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DocumentViewModel } from 'src/_models/document-view-model';
 import { UserService } from 'src/services/user.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-case-view-list',
@@ -14,20 +18,25 @@ export class CaseViewListComponent implements OnInit {
   isItemsPerPage = 10;
   document_view_records: DocumentViewModel[] = [];
   isSelected: boolean[];
-  heaerList:any;
+  headerList:any;
+  typeIndex:any;
+  
 
   constructor(private userService: UserService,
     private modalService: NgbModal,
-    config: NgbModalConfig) {
+    config: NgbModalConfig, route: ActivatedRoute) {
       config.backdrop = 'static';
     config.keyboard = true;
+    debugger;
+    this.typeIndex  = parseInt(route.snapshot.params['type']);
      }
 
   ngOnInit() {
-   
+  
 
-    this.userService.getCaseListData().subscribe(respData => {
-      this.heaerList= respData.headerCol;
+    this.userService.getCaseListData(this.typeIndex).subscribe(respData => {
+      debugger;
+      this.headerList= respData.headerCol;
       this.document_view_records = respData.response;
       console.log( respData);
      });
