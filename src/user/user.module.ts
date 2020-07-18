@@ -20,6 +20,7 @@ import { InitialLayoutModule } from '../initial-layout/initial-layout.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CaseSummaryComponent } from './case-summary/case-summary.component';
 import { CaseViewListComponent } from './case-view-list/case-view-list.component';
+import { CaseSummaryViewComponent } from './case-summary-view/case-summary-view.component';
 @NgModule({
   declarations: [
     DashboardComponent, 
@@ -30,7 +31,8 @@ import { CaseViewListComponent } from './case-view-list/case-view-list.component
     DocumentsDetailsComponent, 
     CreateCaseComponent, 
     CaseSummaryComponent, 
-    CaseViewListComponent
+    CaseViewListComponent, 
+    CaseSummaryViewComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,7 @@ import { CaseViewListComponent } from './case-view-list/case-view-list.component
     NgbModule,
     PdfViewerModule,
     InitialLayoutModule,
-    BsDatepickerModule 
+    BsDatepickerModule
   ],
   exports:[
     DashboardComponent, 
@@ -51,8 +53,7 @@ import { CaseViewListComponent } from './case-view-list/case-view-list.component
     DocumentRejectComponent, 
     DocumentArchiveComponent,
     DocumentsDetailsComponent,
-    CreateCaseComponent, 
-    CaseSummaryComponent,
+    CreateCaseComponent,
     CaseViewListComponent
   ],
   entryComponents: [DocumentsDetailsComponent],

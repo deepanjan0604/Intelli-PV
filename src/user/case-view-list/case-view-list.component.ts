@@ -27,7 +27,7 @@ export class CaseViewListComponent implements OnInit {
     config: NgbModalConfig, route: ActivatedRoute) {
       config.backdrop = 'static';
     config.keyboard = true;
-    debugger;
+
     this.typeIndex  = parseInt(route.snapshot.params['type']);
      }
 
@@ -35,7 +35,7 @@ export class CaseViewListComponent implements OnInit {
   
 
     this.userService.getCaseListData(this.typeIndex).subscribe(respData => {
-      debugger;
+     
       this.headerList= respData.headerCol;
       this.document_view_records = respData.response;
       console.log( respData);
