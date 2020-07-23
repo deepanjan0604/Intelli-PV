@@ -21,6 +21,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CaseSummaryComponent } from './case-summary/case-summary.component';
 import { CaseViewListComponent } from './case-view-list/case-view-list.component';
 import { CaseSummaryViewComponent } from './case-summary-view/case-summary-view.component';
+import { CaseSummaryViewCtabsComponent } from './case-summary-view-ctabs/case-summary-view-ctabs.component';
 @NgModule({
   declarations: [
     DashboardComponent, 
@@ -32,7 +33,7 @@ import { CaseSummaryViewComponent } from './case-summary-view/case-summary-view.
     CreateCaseComponent, 
     CaseSummaryComponent, 
     CaseViewListComponent, 
-    CaseSummaryViewComponent
+    CaseSummaryViewComponent, CaseSummaryViewCtabsComponent
   ],
   imports: [
     CommonModule,

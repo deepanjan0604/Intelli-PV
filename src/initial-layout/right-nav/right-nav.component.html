@@ -106,9 +106,9 @@
 
             </li> -->
             
-            <li class="nav-item" *ngFor="let data Of caseviewFoldersList " >
+            <li class="nav-item"  *ngFor="let data Of caseviewFoldersList " >
              
-                <a  [routerLink]="['/user/case-view',data.categoryId]" class="nav-link">
+                <a  [routerLink]="['/user/case-view',data.categoryId]"  class="nav-link" >
                 <!-- <i class="far fa-circle nav-icon"></i> -->
                 <p id="sub-menu">{{data.categoryName}}</p>
                 </a>
@@ -147,7 +147,7 @@
           </ul>
         </li>
         <li class="nav-item" style="margin-top: 150%;">
-          <a href="../widgets.html" class="nav-link">
+          <a href="/auth/login" class="nav-link">
             <i class="nav-icon fas fa-power-off"></i>
             <p>
               Logout

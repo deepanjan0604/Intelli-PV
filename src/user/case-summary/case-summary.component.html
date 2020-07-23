@@ -6,11 +6,11 @@
           <div class="card-header card-primary card-outline">
             <h6 style="text-align: center;">Documents</h6>
           </div>
-          <ngb-tabset>
-            <ngb-tab>
-              <ng-template ngbTabTitle>MedWatch_{{caseId}}</ng-template>
+          <ngb-tabset #ctdTabset="ngbTabset">
+            <ngb-tab id="tab1">
+              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">MedWatch_{{caseId}}</h6></ng-template>
               <ng-template ngbTabContent>
-                <div class="pdf-container" style="height: 600px;">
+                <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
                   <pdf-viewer [src]="med_watch_src" 
                   [original-size]="false"
                     [autoresize]="true" 
@@ -18,10 +18,10 @@
                 </div>
               </ng-template>
             </ngb-tab>
-            <ngb-tab>
-              <ng-template ngbTabTitle>Leb Test_{{caseId}}</ng-template>
+            <ngb-tab id="tab2">
+              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">Leb Test_{{caseId}}</h6></ng-template>
               <ng-template ngbTabContent>
-                <div class="pdf-container" style="height: 600px;">
+                <div class="pdf-container" style="height: 600px;" (click)="loadView('tab2')">
                   <pdf-viewer [src]="lab_test_watch_src" 
                   [original-size]="false"
                   [autoresize]="true" 
@@ -29,10 +29,10 @@
                 </div>
               </ng-template>
             </ngb-tab>
-            <ngb-tab>
-              <ng-template ngbTabTitle>ECG_{{caseId}}</ng-template>
+            <ngb-tab id="tab3">
+              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">ECG_{{caseId}}</h6></ng-template>
               <ng-template ngbTabContent>
-                <div class="pdf-container" style="height: 600px;">
+                <div class="pdf-container" style="height: 600px;" (click)="loadView('tab3')">
                   <pdf-viewer [src]="ecg_watch_src" 
                   [original-size]="false"
                   [autoresize]="true" 
@@ -43,10 +43,10 @@
           </ngb-tabset> 
         </div>
         <div class="col-lg-7 col-md-7 col-sm-7">
-          <div class="card-header card-primary card-outline">
+          <div class="card-header card-primary-info card-outline"><h6 style="text-align: center;">Case Information</h6> 
                 
-            <h3 class="card-title float-center">Case Information</h3>
-            <a class="card-title float-right"><i class="fas fa-file-signature" style="font-size: 40px;"></i></a>
+           <!-- <h6 style="text-align: center;">Case Information</h6> <h3 class="card-title float-center">Case Information</h3> -->
+           
                           </div>
 
           <div class="container">

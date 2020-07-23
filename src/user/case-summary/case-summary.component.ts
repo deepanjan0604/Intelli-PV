@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/services/user.service';
 import { Observable } from 'rxjs';
@@ -15,7 +15,8 @@ export class CaseSummaryComponent implements OnInit {
   lab_test_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_3.pdf";
   ecg_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_3.pdf";
  
-
+  @ViewChild('ctdTabset') ctdTabset;
+  
   configModel:Observable<ConfigurationModel>;
 
   onSubmit() {
@@ -35,4 +36,12 @@ export class CaseSummaryComponent implements OnInit {
         console.log( respData);
        });
   }
+
+  ngAfterViewInit() {
+    this.switchNgBTab('tab1');
+  }
+
+   switchNgBTab(id: string) {
+     this.ctdTabset.select(id);
+   }
 }

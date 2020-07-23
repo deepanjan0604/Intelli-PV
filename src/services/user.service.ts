@@ -8,16 +8,23 @@ import { environment } from '../environments/environment';
 })
 export class UserService {
  public baseUrl: string = environment.baseUrl;
+ public baseurl1:string= environment.baseUrl1;
+ public context:string= environment.context;
   public headers: HttpHeaders = new HttpHeaders();
+  public headers1: HttpHeaders = new HttpHeaders();
+
   constructor(private http: HttpClient) {
     this.headers = this.headers
       .append('Accept', 'application/json')
       .append('Content-Type', 'application/json');
+      this.headers1 = this.headers1
+      .append('Accept', 'application/json')
+      .append('Content-Type', 'application/json').append('Access-Control-Allow-Origin','http://18.224.1.69:8080').append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
    }
 
    /**
    * @method UserLogout
-   * @author amarjeet rao
+   * @author Deepanjan Mal
    */
   getDocumentView(): Observable<any> {
     return this.http.get<any>('./assets/document-view.json')
@@ -49,6 +56,12 @@ export class UserService {
     return this.http.post<any>(this.baseUrl + 'case/list/'+type,  {"pageSize":10,"pageNum" : 1}
       , {headers: this.headers})
       .pipe(catchError(this.errorHandler));
+  }
+
+  getCaseListSummary(caseId:any){
+    //return this.http.get(this.baseurl1+this.context + '/getCaseSummary/20US123458', {headers: this.headers1}).pipe(catchError(this.errorHandler));
+    
+    return this.http.get<any>('./assets/case-summary.json').pipe(catchError(this.errorHandler));
   }
 
   errorHandler(respError: HttpErrorResponse | any) {
