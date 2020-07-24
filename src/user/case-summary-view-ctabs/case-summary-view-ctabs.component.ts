@@ -13,7 +13,6 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    debugger;
   }
 
   

@@ -8,7 +8,7 @@
         "cTabs": [
           {
             "id": 0,
-            "name": "Section 1",
+            "name": null,
             "window": [
               {
                 "sectionList": [
@@ -692,7 +692,7 @@
         "cTabs": [
           {
             "id": 0,
-            "name": "Sec tion 1",
+            "name": "Fever",
             "window": [
               {
                 "sectionList": [
@@ -1118,7 +1118,7 @@
           },
           {
             "id": 0,
-            "name": "Section 2",
+            "name": "Headache",
             "window": [
               {
                 "sectionList": [
@@ -8673,15 +8673,6 @@
             ]
           }
         ],
-        "cTabs": [],
-        "canMultiple": false,
-        "sId": 0,
-        "default": false
-      },
-      {
-        "id": 15,
-        "name": "Summary",
-        "window": [],
         "cTabs": [],
         "canMultiple": false,
         "sId": 0,

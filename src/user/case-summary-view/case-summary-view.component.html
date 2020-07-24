@@ -26,7 +26,7 @@
       <!-- /.card-body canMultiple=False -->
       <div class="card  collapsed-card" >
          <div class="card-header" *ngSwitchCase="true">
-            <h3 class="card-title">{{tl.name}}-MultiSupport</h3>
+            <h3 class="card-title">{{tl.name}}</h3>
             <div class="card-tools">
                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" >
                <i class="fas fa-plus"></i></button>
@@ -37,8 +37,8 @@
                <!--  canMultiple TRUE -->
 
                    
-<!--                <div class="card  collapsed-card"  *ngIf="ctbs.canMultiple == true">
- -->                  <app-case-summary-view-ctabs [cTabs]="tl.cTabs"></app-case-summary-view-ctabs>
+<!--                <div class="card  collapsed-card"  *ngIf="ctbs.canMultiple == true">-->
+                     <app-case-summary-view-ctabs [cTabs]="tl.cTabs"></app-case-summary-view-ctabs>
  <!--                  <div class="card-header" >
                      <h3 class="card-title">{{ctbs.name}}</h3>
                      <div class="card-tools">

@@ -1,24 +1,36 @@
 <p></p>
 
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 card-primary-1">
 
+    <div style="text-align: right; margin-top: 10px;"><span class="fas fa-user-check fa-2x" style="    letter-spacing: 10px;"></span>
+    <span  class="fas fa-clone fa-2x" style="    letter-spacing: 10px;"></span>
+    <span  class="fas fa-save fa-2x" style="    letter-spacing: 10px;"></span>
+    <span  class="fas fa-trash fa-2x" style="    letter-spacing: 10px;"></span></div>
+  </div>
+
+
+</div>
+<div clas="container">
       <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="col-lg-5 col-md-5 col-sm-5 summary-comp">
           <div class="card-header card-primary card-outline">
             <h6 style="text-align: center;">Documents</h6>
           </div>
           <ngb-tabset #ctdTabset="ngbTabset">
-            <ngb-tab id="tab1">
-              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">MedWatch_{{caseId}}</h6></ng-template>
+            <div *ngFor="let docList of docListUrl ; let i = index">
+            <ngb-tab [id]="'tab'+(i+1)">
+              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">{{docList.fileName}}_{{caseId}}</h6></ng-template>
               <ng-template ngbTabContent>
                 <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
-                  <pdf-viewer [src]="med_watch_src" 
+                  <pdf-viewer [src]="docList.fileUrl" 
                   [original-size]="false"
                     [autoresize]="true" 
                     [fit-to-page]="true" ></pdf-viewer>
                 </div>
               </ng-template>
-            </ngb-tab>
-            <ngb-tab id="tab2">
+            </ngb-tab></div>
+<!--             <ngb-tab id="tab2">
               <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">Leb Test_{{caseId}}</h6></ng-template>
               <ng-template ngbTabContent>
                 <div class="pdf-container" style="height: 600px;" (click)="loadView('tab2')">
@@ -39,13 +51,14 @@
                   [fit-to-page]="true"></pdf-viewer>
                 </div>
               </ng-template>
-            </ngb-tab>
+            </ngb-tab> -->
           </ngb-tabset> 
         </div>
-        <div class="col-lg-7 col-md-7 col-sm-7">
-          <div class="card-header card-primary-info card-outline"><h6 style="text-align: center;">Case Information</h6> 
+        <div class="col-lg-7 col-md-7 col-sm-7 summary-comp">
+          <div class="card-header card-primary card-outline cas-info"><h6 style="text-align: center;">Case Information</h6> 
                 
-           <!-- <h6 style="text-align: center;">Case Information</h6> <h3 class="card-title float-center">Case Information</h3> -->
+           <!-- <h6 style="text-align: center;">Case Information</h6>  --><h5 style="text-align: center;">{{caseId}}</h5>
+           <div style="float: right;    margin-top: -50px;"><span class="fas fa-edit fa-3x"></span></div>
            
                           </div>
 
@@ -61,7 +74,7 @@
         </div>
       </div>
    
- 
+ </div>
 
 
 

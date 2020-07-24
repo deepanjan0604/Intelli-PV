@@ -43,7 +43,6 @@ selectedIndex:any;
   } */
   
   ngOnInit() {
-    debugger;
     this.tabList=this.tabList.sort((a, b) => a.id - b.id)
       for(var i=0;i<this.tabList.length;i++){
        if(this.tabList[i].canMultiple == true){
