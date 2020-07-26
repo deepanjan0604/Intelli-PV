@@ -17,6 +17,10 @@ export class RightNavComponent implements OnInit {
      this.caseviewFoldersList =  respData
     });
    }
+
+   ngInitDiv(){
+     console.log("Div Initialization");
+   }
   }
 
 

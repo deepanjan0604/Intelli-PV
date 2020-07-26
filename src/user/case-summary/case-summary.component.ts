@@ -4,6 +4,8 @@ import { UserService } from 'src/services/user.service';
 import { Observable } from 'rxjs';
 import { ConfigurationModel } from 'src/object-model/configuration-model';
 import { DocListModel } from 'src/object-model/document-list-model';
+import * as $AB from 'jquery';
+
 
 @Component({
   selector: 'app-case-summary',
@@ -53,7 +55,7 @@ export class CaseSummaryComponent implements OnInit {
          console.log( "Doc list:"+ this.docList);
          var id=respData[0].docId
          this.userService.getDocumentListURL(id).subscribe(respData => {
-          debugger;
+         
           var arr=new Array();
           arr=new Array(respData);
           this.docListUrl=[];
@@ -67,9 +69,11 @@ export class CaseSummaryComponent implements OnInit {
           });
         
         });
-  
+  debugger;
         
-  
+    $AB().ready(function () {
+          $AB("#MySplitter").splitter();
+        });
        
       
   }
@@ -81,4 +85,14 @@ export class CaseSummaryComponent implements OnInit {
    switchNgBTab(id: string) {
      this.ctdTabset.select(id);
    }
+
+
+   
 }
+
+
+
+
+
+
+

@@ -24,3 +24,12 @@
     margin: 0 auto;
     font: 1.2em Helvetica, arial, sans-serif;
 }
+
+.row{
+    height: 30px;
+  }
+  
+  .vsplitbar {
+      width: 4px;
+      background: #17a2b8;
+  }

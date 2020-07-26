@@ -133,14 +133,99 @@
           </ng-template>
 
 
-          <div class="col-12">
+          <div class="col-12" style="padding: 40px;">
            
+            <form>
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+              <div class="form-group form-inline">
+                  Search: <input class="form-control ml-2" type="text" name="searchTerm" />
+                  <!-- <span class="ml-3" >Loading...</span> -->
+              </div></div>
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="example1_length" style="text-align: right;width: 22%;float: right;">
+                
+                  <select name="example1_length" (change)="clickItemsPerPage($event.target.value)" [(ngModel)]="value" class="custom-select custom-select-sm form-control form-control-sm">
+                      <option  value="5">5 items per page</option>
+                      <option  value="10">10 items per page</option>
+                      <option value="20">20 items per page</option>
+                      <option value="50">50 items per page</option>
+                  </select></div></div></div>
+              <table class="table table-striped">
+                <thead style="background: #27252a;">
+                <tr>
+                  <th scope="col"><input type="checkbox"></th>
+                  <th scope="col" *ngFor="let data of headerList" style="color: white;">{{data}}</th>
+                  <th scope="col" style="color: white;">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data Of document_view_records |filter:filterRecords | paginate: { itemsPerPage: value, currentPage: page }">
+                                             <td><input type="checkbox"></td>
+                                             <!-- <a type="button" class="" [routerLink]="['/user/case-summary/',data.caseNumber]" target="_blank"> -->
+                                                <!-- <svg class="bi bi-eye" width="3em" height="3em" viewBox="0 0 20 20" fill="currentColor" 
+                                                 style="color: #007bff !important;">
+                                              <path fill-rule="evenodd" d="M18 10s-3-5.5-8-5.5S2 10 2 10s3 5.5 8 5.5 8-5.5 8-5.5zM3.173 10a13.133 13.133 0 001.66 2.043C6.12 13.332 7.88 14.5 10 14.5c2.12 0 3.879-1.168 5.168-2.457A13.133 13.133 0 0016.828 10a13.133 13.133 0 00-1.66-2.043C13.879 6.668 12.119 5.5 10 5.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 003.172 10z" clip-rule="evenodd"></path>
+                                              <path fill-rule="evenodd" d="M10 7.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM6.5 10a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" clip-rule="evenodd"></path>
+                                            </svg> --><!-- div ng-click="redirectToURL(data)"> -->
+                                              <td>{{data.caseNumber}}</td>
+                                              <td>{{data.safetyId}}</td>
+                                              <td>{{data.rcvdDate| date}}</td>
+                                              <td>{{data.srcType}}</td>
+                                              <td>{{data.reporterType}}</td>
+                                              <td>{{data.triageStatus}}</td>
+                                              <td><span class="fas fa-circle" *ngIf="data.caseSeriousness.priority !== 0 " [ngClass]="{'priority1':data.caseSeriousness.priority === 1 , 'priority2':data.caseSeriousness.priority === 2 , 'priority3':data.caseSeriousness.priority === 3 , 'priority4':data.caseSeriousness.priority === 0}"></span><div class="profile-hover"><p>Is Serious:{{data.caseSeriousness.isSerious}}, Priority:{{(data.caseSeriousness.priority === 1)?'High':((data.caseSeriousness.priority === 2)?'Medium':((data.caseSeriousness.priority === 3)?'Low':'NA'))}}, Days left:{{data.caseSeriousness.daysLeft}}</p></div></td>
+                                              <td>{{data.assignTo}}</td>
+                                              <td>{{data.caseCreationDate| date}}</td>
+                                              <td>
+                                                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                                <li class="nav-item has-treeview">
+                                                
+                                                <span class="fas fa-th-list nav-link dropbtn"></span>
+                                                <ul class="nav nav-treeview dropdown-content">
+                                                 
+                                                  <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                      <p id="sub-menu">View Details</p>
+                                                    </a>
+                                                  </li>
+                                                  
+                                                </ul>
+                                              </li></ul>
+                                              
+                                              </td>
+                  
+                </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="col-sm-12 col-md-7">
+              <!-- <div class="d-flex justify-content-between p-2"> -->
+                <!-- <ngb-pagination
+                  [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+                </ngb-pagination> -->
+                <!-- <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination> -->
+                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style="float: right;">
+                  <ul class="pagination">  
+                <pagination-controls (pageChange)="page = $event"  previousLabel="Previous" nextLabel="Next"></pagination-controls>
+              
+                 </ul></div></div></div>
+                <!-- <select class="custom-select" style="width: auto" name="value" [(ngModel)]="value">
+                  <option [ngValue]="5">5 items per page</option>
+                  <option [ngValue]="10">10 items per page</option>
+                  <option [ngValue]="15">15 items per page</option>
+                </select>  -->
+              
+              
+            </form>
+
+  <!--           Table commented
               <div class="card">
-                  <!-- <div class="card-header">
+                 <div class="card-header">
                       <h3 class="card-title">DataTable with default features</h3>
                   </div> -->
                   <!-- /.card-header -->
-                  <div class="card-body">
+                  <!-- <div class="card-body">
                       <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                           <div class="row">
                               <div class="col-sm-12 col-md-6">
@@ -206,9 +291,14 @@
                               </div>
                           </div>
                       </div>
-                  </div>
+                  </div> -->
                   <!-- /.card-body -->
-              </div>
+           <!--    </div>  -->
+
+
+
+
+
               <!-- /.card -->
           </div>
           <!-- /.col -->

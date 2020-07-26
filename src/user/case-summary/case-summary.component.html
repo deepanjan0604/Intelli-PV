@@ -12,15 +12,15 @@
 
 </div>
 <div clas="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-5 summary-comp">
+      <div class="row" >
+        <div class="col-lg-6 col-md-6 col-sm-6 summary-comp">
           <div class="card-header card-primary card-outline">
             <h6 style="text-align: center;">Documents</h6>
           </div>
           <ngb-tabset #ctdTabset="ngbTabset">
             <div *ngFor="let docList of docListUrl ; let i = index">
             <ngb-tab [id]="'tab'+(i+1)">
-              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">{{docList.fileName}}_{{caseId}}</h6></ng-template>
+              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">{{docList.fileName}}</h6></ng-template>
               <ng-template ngbTabContent>
                 <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
                   <pdf-viewer [src]="docList.fileUrl" 
@@ -54,7 +54,7 @@
             </ngb-tab> -->
           </ngb-tabset> 
         </div>
-        <div class="col-lg-7 col-md-7 col-sm-7 summary-comp">
+        <div class="col-lg-6 col-md-6 col-sm-6 summary-comp">
           <div class="card-header card-primary card-outline cas-info"><h6 style="text-align: center;">Case Information</h6> 
                 
            <!-- <h6 style="text-align: center;">Case Information</h6>  --><h5 style="text-align: center;">{{caseId}}</h5>
@@ -144,5 +144,5 @@
                       <Strong>Frequency : </Strong>  Twice a day
                      </p>
                   </div>
-                  <!-- /.card-body -->
+                   /.card-body -->
                 <!-- </div> -->

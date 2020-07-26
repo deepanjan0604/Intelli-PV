@@ -27,7 +27,7 @@
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": ["./node_modules/jquery/dist/jquery.min.js","src/assets/jquery-splitter.js"],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -89,7 +89,9 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "./node_modules/jquery/dist/jquery.min.js",
+              "src/assets/jquery-splitter.js"
             ]
           }
         },

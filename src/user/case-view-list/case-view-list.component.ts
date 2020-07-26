@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DocumentViewModel } from 'src/_models/document-view-model';
 import { UserService } from 'src/services/user.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 
@@ -15,16 +15,21 @@ import { Observable } from 'rxjs';
 export class CaseViewListComponent implements OnInit {
 
   filterRecords: string;
-  isItemsPerPage = 10;
+  isItemsPerPage = 5;
   document_view_records: DocumentViewModel[] = [];
   isSelected: boolean[];
   headerList:any;
   typeIndex:any;
+  pageSize:any;
+  value:any="5";
+  items = [];
+  pageOfItems: Array<any>;
+  page: number = 1;
   
 
   constructor(private userService: UserService,
     private modalService: NgbModal,
-    config: NgbModalConfig, route: ActivatedRoute) {
+    config: NgbModalConfig, route: ActivatedRoute, private router:Router) {
       config.backdrop = 'static';
     config.keyboard = true;
 
@@ -35,12 +40,13 @@ export class CaseViewListComponent implements OnInit {
   
 
     this.userService.getCaseListData(this.typeIndex).subscribe(respData => {
-     
+    debugger;
       this.headerList= respData.headerCol;
       this.document_view_records = respData.response;
+      this.value="5";
+      this.pageSize=Math.ceil(respData.response.length/parseInt(this.value));
       console.log( respData);
      });
-   
   }
 
   openSearchModel(content) {
@@ -50,5 +56,11 @@ export class CaseViewListComponent implements OnInit {
   clickItemsPerPage(event: any){
     this.isItemsPerPage = event;
   }
+  redirectToURL(data:any){
+    debugger;
+    this.router.navigate(['/user/dashbaord'+data.caseNumber]) 
+
+  }
+ 
 
 }

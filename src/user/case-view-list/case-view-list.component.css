@@ -1,0 +1,89 @@
+/* .pagination-previous .pagination-next{
+    color:black;
+}
+.ngx-pagination{
+    background:black;
+} */
+.priority1{
+    color:red;
+}
+.priority2{
+    color:#FFC200;
+}
+.priority3{
+    color:green;
+}
+.priority4{
+    color:white;
+}
+
+/* .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  span:hover + div{
+    visibility: visible;
+  } */
+
+  .profile-hover { 
+    display: none; 
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background: #eee;
+    width: 300px;
+    text-align: center;
+}
+
+.fa-circle:hover + .profile-hover { display: inline-block; }
+
+
+.dropbtn {
+  color: black;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 90px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}

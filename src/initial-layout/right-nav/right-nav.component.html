@@ -24,14 +24,14 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">
-          <a  [routerLink]="['/user/dashbaord']" class="nav-link">
+          <a  [routerLink]="['/user/dashbaord']" class="nav-link dropbtn">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               {{'LANG.DASHBOARD' | translate }}
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
+          <ul class="nav nav-treeview dropdown-content">
             <li class="nav-item">
               <a class="nav-link">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
@@ -53,14 +53,14 @@
           </ul>
         </li>
         <li class="nav-item has-treeview">
-          <a [routerLink]="['/user/doc-view']" class="nav-link">
+          <div  class="nav-link dropbtn"><!-- [routerLink]="['/user/doc-view']" -->
             <i class="nav-icon fas fa-file"></i>
             <p>
               {{'LANG.Document_View' | translate}}
               <i class="right fas fa-angle-left"></i>
             </p>
-          </a>
-          <ul class="nav nav-treeview">
+          </div>
+          <ul class="nav nav-treeview dropdown-content">
             <li class="nav-item">
               <a [routerLink]="['/user/inbox']" class="nav-link">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
@@ -89,14 +89,14 @@
         </li>
         <li class="nav-item has-treeview">
          <!--  <a [routerLink]="['/user/case-view']" class="nav-link"> -->
-          <a href="#" class="nav-link">
+          <div  class="nav-link dropbtn" (click)="ngInitDiv()">
             <i class="nav-icon fas fa-clipboard"></i>
             <p>
             {{'LANG.Case_View'| translate }}
               <i class="fas fa-angle-left right"></i>
-            </p></a>
+            </p></div>
         <!--   </a> -->
-          <ul class="nav nav-treeview">
+          <ul class="nav nav-treeview dropdown-content">
           <!--   <li  class="nav-item">
               <a  [routerLink]="['/user/case-view']" class="nav-link"> 
                 <span class="nav-link">
@@ -118,13 +118,13 @@
           </ul>
         </li>
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+          <div class="nav-link dropbtn">
             <i class="nav-icon fas fa-cog fa-spin"></i>
             <p>
               Administration
               <i class="fas fa-angle-left right"></i>
             </p>
-          </a>
+          </div>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="pages/forms/general.html" class="nav-link">

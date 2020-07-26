@@ -4,7 +4,7 @@
 // import 'zone.js/dist/zone-error';
 
 export const environment = {
-  production: false,
+  production: true,
   enableDebug: false,
   baseUrl: 'http://document-view.herokuapp.com/',
   baseUrl2: 'http://34.192.67.85/',
