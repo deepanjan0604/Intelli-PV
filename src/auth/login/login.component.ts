@@ -44,10 +44,10 @@ export class LoginComponent implements OnInit {
 		params.append('client_id','ipv');
 		
 		
-        this.authService.login(params).subscribe(respData => {
-          console.log(respData);
-        });
-        localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
+        // this.authService.login(params).subscribe(respData => {
+        //   console.log(respData);
+        // });
+        // localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
         this.router.navigate(['/user/dashbaord'])  
     }
 }

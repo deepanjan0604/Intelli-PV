@@ -3,11 +3,11 @@ import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-right-nav',
   templateUrl: './right-nav.component.html',
-  styleUrls: ['./right-nav.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./right-nav.component.css']
 })
 export class RightNavComponent implements OnInit {
   caseviewFoldersList: any;
+  showLi:boolean=false;
   constructor(private ref: ChangeDetectorRef , private userService: UserService) {
     this.ref.markForCheck();
    }
@@ -19,6 +19,7 @@ export class RightNavComponent implements OnInit {
    }
 
    ngInitDiv(){
+     this.showLi=true;
      console.log("Div Initialization");
    }
   }

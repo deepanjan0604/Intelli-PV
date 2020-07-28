@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserService } from 'src/services/user.service';
+import { DocListModel } from 'src/object-model/document-list-model';
 
 
 @Component({
@@ -21,6 +22,12 @@ export class DocumentsDetailsComponent implements OnInit {
   fileUrl_1_data: any;
   fileUrl_2_data: any;
   fileUrl_3_data: any;
+
+
+  docList:Observable<DocListModel>[];
+  docListUrl:Observable<DocListModel>[];
+
+
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UserService) {
      
@@ -31,6 +38,18 @@ export class DocumentsDetailsComponent implements OnInit {
   
    ngOnInit() {
     this.caseId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.userService.getDocumentListURL(9).subscribe(respData => {
+      var arr=new Array();
+      arr=new Array(respData);
+      this.docListUrl=[];
+      for(var i=0;i<arr.length;i++){
+        
+          this.docListUrl[i]=Object.assign(new DocListModel, respData[i]);
+       }
+        
+       console.log( "Doc list URL:"+ this.docListUrl);
+       
+      });
     this.userService.getDocumentsViewForIndexDetails(this.caseId).subscribe(respData => {
       this.docId_1_data = respData[0].docId;
       this.fileUrl_1_data = respData[0].fileUrl;

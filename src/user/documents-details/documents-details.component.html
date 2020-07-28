@@ -1,7 +1,7 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <app-right-nav></app-right-nav>
 <p></p>
-
+ -->
 
  <div class="card">
   <!-- <div class="card-header  card-primary card-outline">
@@ -23,9 +23,8 @@
   <div class="card-body  card-primary card-outline">
     <div class="row">
       <div class="col-10 col-sm-10">
-        <ngb-tabset>
+        <!-- <ngb-tabset>
           <ngb-tab>
-            <!-- [zoom]="zoomValue"  -->
             <ng-template ngbTabTitle><button  type="button" class="btn btn-block btn-default btn-sm" (click)="getInboxDoucmentByDeatilsId1(docId_1_data)">MedWatch_{{caseId}}</button></ng-template>
             <ng-template ngbTabContent>
               <div class="pdf-container" style="height: 500px;">
@@ -80,6 +79,28 @@
             </ng-template>
           </ngb-tab>
         </ngb-tabset>
+       -->
+       <ngb-tabset #ctdTabset="ngbTabset">
+        <div *ngFor="let docList of docListUrl ; let i = index">
+        <ngb-tab [id]="'tab'+(i+1)">
+          <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">{{docList.fileName}}</h6></ng-template>
+          <ng-template ngbTabContent>
+            <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
+              <pdf-viewer [src]="docList.fileUrl" 
+              [original-size]="false"
+                [autoresize]="true" 
+                [fit-to-page]="true"
+                [show-all]="true" 
+                [render-text]="true"
+                [stick-to-page]="true" ></pdf-viewer>
+            </div>
+          </ng-template>
+        </ngb-tab></div>
+        
+      </ngb-tabset> 
+      
+      
+      
       </div>
       <div class="col-2 col-sm-2">
         <nav class="navbar bg-light">
@@ -109,7 +130,7 @@
               </p>
             </li>
             <li class="nav-item">
-            <p>  <a class="nav-link" [routerLink]="['/user/create-case/', caseId]" target="_blank">Create Case</a></p>
+            <p>  <button class="btn btn-primary-info" [routerLink]="['/user/create-case/', caseId]" target="_blank">Create Case</button></p>
             
             </li>
             <li class="nav-item">

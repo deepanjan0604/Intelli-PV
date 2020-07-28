@@ -96,7 +96,7 @@
               <i class="fas fa-angle-left right"></i>
             </p></div>
         <!--   </a> -->
-          <ul class="nav nav-treeview dropdown-content">
+          <ul class="nav nav-treeview dropdown-content" *ngIf="showLi===true">
           <!--   <li  class="nav-item">
               <a  [routerLink]="['/user/case-view']" class="nav-link"> 
                 <span class="nav-link">
@@ -106,7 +106,7 @@
 
             </li> -->
             
-            <li class="nav-item"  *ngFor="let data Of caseviewFoldersList " >
+            <li class="nav-item"  *ngFor="let data Of caseviewFoldersList" >
              
                 <a  [routerLink]="['/user/case-view',data.categoryId]"  class="nav-link" >
                 <!-- <i class="far fa-circle nav-icon"></i> -->
