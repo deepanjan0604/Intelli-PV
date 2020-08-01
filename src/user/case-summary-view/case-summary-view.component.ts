@@ -80,7 +80,7 @@ selectedIndex:any;
   selectedIndx=-1;
   classType:string="";
   selectedTabNotMultiple(index){
-    debugger
+    
    this.selectedIndx =index;
     var element:any;
     var elementClass="";
@@ -93,7 +93,7 @@ selectedIndex:any;
   }
 
   selectedTabMultiple(index){
-    debugger
+    
     this.selectedIndx =index;
      var element:any;
      var elementClass="";

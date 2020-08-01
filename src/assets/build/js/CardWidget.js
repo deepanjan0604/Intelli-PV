@@ -48,7 +48,9 @@ const CardWidget = (($) => {
     removeTrigger: Selector.DATA_REMOVE,
     maximizeTrigger: Selector.DATA_MAXIMIZE,
     collapseIcon: 'fa-minus',
+    collapseIcon_alt:'fa-chevron-down',
     expandIcon: 'fa-plus',
+    expandIcon_alt:'fa-chevron-up',
     maximizeIcon: 'fa-expand',
     minimizeIcon: 'fa-compress',
   }
@@ -74,6 +76,8 @@ const CardWidget = (($) => {
         .addClass(this._settings.expandIcon)
         .removeClass(this._settings.collapseIcon)
 
+       
+
       const collapsed = $.Event(Event.COLLAPSED)
 
       this._element.trigger(collapsed, this._parent)
@@ -88,6 +92,7 @@ const CardWidget = (($) => {
       this._parent.find(this._settings.collapseTrigger + ' .' + this._settings.expandIcon)
         .addClass(this._settings.collapseIcon)
         .removeClass(this._settings.expandIcon)
+        
 
       const expanded = $.Event(Event.EXPANDED)
 
@@ -107,6 +112,8 @@ const CardWidget = (($) => {
         this.expand()
         return
       }
+
+     
 
       this.collapse()
     }
