@@ -16,9 +16,9 @@
         }  */
 
 
-        /* .card-header{
+        .card-header{
             background: #617679;
-        } */
+        } 
         .active
         {
             background:#17a2b8; 
@@ -27,7 +27,7 @@
         
         
         .not-active{
-          background: #ffffff;
+          background: #617679;
          
         }
         

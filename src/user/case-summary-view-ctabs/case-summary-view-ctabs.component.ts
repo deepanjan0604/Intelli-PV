@@ -26,7 +26,7 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
   elementIterator:{indx:number,elemntItr:boolean}[]=[];
   selectedTabNotMultiple(index){
     var iteration=false;
-    debugger
+   
     if(this.elementIterator.length>0){
       for(var i=0;i<this.elementIterator.length;i++){
         if(this.elementIterator[i].indx == index && this.elementIterator[i].elemntItr == true){
@@ -67,13 +67,14 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
     }
    // element=document.getElementById(elementId);
     if(element.getElementsByTagName('i').length>0){
+      debugger
     elementClass=element.getElementsByTagName('i')[0].className.toString();
     this.classType=this.getTabClass(elementClass,iteration);
     }
   }
 
   selectedTabMultiple(index){
-    var iteration=false;
+   /*  var iteration=false;
     this.selectedIdx =index;
      var element:any;
      var elementClass="";
@@ -82,7 +83,7 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
      if(element.getElementsByTagName('i').length>0){
      elementClass=element.getElementsByTagName('i')[0].className.toString();
      this.classType=this.getTabClass(elementClass,iteration);
-     }
+     } */
 
   }
 
