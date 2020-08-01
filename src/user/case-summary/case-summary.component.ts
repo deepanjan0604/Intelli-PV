@@ -36,8 +36,8 @@ export class CaseSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getCaseListSummary(this.caseId).subscribe(respData => {
-     
-       this.configModel=Object.assign(new ConfigurationModel, respData.configuration);
+  
+       this.configModel=Object.assign(new ConfigurationModel, respData['configuration']);
         console.log( respData);
        });
        this.userService.getDocumentList(456,0).subscribe(respData => {
@@ -59,7 +59,7 @@ export class CaseSummaryComponent implements OnInit {
           var arr=new Array();
           arr=new Array(respData);
           this.docListUrl=[];
-          for(var i=0;i<arr.length;i++){
+          for(var i=0;i<arr[0].length;i++){
             
               this.docListUrl[i]=Object.assign(new DocListModel, respData[i]);
            }
@@ -69,23 +69,33 @@ export class CaseSummaryComponent implements OnInit {
           });
         
         });
-  debugger;
-        
-    $AB().ready(function () {
-          $AB("#MySplitter").splitter();
-        });
-       
       
   }
 
-  ngAfterViewInit() {
+   ngAfterViewInit() {
     this.switchNgBTab('tab1');
   }
 
    switchNgBTab(id: string) {
      this.ctdTabset.select(id);
+   } 
+
+   selectedIdx = 0;
+   selectItem(i):void{
+     debugger;
+    this.selectedIdx = i;
    }
 
+   getClass(i){
+     
+    var classList='';
+    if(this.selectedIdx == i){
+       classList = 'active'; 
+    }else if (this.selectedIdx != i){
+        classList = 'not-active';
+    }
+    return classList;
+  }
 
    
 }

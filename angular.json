@@ -27,7 +27,8 @@
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js","src/assets/jquery-splitter.js"],
+            "scripts": ["./node_modules/jquery/dist/jquery.min.js","src/assets/jquery-splitter.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",],
             "es5BrowserSupport": true
           },
           "configurations": {

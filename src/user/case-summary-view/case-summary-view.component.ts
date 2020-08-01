@@ -1,5 +1,6 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit, ElementRef, Inject } from '@angular/core';
 import { TabListsModel } from 'src/object-model/tab-list-model';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-case-summary-view',
@@ -13,7 +14,7 @@ export class CaseSummaryViewComponent implements OnInit {
 cardStyle:String;
 selectedIndex:any;
 
-  constructor() {
+  constructor(private el:ElementRef,@Inject(DOCUMENT) document) {
 
     this.cardStyle='cardStyle-collapsed';
   }
@@ -62,7 +63,7 @@ selectedIndex:any;
        }
      } 
   }
-  collapseCard(i,event){
+ /*  collapseCard(i,event){
 
     debugger;
     if(event.srcElement.attributes[1].textContent == "fas fa-minus"){
@@ -74,8 +75,45 @@ selectedIndex:any;
       this.cardStyle='cardStyle-not-collapsed';
     }
     
+  } */
+
+  selectedIndx=-1;
+  classType:string="";
+  selectedTabNotMultiple(index){
+    debugger
+   this.selectedIndx =index;
+    var element:any;
+    var elementClass="";
+    var elementId="isNotMultipleP"+ (this.selectedIndx+1);
+    element=document.getElementById(elementId);
+    if(element.getElementsByTagName('i').length>0){
+    elementClass=element.getElementsByTagName('i')[0].className.toString();
+    this.classType=this.getTabClass(elementClass);
+    }
   }
 
- 
+  selectedTabMultiple(index){
+    debugger
+    this.selectedIndx =index;
+     var element:any;
+     var elementClass="";
+     var elementId="isMultipleP"+ (this.selectedIndx+1);
+     element=document.getElementById(elementId);
+     if(element.getElementsByTagName('i').length>0){
+     elementClass=element.getElementsByTagName('i')[0].className.toString();
+     this.classType=this.getTabClass(elementClass);
+     }
 
+  }
+
+  getTabClass(ec:string){
+     
+    
+    if(ec=="fas fa-plus"){
+       this.classType = 'active'; 
+    }else if (ec=="fas fa-minus"){
+        this.classType = 'not-active';
+    }
+    return this.classType;
+  }
 }

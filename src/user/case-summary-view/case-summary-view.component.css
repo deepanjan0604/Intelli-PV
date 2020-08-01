@@ -4,3 +4,15 @@
 .cardStyle-collapsed{
     background-color:  #ffffff;
 }
+
+.active
+{
+    background:#17a2b8; 
+ 
+}
+
+
+.not-active{
+  background: #ffffff;
+ 
+}

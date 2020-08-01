@@ -18,7 +18,16 @@
     padding: 15px;
     margin-top: -10px;
 }
+.icon-btn{
+    text-align: center;
+    padding: 0.5em;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none !important;
+    margin: 0 auto;
+    margin-left: 70%;
 
+}
 .wrapper {
     max-width: auto;
     margin: 0 auto;
@@ -33,3 +42,26 @@
       width: 4px;
       background: #17a2b8;
   }
+
+  .active
+  {
+      background:#c4eef5; 
+      height:38%;
+      padding:10px;
+      margin: -6px;
+  }
+
+
+  .not-active{
+    background: #ffffff;; 
+    height:38%;
+    padding:10px;
+    margin: -6px;
+  }
+/* 
+ 
+.nav-item.nav-link
+{
+    background:#FFFFFF;
+}
+  */

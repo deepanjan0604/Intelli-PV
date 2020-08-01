@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/services/user.service';
+import $ from 'jquery';
 @Component({
   selector: 'app-right-nav',
   templateUrl: './right-nav.component.html',
@@ -16,7 +17,8 @@ export class RightNavComponent implements OnInit {
     this.userService.getCaseviewFoldersList().subscribe(respData => {
      this.caseviewFoldersList =  respData
     });
-   }
+
+     }
 
    ngInitDiv(){
      this.showLi=true;

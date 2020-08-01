@@ -2,48 +2,27 @@
 
 
       <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="col-lg-6 col-md-6 col-sm-6 summary-comp">
           <div class="card-header card-primary card-outline">
             <h6 style="text-align: center;">Documents</h6>
           </div>
-          <ngb-tabset>
-            <ngb-tab>
-              <ng-template ngbTabTitle>MedWatch_{{caseId}}</ng-template>
+          <ngb-tabset #ctdTabset="ngbTabset">
+            <div *ngFor="let docList of docListUrl ; let i = index">
+            <ngb-tab [id]="'tab'+(i+1)">
+              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">{{docList.fileName}}</h6></ng-template>
               <ng-template ngbTabContent>
-                <div class="pdf-container" style="height: 600px;">
-                  <pdf-viewer [src]="med_watch_src" 
+                <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
+                  <pdf-viewer [src]="docList.fileUrl" 
                   [original-size]="false"
                     [autoresize]="true" 
                     [fit-to-page]="true" ></pdf-viewer>
                 </div>
               </ng-template>
-            </ngb-tab>
-            <ngb-tab>
-              <ng-template ngbTabTitle>Leb Test_{{caseId}}</ng-template>
-              <ng-template ngbTabContent>
-                <div class="pdf-container" style="height: 600px;">
-                  <pdf-viewer [src]="lab_test_watch_src" 
-                  [original-size]="false"
-                  [autoresize]="true" 
-                  [fit-to-page]="true"></pdf-viewer>
-                </div>
-              </ng-template>
-            </ngb-tab>
-            <ngb-tab>
-              <ng-template ngbTabTitle>ECG_{{caseId}}</ng-template>
-              <ng-template ngbTabContent>
-                <div class="pdf-container" style="height: 600px;">
-                  <pdf-viewer [src]="ecg_watch_src" 
-                  [original-size]="false"
-                  [autoresize]="true" 
-                  [fit-to-page]="true"></pdf-viewer>
-                </div>
-              </ng-template>
-            </ngb-tab>
+            </ngb-tab></div>
           </ngb-tabset> 
         </div>
-        <div class="col-lg-7 col-md-7 col-sm-7">
-          <div class="card-header card-primary card-outline">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="card-header card-primary card-outline case-info">
                 
             <h3 class="card-title float-center">Case Information <br> &nbsp;&nbsp;{{caseId}}</h3>
             <a class="card-title float-right"><i class="fas fa-file-signature" style="font-size: 40px;"></i></a>

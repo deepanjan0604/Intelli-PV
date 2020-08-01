@@ -59,9 +59,23 @@ export class UserService {
   }
 
   getCaseListSummary(caseId:any){
-    //return this.http.get(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
-    
-    return this.http.get<any>('./assets/case-summary.json').pipe(catchError(this.errorHandler));
+   
+    this.headers1 = this.headers1
+      .append('Accept', 'application/json')
+      .append('Content-Type', 'application/json')
+      .append('Access-Control-Allow-Origin','http://18.224.1.69:8080')
+      .append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+      .append('enterpriseid','3')
+      .append('country','dummy')
+      .append('reporter','PU')
+      .append('land','EN')
+      .append('loggedinuser','pvi.admin@pvi.vom');
+   
+
+
+   // return this.http.get<any>(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
+  
+   return this.http.get<any>('./assets/case-summary.json').pipe(catchError(this.errorHandler));
   }
 
    getDocumentList(caseId:any,type:any){

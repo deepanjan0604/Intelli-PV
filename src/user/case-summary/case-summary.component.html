@@ -1,28 +1,32 @@
 <p></p>
-
+<div clas="container">
 <div class="row">
-  <div class="col-lg-12 col-md-12 col-sm-12 card-primary-1">
+  <div class="container col-lg-12 col-md-12 col-sm-12 card-primary-1">
 
-    <div style="text-align: right; margin-top: 10px;"><span class="fas fa-user-check fa-2x" style="    letter-spacing: 10px;"></span>
-    <span  class="fas fa-clone fa-2x" style="    letter-spacing: 10px;"></span>
-    <span  class="fas fa-save fa-2x" style="    letter-spacing: 10px;"></span>
-    <span  class="fas fa-trash fa-2x" style="    letter-spacing: 10px;"></span></div>
-  </div>
+    <a class="icon-btn" style="text-align: center;">
+    <i class="fas fa-user-check fa-2x" style="letter-spacing: 10px;"></i>
+    <i  class="fas fa-clone fa-2x" style="letter-spacing: 10px;"></i>
+    <i  class="fas fa-save fa-2x" style="letter-spacing: 10px;"></i>
+    <i  class="fas fa-trash fa-2x" style="letter-spacing: 10px;"></i></a>
+
+    <button type="icon-btn" style="margin-top:5px" class="btn btn-default btn-sm float-right" >X</button>
+    </div>
 
 
-</div>
+</div></div>
 <div clas="container">
       <div class="row" >
         <div class="col-lg-6 col-md-6 col-sm-6 summary-comp">
           <div class="card-header card-primary card-outline">
             <h6 style="text-align: center;">Documents</h6>
           </div>
+          <div class="customTab">
           <ngb-tabset #ctdTabset="ngbTabset">
             <div *ngFor="let docList of docListUrl ; let i = index">
             <ngb-tab [id]="'tab'+(i+1)">
-              <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">{{docList.fileName}}</h6></ng-template>
+              <ng-template ngbTabTitle><div [ngClass]="getClass(i)"><h6 (click)="selectItem(i)" style="text-align: center;color: black;">{{docList.fileName}}</h6></div></ng-template>
               <ng-template ngbTabContent>
-                <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
+                <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1');selectItem(i)">
                   <pdf-viewer [src]="docList.fileUrl" 
                   [original-size]="false"
                     [autoresize]="true" 
@@ -52,13 +56,13 @@
                 </div>
               </ng-template>
             </ngb-tab> -->
-          </ngb-tabset> 
+          </ngb-tabset> </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 summary-comp">
           <div class="card-header card-primary card-outline cas-info"><h6 style="text-align: center;">Case Information</h6> 
                 
            <!-- <h6 style="text-align: center;">Case Information</h6>  --><h5 style="text-align: center;">{{caseId}}</h5>
-           <div style="float: right;    margin-top: -50px;"><span class="fas fa-edit fa-3x"></span></div>
+           <a style="float: right;    margin-top: -50px;"><i class="fas fa-edit" style="font-size: 40px;"></i></a>
            
                           </div>
 
@@ -78,71 +82,3 @@
 
 
 
-
-           <!--  <div class="card  collapsed-card">
-                  
-                  <div class="card-header">
-                    <h3 class="card-title">General Information</h3>
-      
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-plus"></i></button>
-                    </div>
-                  </div>
-                  <div class="card-body" style="text-align: left;">
-                    <strong> About The Product</strong>
-                      
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <p class="text-muted">
-                          <Strong>Generic Name : </Strong> Wonder Drug
-                         </p>
-                      </div>
-                      <div class="col-sm-4">
-                        <p class="text-muted">
-                          <Strong>Product Type : </Strong>  Drug
-                         </p>
-                      </div>
-                      <div class="col-sm-4">
-                        <p class="text-muted">
-                          <Strong>Product Event Assessment : </Strong> Suspect
-                         </p>
-                      </div>
-                    </div>
-                  
-                    <strong>Product Intake</strong>
-    
-                    <p class="text-muted">
-                      <Strong>Product Duration : </Strong> Start Date: 12-02-2019,   End Date: 23-09-2019
-                     </p> 
-                     <p class="text-muted">
-                      <Strong>Indication : </Strong> ---
-                     </p>
-
-                     <strong>Formulation and Administration</strong>
-
-                     <div class="row">
-                      <div class="col-sm-4">
-                        <p class="text-muted">
-                          <Strong>Formulation : </Strong> Wonder Drug
-                         </p>
-                      </div>
-                      <div class="col-sm-4">
-                        <p class="text-muted">
-                          <Strong>Route of Administration : </Strong>  Drug
-                         </p>
-                      </div>
-                      <div class="col-sm-4">
-                        
-                      </div>
-                    </div>
-                    <p class="text-muted">
-                      <Strong>Dose : </Strong>  50mg
-                     </p>
-                     
-                     <p class="text-muted">
-                      <Strong>Frequency : </Strong>  Twice a day
-                     </p>
-                  </div>
-                   /.card-body -->
-                <!-- </div> -->

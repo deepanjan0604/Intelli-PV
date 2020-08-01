@@ -1,14 +1,15 @@
 <div *ngFor="let tl of tabList ; let i = index">
    <div [ngSwitch]="tl.canMultiple">
       <div class="card  collapsed-card" >
-         <div class="card-header" *ngSwitchCase="false" >
+         <div class="card-header" [ngClass]="selectedIndx === i?classType:''" *ngSwitchCase="false" >
             <h3 class="card-title">{{tl.name}}</h3>
             <div class="card-tools">
-               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" >
-               <i class="fas fa-plus"></i></button>
+              <!--  <button type="button" class="btn btn-info1" data-toggle="collapse" [attr.data-target]="'#isNotMultipleP'+(i+1)" title="Collapse" > -->
+                  <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabNotMultiple(i)" >
+              <div [id]="'isNotMultipleP'+(i+1)"> <i  class="fas fa-plus"></i></div></button>
             </div>
          </div>
-         <div  class="card-body" style="text-align: left;">
+         <div [id]="'isNotMultipleP'+(i+1)"  class="collapse card-body" style="text-align: left;">
             <div *ngFor="let win of tl.window">
                <div *ngFor="let seclist of win.sectionList">
                   <strong> {{seclist.sName}}</strong>
@@ -25,69 +26,17 @@
       </div>
       <!-- /.card-body canMultiple=False -->
       <div class="card  collapsed-card" >
-         <div class="card-header" *ngSwitchCase="true">
+         <div class="card-header" [ngClass]="selectedIndx === i?classType:''" *ngSwitchCase="true">
             <h3 class="card-title">{{tl.name}}</h3>
             <div class="card-tools">
-               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" >
-               <i class="fas fa-plus"></i></button>
+               <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabMultiple(i)" >
+                 <!--  <button type="button" class="btn btn-info0" data-toggle="collapse" [attr.data-target]="'#isMultipleP'+(i+1)" title="Collapse" > -->
+                  <div [id]="'isMultipleP'+(i+1)"> <i class="fas fa-plus"></i></div></button>
             </div>
          </div>
-         <div class="card-body" style="text-align: left;">
-            <!-- <div *ngFor="let ctbs of tl.cTabs"> -->
-               <!--  canMultiple TRUE -->
+         <div [id]="'isMultipleP'+(i+1)"  class="collapse card-body" style="text-align: left;">
+                     <app-case-summary-view-ctabs [cTabs]="tl.cTabs" ></app-case-summary-view-ctabs>
 
-                   
-<!--                <div class="card  collapsed-card"  *ngIf="ctbs.canMultiple == true">-->
-                     <app-case-summary-view-ctabs [cTabs]="tl.cTabs"></app-case-summary-view-ctabs>
- <!--                  <div class="card-header" >
-                     <h3 class="card-title">{{ctbs.name}}</h3>
-                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" >
-                        <i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-                  <div class="card-body" style="text-align: left;">
-                     <div *ngFor="let win of ctbs.window">
-                        <div *ngFor="let seclist of win.sectionList">
-                           <strong> {{seclist.sName}}</strong>
-                           <div class="row">
-                              <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
-                                 <p class="text-muted">
-                                    <Strong>{{fl.fieldTxt}} : </Strong> {{fl.val}}
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>-->
-               <!-- </div>  -->
-
-
-                <!--  canMultiple FALSE -->
-              <!--  <div class="card  collapsed-card" *ngIf="ctbs.canMultiple == false">
-                  <div class="card-header" >
-                     <h3 class="card-title">{{ctbs.name}}</h3>
-                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" >
-                        <i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-                  <div class="card-body" style="text-align: left;">
-                     <div *ngFor="let win of ctbs.window">
-                        <div *ngFor="let seclist of win.sectionList">
-                           <strong> {{seclist.sName}}</strong>
-                           <div class="row">
-                              <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
-                                 <p class="text-muted">
-                                    <Strong>{{fl.fieldTxt}} : </Strong> {{fl.val}}
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div> -->
-           <!--  </div> -->
          </div>
       </div>
       <!-- /.card-body canMultiple=True -->

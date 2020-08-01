@@ -152,7 +152,7 @@
                       <option value="50">50 items per page</option>
                   </select></div></div></div>
               <table class="table table-striped">
-                <thead style="background: #27252a;">
+                <thead style="background: #17a2b8;">
                 <tr>
                   <th scope="col"><input type="checkbox"></th>
                   <th scope="col" *ngFor="let data of headerList" style="color: white;">{{data}}</th>
@@ -185,7 +185,7 @@
                                                 <ul class="nav nav-treeview dropdown-content">
                                                  
                                                   <li class="nav-item">
-                                                    <a href="#" class="nav-link">
+                                                    <a [routerLink]="['/user/case-summary/',data.caseNumber]" class="nav-link" target="_blank">
                                                       <p id="sub-menu">View Details</p>
                                                     </a>
                                                   </li>

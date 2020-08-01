@@ -16,3 +16,23 @@ label {
     margin-bottom: .4rem !important;
     float: left !important;
 }
+
+.card-primary{
+
+    background-color: #c4eef5 !important;
+   
+}
+.case-info{
+    height:93px;
+
+}
+.card-primary-1{
+
+    background-color: #17a2b8 !important;
+    height: 45px;
+    margin-top: -16px;
+}
+.summary-comp{
+    padding: 15px;
+    margin-top: -10px;
+}

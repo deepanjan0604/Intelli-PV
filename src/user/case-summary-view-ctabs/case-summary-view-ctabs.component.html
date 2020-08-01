@@ -1,15 +1,15 @@
 
-<div *ngFor="let ctbs of cTabs"> 
-<div class="card  collapsed-card" *ngIf="ctbs.canMultiple == true && ctbs.cTabs">
-  <div class="card-header" >
+<div *ngFor="let ctbs of cTabs ; let i = index"> 
+<div  *ngIf="ctbs.canMultiple == true && ctbs.cTabs">
+  <div class="card-header parent-tab" [ngClass]="selectedIdx === i?classType:''">
      <h3 class="card-title">{{ctbs.name}}</h3>
      <div class="card-tools">
-        <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" >
-        <i class="fas fa-plus"></i></button>
+      <button type="button" class="btn btn-info1" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" (click)="selectedTabMultiple(i)">
+         <div [id]="'isMultipleC'+(i+1)">  <i class="fas fa-plus"></i></div></button>
      </div>
   </div>
-  <div class="card-body" style="text-align: left;">
-    <app-case-summary-view-ctabs [cTabs]="ctbs.cTabs" *ngIf="ctbs.cTabs"></app-case-summary-view-ctabs>
+  <div   class="collapse card-body" style="text-align: left;">
+    <app-case-summary-view-ctabs [cTabs]="ctbs.cTabs"  *ngIf="ctbs.cTabs" ></app-case-summary-view-ctabs>
     <div  *ngIf="ctbs.canMultiple == true">
      <div *ngFor="let win of ctbs.window">
         <div *ngFor="let seclist of win.sectionList">
@@ -27,14 +27,14 @@
 </div>
 
  <div class="card  collapsed-card" *ngIf="ctbs.canMultiple == false">
-  <div class="card-header" >
+  <div class="card-header" [ngClass]="selectedIdx === i?classType:''">
      <h3 class="card-title">{{ctbs.name}}</h3>
      <div class="card-tools">
-        <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" >
-        <i class="fas fa-plus"></i></button>
+      <button type="button" class="btn btn-info1"  data-card-widget="collapse" data-toggle="tooltip" title="Collapse" (click)="selectedTabNotMultiple(i)">
+         <div [id]="'isNotMultipleC'+(i+1)"> <i class="fas fa-plus"></i></div></button>
      </div>
   </div>
-  <div class="card-body" style="text-align: left;">
+  <div  class="collapse card-body" style="text-align: left;">
      <div *ngFor="let win of ctbs.window">
         <div *ngFor="let seclist of win.sectionList">
            <strong> {{seclist.sName}}</strong>
@@ -49,9 +49,4 @@
      </div>
   </div>
 </div>
-
-
-
-
-
  </div> 
