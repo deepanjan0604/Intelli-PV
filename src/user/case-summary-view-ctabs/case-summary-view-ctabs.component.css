@@ -17,17 +17,17 @@
 
 
         .card-header{
-            background: #617679;
+            background: #777979;
         } 
         .active
         {
-            background:#17a2b8; 
+            background:#c4eef5 !important; 
          
         }
         
         
         .not-active{
-          background: #617679;
+          background: #777979;
          
         }
         

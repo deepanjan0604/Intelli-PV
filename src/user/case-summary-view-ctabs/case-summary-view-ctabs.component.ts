@@ -23,33 +23,11 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
   
   selectedIdx=-1;
   classType:string="";
-  elementIterator:{indx:number,elemntItr:boolean}[]=[];
+  elementIterator:{indx:number,elemntItr:boolean,parentTab:string,childTab:string}[]=[];
   selectedTabNotMultiple(index){
     var iteration=false;
-   
-    if(this.elementIterator.length>0){
-      for(var i=0;i<this.elementIterator.length;i++){
-        if(this.elementIterator[i].indx == index && this.elementIterator[i].elemntItr == true){
-        iteration=true;
-        break;}
-        else{
-        iteration=false;
-        }
-      }
-
-        if(iteration == false){
-          var elItr={indx:index,elemntItr:true};
-        this.elementIterator.push(elItr);
-       
-        }  
-      
-
-      
-    }
-      else{
-    var elItr={indx:index,elemntItr:true};
-      this.elementIterator.push(elItr);
-      }
+    
+    
     
    
 
@@ -68,6 +46,31 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
    // element=document.getElementById(elementId);
     if(element.getElementsByTagName('i').length>0){
       debugger
+
+      if(this.elementIterator.length>0){
+        for(var i=0;i<this.elementIterator.length;i++){
+          if(this.elementIterator[i].indx == index && this.elementIterator[i].elemntItr == true && this.elementIterator[i].parentTab == document.id.toString() && this.elementIterator[i].childTab == element.id.toString()){
+          iteration=true;
+          break;}
+          else{
+          iteration=false;
+          }
+        }
+  
+          if(iteration == false){
+            var elItr={indx:index,elemntItr:true,parentTab:document.id.toString(),childTab:element.id.toString()};
+          this.elementIterator.push(elItr);
+         
+          }  
+        
+  
+        
+      }
+        else{
+      var elItr={indx:index,elemntItr:true,parentTab:document.id.toString(),childTab:element.id.toString()};
+        this.elementIterator.push(elItr);
+        }
+      
     elementClass=element.getElementsByTagName('i')[0].className.toString();
     this.classType=this.getTabClass(elementClass,iteration);
     }
