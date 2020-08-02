@@ -28,7 +28,7 @@
               "src/styles.css"
             ],
             "scripts": ["./node_modules/jquery/dist/jquery.min.js","src/assets/jquery-splitter.js",
-              "./node_modules/popper.js/dist/umd/popper.min.js",],
+              "./node_modules/popper.js/dist/umd/popper.min.js"],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -141,6 +141,6 @@
   },
   "defaultProject": "intelli-PV",
   "cli": {
-    "analytics": false
+   
   }
 }
