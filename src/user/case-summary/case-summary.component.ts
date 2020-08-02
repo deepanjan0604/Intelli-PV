@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ConfigurationModel } from 'src/object-model/configuration-model';
 import { DocListModel } from 'src/object-model/document-list-model';
 import * as $AB from 'jquery';
+import { TabListsModel } from 'src/object-model/tab-list-model';
 
 
 @Component({
@@ -20,9 +21,13 @@ export class CaseSummaryComponent implements OnInit {
  
   @ViewChild('ctdTabset') ctdTabset;
   
-  configModel:Observable<ConfigurationModel>;
-  docList:Observable<DocListModel>[];
+//  configModel:Observable<ConfigurationModel>;
+configModel:ConfigurationModel;
+  
+docList:Observable<DocListModel>[];
   docListUrl:Observable<DocListModel>[];
+  //configModel['tabList']:Observable<TabListsModel>[]=[];
+  caseSum:boolean=false;
 
   onSubmit() {
     return false;
@@ -38,6 +43,7 @@ export class CaseSummaryComponent implements OnInit {
     this.userService.getCaseListSummary(this.caseId).subscribe(respData => {
   debugger;
        this.configModel=Object.assign(new ConfigurationModel, respData['configuration']);
+       this.caseSum=true;
         console.log( respData);
        });
        this.userService.getDocumentList(this.caseId,0).subscribe(respData => {

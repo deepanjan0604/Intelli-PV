@@ -177,7 +177,7 @@
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          <tr *ngFor="let data Of document_view_records |filter:filterRecords| paginate: { itemsPerPage: isItemsPerPage, currentPage: p }" >
+                                          <tr *ngFor="let data Of document_view_records |filter:filterRecords| paginate: { itemsPerPage: isItemsPerPage, currentPage: page }" >
                                               <td><input type="checkbox"></td>
                                               <td>{{data.rcvdDt}}</td>
                                               <td>{{data.channel}}</td>
@@ -196,7 +196,7 @@
                               <div class="col-sm-12 col-md-7">
                                   <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
                                     <ul class="pagination">  
-                                        <pagination-controls (pageChange)="p = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>  
+                                        <pagination-controls (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>  
                                         </ul>  
                                   </div>
                               </div>

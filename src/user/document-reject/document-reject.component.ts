@@ -9,7 +9,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./document-reject.component.css']
 })
 export class DocumentRejectComponent implements OnInit {
-
+  page:any;
   filterRecords: string;
   isItemsPerPage = 10;
   document_view_records: DocumentViewModel[] = [];

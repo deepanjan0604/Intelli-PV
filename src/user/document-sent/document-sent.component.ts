@@ -14,6 +14,7 @@ export class DocumentSentComponent implements OnInit {
   isItemsPerPage = 10;
   document_view_records: DocumentViewModel[] = [];
   isSelected: boolean[];
+  page:any;
 
   constructor(private userService: UserService,
     private modalService: NgbModal,
