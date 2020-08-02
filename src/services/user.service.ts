@@ -73,16 +73,16 @@ export class UserService {
    
 
 
-    //return this.http.get<any>(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
+    return this.http.get<any>(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
   
-   return this.http.get<any>('./assets/case-summary.json').pipe(catchError(this.errorHandler));
+   //return this.http.get<any>('./assets/case-summary.json').pipe(catchError(this.errorHandler));
   }
 
    getDocumentList(caseId:any,type:any){
-    return this.http.get(this.baseUrl + '/doc/docId/'+caseId+'/'+type).pipe(catchError(this.errorHandler));
+    return this.http.get(this.baseUrl + 'doc/docId/'+caseId+'/'+type).pipe(catchError(this.errorHandler));
   }
   getDocumentListURL(docId:any){
-    return this.http.get(this.baseUrl + '/doc/url/'+docId).pipe(catchError(this.errorHandler));
+    return this.http.get(this.baseUrl + 'doc/url/'+docId).pipe(catchError(this.errorHandler));
   }
 
   errorHandler(respError: HttpErrorResponse | any) {
