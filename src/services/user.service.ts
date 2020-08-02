@@ -73,7 +73,7 @@ export class UserService {
    
 
 
-   // return this.http.get<any>(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
+    //return this.http.get<any>(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
   
    return this.http.get<any>('./assets/case-summary.json').pipe(catchError(this.errorHandler));
   }

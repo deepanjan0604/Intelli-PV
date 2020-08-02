@@ -36,11 +36,11 @@ export class CaseSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getCaseListSummary(this.caseId).subscribe(respData => {
-  
+  debugger;
        this.configModel=Object.assign(new ConfigurationModel, respData['configuration']);
         console.log( respData);
        });
-       this.userService.getDocumentList(456,0).subscribe(respData => {
+       this.userService.getDocumentList(this.caseId,0).subscribe(respData => {
         
         var arr1=new Array();
         arr1=new Array(respData);
