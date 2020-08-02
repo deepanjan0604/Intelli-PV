@@ -36,3 +36,19 @@ label {
     padding: 15px;
     margin-top: -10px;
 }
+
+.active1
+{
+    background:#fbf073; 
+    height:38%;
+    padding:10px;
+    margin: -6px;
+}
+
+
+.not-active1{
+  background: #ffffff;; 
+  height:38%;
+  padding:10px;
+  margin: -6px;
+}

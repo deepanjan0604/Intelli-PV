@@ -70,4 +70,22 @@ export class CreateCaseComponent implements OnInit {
       });
   }
 
+
+  selectedIdx = 0;
+  selectItem(i):void{
+    debugger;
+   this.selectedIdx = i;
+  }
+
+  getClass(i){
+    
+   var classList='';
+   if(this.selectedIdx == i){
+      classList = 'active1'; 
+   }else if (this.selectedIdx != i){
+       classList = 'not-active1';
+   }
+   return classList;
+ }
+
 }
