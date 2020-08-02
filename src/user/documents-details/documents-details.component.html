@@ -83,7 +83,7 @@
        <ngb-tabset #ctdTabset="ngbTabset">
         <div *ngFor="let docList of docListUrl ; let i = index">
         <ngb-tab [id]="'tab'+(i+1)">
-          <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">{{docList.fileName}}</h6></ng-template>
+          <ng-template ngbTabTitle><div [ngClass]="getClass(i)"><h6 style="text-align: center;color: black;">{{docList.fileName}}</h6></div></ng-template>
           <ng-template ngbTabContent>
             <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
               <pdf-viewer [src]="docList.fileUrl" 

@@ -6,3 +6,20 @@
     border-top: 3px solid #17a2b8;
 
 }
+
+
+.active
+{
+    background:#fbf073; 
+    height:38%;
+    padding:10px;
+    margin: -6px;
+}
+
+
+.not-active{
+  background: #ffffff;; 
+  height:38%;
+  padding:10px;
+  margin: -6px;
+}

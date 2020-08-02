@@ -77,4 +77,22 @@ export class DocumentsDetailsComponent implements OnInit {
     });
    }
 
+
+   selectedIdx = 0;
+   selectItem(i):void{
+     debugger;
+    this.selectedIdx = i;
+   }
+
+   getClass(i){
+     
+    var classList='';
+    if(this.selectedIdx == i){
+       classList = 'active'; 
+    }else if (this.selectedIdx != i){
+        classList = 'not-active';
+    }
+    return classList;
+  }
+
 }
