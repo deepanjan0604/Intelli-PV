@@ -73,8 +73,7 @@ export class CreateCaseComponent implements OnInit {
 
   selectedIdx = 0;
   selectItem(i):void{
-    debugger;
-   this.selectedIdx = i;
+      this.selectedIdx = i;
   }
 
   getClass(i){

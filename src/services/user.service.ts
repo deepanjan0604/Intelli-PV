@@ -19,7 +19,8 @@ export class UserService {
       .append('Content-Type', 'application/json');
       this.headers1 = this.headers1
       .append('Accept', 'application/json')
-      .append('Content-Type', 'application/json').append('Access-Control-Allow-Origin','http://18.224.1.69:8080').append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+      .append('Content-Type', 'application/json')
+      .append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
    }
 
    /**

@@ -29,7 +29,7 @@ selectedIndex:any;
   }
 
   /* buildCtabs(cTabs){
-    debugger;
+   
     if(cTabs.length>0){
     cTabs=this.sortCTabs(cTabs);
     for(var j=0;j<cTabs.length;j++){
@@ -65,7 +65,7 @@ selectedIndex:any;
   }
  /*  collapseCard(i,event){
 
-    debugger;
+   
     if(event.srcElement.attributes[1].textContent == "fas fa-minus"){
       this.selectedIndex=-1;
       this.cardStyle='cardStyle-collapsed';

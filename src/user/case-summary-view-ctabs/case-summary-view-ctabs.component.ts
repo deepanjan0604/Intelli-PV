@@ -45,7 +45,7 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
     }
    // element=document.getElementById(elementId);
     if(element.getElementsByTagName('i').length>0){
-      debugger
+   
 
       if(this.elementIterator.length>0){
         for(var i=0;i<this.elementIterator.length;i++){

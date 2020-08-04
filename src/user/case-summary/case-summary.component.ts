@@ -41,7 +41,6 @@ docList:Observable<DocListModel>[];
 
   ngOnInit() {
     this.userService.getCaseListSummary(this.caseId).subscribe(respData => {
-  debugger;
        this.configModel=Object.assign(new ConfigurationModel, respData['configuration']);
        this.caseSum=true;
         console.log( respData);
@@ -88,7 +87,7 @@ docList:Observable<DocListModel>[];
 
    selectedIdx = 0;
    selectItem(i):void{
-     debugger;
+   
     this.selectedIdx = i;
    }
 

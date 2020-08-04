@@ -27,14 +27,16 @@ export class DocumentInboxComponent implements OnInit {
      }
 
   ngOnInit() {  
+   
    this.getDocumentViewForIndex();
   }
    
   getDocumentViewForIndex(){
     this.userService.getDocumentViewForIndex(this.indexObjModel).subscribe(respData => {
+   
       console.log(respData.message);
       if(respData.message === 'Success'){
-        debugger
+     
         this.documentViewForIndexData = respData.response;
       }
     });

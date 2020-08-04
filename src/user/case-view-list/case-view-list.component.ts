@@ -40,7 +40,7 @@ export class CaseViewListComponent implements OnInit {
   
 
     this.userService.getCaseListData(this.typeIndex).subscribe(respData => {
-    debugger;
+  
       this.headerList= respData.headerCol;
       this.document_view_records = respData.response;
       this.value="5";
@@ -57,7 +57,7 @@ export class CaseViewListComponent implements OnInit {
     this.isItemsPerPage = event;
   }
   redirectToURL(data:any){
-    debugger;
+  
     this.router.navigate(['/user/dashbaord'+data.caseNumber]) 
 
   }
