@@ -11,6 +11,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 export class DocumentInboxComponent implements OnInit {
 
   filterRecords: string;
+  page: number = 1;
   isItemsPerPage = 10;
  
   isSelected: boolean[];
@@ -32,11 +33,12 @@ export class DocumentInboxComponent implements OnInit {
   }
    
   getDocumentViewForIndex(){
+    debugger
     this.userService.getDocumentViewForIndex(this.indexObjModel).subscribe(respData => {
-   
+      debugger
       console.log(respData.message);
       if(respData.message === 'Success'){
-     
+        debugger
         this.documentViewForIndexData = respData.response;
       }
     });

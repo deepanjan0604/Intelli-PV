@@ -1,0 +1,57 @@
+
+<div *ngFor="let ctbs of cTabs"> 
+<div class="card  collapsed-card" *ngIf="ctbs.canMultiple == true && ctbs.cTabs">
+  <div class="card-header parent-tab">
+     <h3 class="card-title">{{ctbs.name}}</h3>
+     <div class="card-tools">
+        <button type="button" class="btn btn-tool1"   data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+        <i class="fas fa-plus"></i></button>
+     </div>
+  </div>
+  <div class="card-body" style="text-align: left;">
+    <app-case-summary-view-ctabs [cTabs]="ctbs.cTabs"  *ngIf="ctbs.cTabs" ></app-case-summary-view-ctabs>
+    <div  *ngIf="ctbs.canMultiple == true">
+     <div *ngFor="let win of ctbs.window">
+        <div *ngFor="let seclist of win.sectionList">
+           <strong> {{seclist.sName}}</strong>
+           <div class="row">
+              <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
+                 <p class="text-muted">
+                    <Strong>{{fl.fieldTxt}} : </Strong> {{fl.val}}
+                 </p>
+              </div>
+           </div>
+        </div>
+     </div></div>
+  </div>
+</div>
+
+ <div class="card  collapsed-card" *ngIf="ctbs.canMultiple == false">
+  <div class="card-header" >
+     <h3 class="card-title">{{ctbs.name}}</h3>
+     <div class="card-tools">
+        <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" >
+        <i class="fas fa-plus"></i></button>
+     </div>
+  </div>
+  <div class="card-body" style="text-align: left;">
+     <div *ngFor="let win of ctbs.window">
+        <div *ngFor="let seclist of win.sectionList">
+           <strong> {{seclist.sName}}</strong>
+           <div class="row">
+              <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
+                 <p class="text-muted">
+                    <Strong>{{fl.fieldTxt}} : </Strong> {{fl.val}}
+                 </p>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+
+
+
+
+
+ </div> 

@@ -169,19 +169,19 @@
                                               <th>Doc Collection Id</th>
                                               <th>Received Date</th>
                                               <th>Safety Received Date</th>
-                                              <th>status</th>
-                                              <th>channel</th>
-                                              <th>numofDocs</th>
-                                              <th>assignedTo</th>
+                                              <th>Status</th>
+                                              <th>Channel</th>
+                                              <th>NumofDocs</th>
+                                              <th>AssignedTo</th>
                                               <th>Source Type</th>
-                                              <th>ownedBy</th>
-                                              <th>caseIds</th>
-                                              <th>critical</th>
+                                              <th>OwnedBy</th>
+                                              <th>CaseIds</th>
+                                              <th>Critical</th>
                                               <th>Action</th>
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          <tr *ngFor="let data Of documentViewForIndexData |filter:filterRecords| paginate: { itemsPerPage: isItemsPerPage, currentPage: indexObjModel.pageSize }" >
+                                          <tr *ngFor="let data Of documentViewForIndexData |filter:filterRecords| paginate: { itemsPerPage: isItemsPerPage, currentPage: page }" >
                                               <td><input type="checkbox"></td>
                                               <td>{{data.docCollectionId}}</td>
                                               <td>{{data.receivedDate | date:'mediumDate'}}</td>
@@ -204,7 +204,7 @@
                               <div class="col-sm-12 col-md-7">
                                   <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
                                     <ul class="pagination">  
-                                        <pagination-controls (pageChange)="indexObjModel.pageSize = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>  
+                                        <pagination-controls (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>  
                                         </ul>  
                                   </div>
                               </div>
