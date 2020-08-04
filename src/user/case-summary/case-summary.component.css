@@ -53,10 +53,18 @@
 
 
   .not-active{
-    background: ##777979;; 
+    background: #777979;
     height:38%;
     padding:10px;
     margin: -6px;
+  }
+  .h3class{
+    color:black;
+    text-align: center;
+  }
+  .not-h3class{
+    color:white;
+    text-align: center;
   }
 /* 
  

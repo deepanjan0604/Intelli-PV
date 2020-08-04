@@ -101,7 +101,16 @@ docList:Observable<DocListModel>[];
     }
     return classList;
   }
-
+  getHeadingClass(i){
+     
+    var headClass='';
+    if(this.selectedIdx == i){
+       headClass = 'h3class'; 
+    }else if (this.selectedIdx != i){
+      headClass = 'not-h3class';
+    }
+    return headClass;
+  }
    
 }
 

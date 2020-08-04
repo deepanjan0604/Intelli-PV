@@ -23,6 +23,7 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
   
   selectedIdx=-1;
   classType:string="";
+  headClass:string="";
   elementIterator:{indx:number,elemntItr:boolean,parentTab:string,childTab:string}[]=[];
   selectedTabNotMultiple(index){
     var iteration=false;
@@ -95,17 +96,25 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
     
     if(ec=="fas fa-plus" && itr==true){
        this.classType = 'active'; 
+       this.headClass = 'h3class'; 
     }else if (ec=="fas fa-minus" && itr==true){
         this.classType = 'not-active';
+        this.headClass = 'not-h3class'; 
     }
     else if(ec=="fas fa-plus" && itr==false){
       this.classType = 'not-active'; 
+      this.headClass = 'not-h3class'; 
    }else if (ec=="fas fa-minus" && itr==false){
        this.classType = 'active';
+       this.headClass = 'h3class'; 
    }
     return this.classType;
   
   }
+
+
+  
+   
 
 
 }

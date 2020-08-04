@@ -30,5 +30,14 @@
           background: #777979;
          
         }
+
+        .h3class{
+            color:black;
+            
+          }
+          .not-h3class{
+            color:white;
+            
+          }
         
     

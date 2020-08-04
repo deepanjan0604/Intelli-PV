@@ -2,7 +2,7 @@
 <div *ngFor="let ctbs of cTabs ; let i = index"> 
 <div  *ngIf="ctbs.canMultiple == true && ctbs.cTabs">
   <div class="card-header parent-tab" [ngClass]="selectedIdx === i?classType:''">
-     <h3 class="card-title">{{ctbs.name}}</h3>
+     <h3 class="card-title" >{{ctbs.name}}</h3>
      <div class="card-tools">
       <button type="button" class="btn btn-info1" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" (click)="selectedTabMultiple(i)">
          <div [id]="'isMultipleC'+(i+1)">  <i class="fas fa-plus"></i></div></button>
@@ -28,7 +28,7 @@
 
  <div class="card  collapsed-card" *ngIf="ctbs.canMultiple == false">
   <div class="card-header" [ngClass]="selectedIdx === i?classType:''">
-     <h3 class="card-title">{{ctbs.name}}</h3>
+     <h3 class="card-title" [ngClass]="selectedIdx === i?headClass:''">{{ctbs.name}}</h3>
      <div class="card-tools">
       <button type="button" class="btn btn-info1"  data-card-widget="collapse" data-toggle="tooltip" title="Collapse" (click)="selectedTabNotMultiple(i)">
          <div [id]="'isNotMultipleC'+(i+1)"> <i class="fas fa-plus"></i></div></button>
