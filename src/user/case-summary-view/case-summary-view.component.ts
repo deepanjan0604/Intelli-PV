@@ -20,12 +20,13 @@ selectedIndex:any;
   }
 
   sortCTabs(cTabs){
-    return cTabs.sort((a, b) => a.id - b.id)
-
+   // return cTabs.sort((a, b) => a.id - b.id)
+    return cTabs
   }
 
   sortSectionList(sectionList){
-   return sectionList.sort((a, b) => a.sId - b.sId)
+   //return sectionList.sort((a, b) => a.sId - b.sId)
+   return sectionList
   }
 
   /* buildCtabs(cTabs){
@@ -44,7 +45,7 @@ selectedIndex:any;
   } */
   
   ngOnInit() {
-    this.tabList=this.tabList.sort((a, b) => a.id - b.id)
+   // this.tabList=this.tabList.sort((a, b) => a.id - b.id)
       for(var i=0;i<this.tabList.length;i++){
        if(this.tabList[i].canMultiple == true){
         this.tabList[i].cTabs=this.sortCTabs(this.tabList[i].cTabs);
@@ -79,6 +80,7 @@ selectedIndex:any;
 
   selectedIndx=-1;
   classType:string="";
+  headingStyle:string="";
   selectedTabNotMultiple(index){
     
    this.selectedIndx =index;
@@ -111,8 +113,10 @@ selectedIndex:any;
     
     if(ec=="fas fa-plus"){
        this.classType = 'active'; 
+       this.headingStyle="headstyle"
     }else if (ec=="fas fa-minus"){
         this.classType = 'not-active';
+        this.headingStyle="not-headstyle"
     }
     return this.classType;
   }

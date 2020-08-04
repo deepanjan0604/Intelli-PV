@@ -2,7 +2,7 @@
    <div [ngSwitch]="tl.canMultiple">
       <div class="card  collapsed-card" >
          <div class="card-header" [ngClass]="selectedIndx === i?classType:''" *ngSwitchCase="false" >
-            <h3 class="card-title">{{tl.name}}</h3>
+            <h3 class="card-title" [ngClass]="selectedIndx === i?headingStyle:''">{{tl.name}}</h3>
             <div class="card-tools">
               <!--  <button type="button" class="btn btn-info1" data-toggle="collapse" [attr.data-target]="'#isNotMultipleP'+(i+1)" title="Collapse" > -->
                   <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabNotMultiple(i)" >
@@ -27,7 +27,7 @@
       <!-- /.card-body canMultiple=False -->
       <div class="card  collapsed-card" >
          <div class="card-header" [ngClass]="selectedIndx === i?classType:''" *ngSwitchCase="true">
-            <h3 class="card-title">{{tl.name}}</h3>
+          <h3 class="card-title" [ngClass]="selectedIndx === i?headingStyle:''">{{tl.name}}</h3>
             <div class="card-tools">
                <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabMultiple(i)" >
                  <!--  <button type="button" class="btn btn-info0" data-toggle="collapse" [attr.data-target]="'#isMultipleP'+(i+1)" title="Collapse" > -->

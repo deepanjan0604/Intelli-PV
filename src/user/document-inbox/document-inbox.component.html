@@ -166,7 +166,7 @@
                                       <thead style="background: #17a2b8;">
                                           <tr>
                                               <th><input type="checkbox"></th>
-                                              <th>Doc Collection Id</th>
+                                              <!-- <th>Doc Collection Id</th> -->
                                               <th>Received Date</th>
                                               <th>Safety Received Date</th>
                                               <th>Status</th>
@@ -183,7 +183,7 @@
                                       <tbody>
                                           <tr *ngFor="let data Of documentViewForIndexData |filter:filterRecords| paginate: { itemsPerPage: isItemsPerPage, currentPage: page }" >
                                               <td><input type="checkbox"></td>
-                                              <td>{{data.docCollectionId}}</td>
+                                             <!--  <td>{{data.docCollectionId}}</td> -->
                                               <td>{{data.receivedDate | date:'mediumDate'}}</td>
                                               <td>{{data.safetyReceivedDate | date:'mediumDate'}}</td>
                                               <td>{{data.status}}</td>

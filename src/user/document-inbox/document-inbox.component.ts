@@ -35,10 +35,10 @@ export class DocumentInboxComponent implements OnInit {
   getDocumentViewForIndex(){
     debugger
     this.userService.getDocumentViewForIndex(this.indexObjModel).subscribe(respData => {
-      debugger
+      
       console.log(respData.message);
       if(respData.message === 'Success'){
-        debugger
+      
         this.documentViewForIndexData = respData.response;
       }
     });

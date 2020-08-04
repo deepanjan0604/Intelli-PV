@@ -45,7 +45,7 @@
 
   .active
   {
-      background:#fbf073; 
+      background:#d3d3d3 ; 
       height:38%;
       padding:10px;
       margin: -6px;
@@ -53,7 +53,7 @@
 
 
   .not-active{
-    background: #ffffff;; 
+    background: ##777979;; 
     height:38%;
     padding:10px;
     margin: -6px;

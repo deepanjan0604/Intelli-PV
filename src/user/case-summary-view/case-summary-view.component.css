@@ -7,7 +7,7 @@
 
 .active
 {
-    background:#fbf073; 
+    background:#02027b; 
  
 }
 
@@ -15,4 +15,12 @@
 .not-active{
   background: #ffffff;
  
+}
+
+.headstyle{
+
+color:white;
+}
+.not-headstyle{
+color:black;
 }
