@@ -1,5 +1,5 @@
 import { TabListsModel } from './tab-list-model';
-
+//author Deepanjan Mal
 export class ConfigurationModel {
     tabList: TabListsModel[];
     criteria: string;
