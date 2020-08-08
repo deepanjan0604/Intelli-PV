@@ -25,7 +25,7 @@ export class CaseSummaryComponent implements OnInit {
 configModel:ConfigurationModel;
   
 docList:Observable<DocListModel>[];
-  docListUrl:Observable<DocListModel>[];
+  docListUrl:Observable<DocListModel>[]=[];
   //configModel['tabList']:Observable<TabListsModel>[]=[];
   caseSum:boolean=false;
 
@@ -44,37 +44,44 @@ docList:Observable<DocListModel>[];
        this.configModel=Object.assign(new ConfigurationModel, respData['configuration']);
        this.caseSum=true;
         console.log( respData);
+        
        });
        this.userService.getDocumentList(this.caseId,0).subscribe(respData => {
-        
+        debugger
         var arr1=new Array();
         arr1=new Array(respData);
         this.docList=[];
-        for(var i=0;i<arr1.length;i++){
+        for(var i=0;i<arr1[0].length;i++){
           
             this.docList[i]=Object.assign(new DocListModel, respData[i]);
-         }
+         
           
 
 
          console.log( "Doc list:"+ this.docList);
-         var id=respData[0].docId
-         this.userService.getDocumentListURL(id).subscribe(respData => {
-         
-          var arr=new Array();
-          arr=new Array(respData);
-          this.docListUrl=[];
-          for(var i=0;i<arr[0].length;i++){
-            
-              this.docListUrl[i]=Object.assign(new DocListModel, respData[i]);
-           }
-            
-           console.log( "Doc list URL:"+ this.docListUrl);
-           
-          });
-        
+         var id=respData[i].docId
+         this.getDocURL(id,i);
+        }
+       
         });
       
+  }
+
+
+  getDocURL(id:any,j:number){
+    this.userService.getDocumentListURL(id).subscribe(respData => {
+        debugger; 
+      var arr=new Array();
+      arr=new Array(respData);
+      //this.docListUrl=[];
+      for(var i=0;i<arr[0].length;i++){
+        
+          this.docListUrl[j]=Object.assign(new DocListModel, respData[i]);
+       }
+        
+       console.log( "Doc list URL:"+ this.docListUrl);
+       
+      });
   }
 
    ngAfterViewInit() {

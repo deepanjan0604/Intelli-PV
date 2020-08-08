@@ -4,8 +4,8 @@
     background-color: #c4eef5 !important;
    
 }
-.case-info{
-    height:93px;
+.cas-info{
+    height: 107px;;
 
 }
 .card-primary-1{
@@ -15,9 +15,17 @@
     margin-top: -16px;
 }
 .summary-comp{
-    padding: 15px;
+    padding: 0px;
     margin-top: -10px;
 }
+.summary-comp-left{
+    padding: 0px;
+    margin-top: -10px;
+    border-right: outset;
+    border-color: #50a3b8;
+}
+
+
 .icon-btn{
     text-align: center;
     padding: 0.5em;

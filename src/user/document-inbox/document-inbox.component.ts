@@ -33,7 +33,7 @@ export class DocumentInboxComponent implements OnInit {
   }
    
   getDocumentViewForIndex(){
-    debugger
+    
     this.userService.getDocumentViewForIndex(this.indexObjModel).subscribe(respData => {
       
       console.log(respData.message);

@@ -4,7 +4,7 @@
 <div class="content-wrapper">
   <section class="content">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12"  style="padding:20px;">
             <div class="card">
                 <div class="card-header">
                     <button type="button" class="btn btn-default btn-sm" (click)="openSearchModel(content)">Search</button>
@@ -131,7 +131,7 @@
               <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
             </div> -->
           </ng-template>
-          <div class="col-12">
+          <div class="col-12"  style="padding:20px;margin-top:-50px;">
            
               <div class="card">
                   <!-- <div class="card-header">
@@ -141,7 +141,7 @@
                   <div class="card-body">
                       <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                           <div class="row">
-                              <div class="col-sm-12 col-md-6">
+                              <div class="col-sm-12 col-md-6" style="margin-left: 34px;">
                                   <div class="dataTables_length" id="example1_length">
                                       <label>Show
                                           <select name="example1_length" (change)="clickItemsPerPage($event.target.value)" class="custom-select custom-select-sm form-control form-control-sm">
@@ -152,7 +152,7 @@
                                           </select> entries</label>
                                   </div>
                               </div>
-                              <div class="col-sm-12 col-md-6">
+                              <div class="col-sm-12 col-md-6" style="margin-left: -68px;">
                                   <div id="example1_filter" class="dataTables_filter">
                                       <label>Search:
                                           <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1" [(ngModel)]="filterRecords">
@@ -161,7 +161,7 @@
                               </div>
                           </div>
                           <div class="row">
-                              <div class="col-sm-12">
+                              <div class="col-sm-12" style="padding:40px;margin-top: -35px;">
                                   <table id="example1"class="table table-striped" role="grid" aria-describedby="example1_info">
                                       <thead style="background: #17a2b8;">
                                           <tr>
@@ -194,15 +194,35 @@
                                               <td>{{data.ownedBy}}</td>
                                               <td>{{data.caseIds}}</td>
                                               <td>{{data.critical}}</td>
-                                              <td><a type="button" class="btn  btn-outline-success btn-sm" [routerLink]="['/user/document-details',data.docCollectionId]" target="_blank"><i class="fas fa-bars" style="color: black;"></i></a></td>
+                                              <td>
+                                                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                                  <li class="nav-item has-treeview">
+                                                  
+                                                  <span class="fas fa-th-list nav-link dropbtn"></span>
+                                                  <ul class="nav nav-treeview dropdown-content">
+                                                   
+                                                    <li class="nav-item">
+                                                      <a [routerLink]="['/user/document-details',data.docCollectionId]" class="nav-link" target="_blank">
+                                                        <p id="sub-menu">View Details</p>
+                                                      </a>
+                                                    </li>
+                                                    
+                                                  </ul>
+                                                </li></ul>
+                                                
+                                                
+                                                
+                                                
+<!--                                                 <a type="button" class="btn  btn-outline-success btn-sm" [routerLink]="['/user/document-details',data.docCollectionId]" target="_blank"><i class="fas fa-bars" style="color: black;"></i></a>
+ -->                                              </td>
                                           </tr>  
                                       </tbody>
                                   </table>
                               </div>
                           </div>
                           <div class="row">
-                              <div class="col-sm-12 col-md-7">
-                                  <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <div class="col-sm-12">
+                                  <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"  style="float: right;">
                                     <ul class="pagination">  
                                         <pagination-controls (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next"></pagination-controls>  
                                         </ul>  

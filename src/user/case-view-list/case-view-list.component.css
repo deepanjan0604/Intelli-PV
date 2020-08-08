@@ -88,5 +88,42 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
+ .pagination{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    background-color: #50a3b8 !important;
+    width: 100%;
+}
+ 
+:host /deep/ .ngx-pagination .current {
 
+    background: #ffffff !important;
 
+}
+
+:host /deep/ .ngx-pagination{
+  padding: 0.1875rem 0.625rem;
+   color: black !important; 
+  cursor: default;
+}
+
+:host /deep/ .ngx-pagination .disabled {
+  padding: 0.1875rem 0.625rem;
+   color: black !important; 
+  cursor: default;
+}
+
+:host /deep/ .pagination-previous{
+  color: black !important; 
+}
+
+:host /deep/ .pagination-next{
+  color: black !important; 
+}
+
+:host /deep/ span {
+
+  color: #000000 !important;
+}

@@ -1,0 +1,70 @@
+.dropbtn {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 90px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+
+
+  .pagination{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    background-color: #50a3b8 !important;
+    width: 100%;
+}
+ 
+:host /deep/ .ngx-pagination .current {
+
+    background: #ffffff !important;
+
+}
+
+:host /deep/ .ngx-pagination{
+  padding: 0.1875rem 0.625rem;
+   color: black !important; 
+  cursor: default;
+}
+
+:host /deep/ .ngx-pagination .disabled {
+  padding: 0.1875rem 0.625rem;
+   color: black !important; 
+  cursor: default;
+}
+
+:host /deep/ .pagination-previous{
+  color: black !important; 
+}
+
+:host /deep/ .pagination-next{
+  color: black !important; 
+}
+
+:host /deep/ span {
+
+  color: #000000 !important;
+}

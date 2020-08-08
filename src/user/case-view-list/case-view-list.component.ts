@@ -43,7 +43,7 @@ export class CaseViewListComponent implements OnInit {
   
       this.headerList= respData.headerCol;
       this.document_view_records = respData.response;
-      this.value="5";
+      //this.value="5";
       this.pageSize=Math.ceil(respData.response.length/parseInt(this.value));
       console.log( respData);
      });
