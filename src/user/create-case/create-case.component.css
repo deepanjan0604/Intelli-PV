@@ -39,7 +39,7 @@ label {
 
 .active1
 {
-    background:#fbf073; 
+    background:#d3d3d3; 
     height:38%;
     padding:10px;
     margin: -6px;
@@ -47,8 +47,17 @@ label {
 
 
 .not-active1{
-  background: #ffffff;; 
+  background: #777979;
   height:38%;
   padding:10px;
   margin: -6px;
 }
+
+.h3class1{
+    color:black;
+    text-align: center;
+  }
+  .not-h3class1{
+    color:white;
+    text-align: center;
+  }

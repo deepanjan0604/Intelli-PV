@@ -165,35 +165,37 @@
                                   <table id="example1"class="table table-striped" role="grid" aria-describedby="example1_info">
                                       <thead style="background: #17a2b8;">
                                           <tr>
-                                              <th><input type="checkbox"></th>
-                                              <!-- <th>Doc Collection Id</th> -->
-                                              <th>Received Date</th>
-                                              <th>Safety Received Date</th>
-                                              <th>Status</th>
-                                              <th>Channel</th>
-                                              <th>NumofDocs</th>
-                                              <th>AssignedTo</th>
-                                              <th>Source Type</th>
-                                              <th>OwnedBy</th>
-                                              <th>CaseIds</th>
-                                              <th>Critical</th>
-                                              <th>Action</th>
+                                            <th><input type="checkbox"></th>
+                                            <!-- <th>Doc Collection Id</th> -->
+                                            <th>Received Date</th>
+                                            <th>Sender</th>
+                                            <!--<th>Safety Received Date</th>-->
+                                            <th>Status</th>
+                                            <th>Channel</th>
+                                            <th>Attachment Count</th>
+                                            <th>Assigned To</th>
+                                            <th>Source Type</th>
+                                            <th>Owning Group</th>
+                                            <th>Case ID(s)</th>
+                                            <th>Action</th>
+
                                           </tr>
                                       </thead>
                                       <tbody>
                                           <tr *ngFor="let data Of documentViewForIndexData |filter:filterRecords| paginate: { itemsPerPage: isItemsPerPage, currentPage: page }" >
-                                              <td><input type="checkbox"></td>
-                                             <!--  <td>{{data.docCollectionId}}</td> -->
-                                              <td>{{data.receivedDate | date:'mediumDate'}}</td>
-                                              <td>{{data.safetyReceivedDate | date:'mediumDate'}}</td>
-                                              <td>{{data.status}}</td>
-                                              <td>{{data.channel}}</td>
-                                              <td>{{data.numofDocs}}</td>
-                                              <td>{{data.assignedTo}}</td>
-                                              <td>{{data.sourceType}}</td>
-                                              <td>{{data.ownedBy}}</td>
-                                              <td>{{data.caseIds}}</td>
-                                              <td>{{data.critical}}</td>
+                                            <td><input type="checkbox"></td>
+                                            <!--  <td>{{data.docCollectionId}}</td> -->
+                                             <td>{{data.receivedDate | date:'mediumDate'}}</td>
+                                             <td>{{data.senderEmail}}</td>
+                                             <!--<td>{{data.safetyReceivedDate | date:'mediumDate'}}</td>-->
+                                             <td>{{data.statusDetail}}</td>
+                                             <td>{{data.channelDetail}}</td>
+                                             <td>{{data.numofDocs}}</td>
+                                             <td>{{data.assignedTo}}</td>
+                                             <td>{{data.sourceType}}</td>
+                                             <td>{{data.ownedBy}}</td>
+                                             <td>{{data.caseIds}}</td>
+                                             <!--<td>{{data.critical}}</td>-->
                                               <td>
                                                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                                   <li class="nav-item has-treeview">

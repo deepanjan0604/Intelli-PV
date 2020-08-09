@@ -81,3 +81,10 @@
     background:#FFFFFF;
 }
   */
+
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    color: blue !important;
+}

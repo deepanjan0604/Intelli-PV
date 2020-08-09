@@ -88,11 +88,21 @@ export class DocumentsDetailsComponent implements OnInit {
      
     var classList='';
     if(this.selectedIdx == i){
-       classList = 'active'; 
+       classList = 'active2'; 
     }else if (this.selectedIdx != i){
-        classList = 'not-active';
+        classList = 'not-active2';
     }
     return classList;
+  }
+  getHeadingClass(i){
+     
+    var headClass='';
+    if(this.selectedIdx == i){
+       headClass = 'h3class2'; 
+    }else if (this.selectedIdx != i){
+      headClass = 'not-h3class2';
+    }
+    return headClass;
   }
 
 }

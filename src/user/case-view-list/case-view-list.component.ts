@@ -40,7 +40,7 @@ export class CaseViewListComponent implements OnInit {
   
 
     this.userService.getCaseListData(this.typeIndex).subscribe(respData => {
-  
+ 
       this.headerList= respData.headerCol;
       this.document_view_records = respData.response;
       //this.value="5";

@@ -5,16 +5,16 @@
     background:black;
 } */
 .priority1{
-    color:red;
+    color:red !important;
 }
 .priority2{
-    color:#FFC200;
+    color:#FFC200 !important;
 }
 .priority3{
-    color:green;
+    color:green !important;
 }
 .priority4{
-    color:white;
+    color:white !important;
 }
 
 /* .tooltip {

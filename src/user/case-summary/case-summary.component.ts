@@ -70,6 +70,7 @@ docList:Observable<DocListModel>[];
 
   getDocURL(id:any,j:number){
     this.userService.getDocumentListURL(id).subscribe(respData => {
+    
       var arr=new Array();
       arr=new Array(respData);
       //this.docListUrl=[];

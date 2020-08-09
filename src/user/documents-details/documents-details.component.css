@@ -8,18 +8,34 @@
 }
 
 
-.active
+.active2
 {
-    background:#fbf073; 
+    background:#d3d3d3; 
     height:38%;
     padding:10px;
     margin: -6px;
 }
 
 
-.not-active{
-  background: #ffffff;; 
+.not-active2{
+  background: #777979;
   height:38%;
   padding:10px;
   margin: -6px;
+}
+
+.h3class2{
+    color:black;
+    text-align: center;
+  }
+  .not-h3class2{
+    color:white;
+    text-align: center;
+  }
+
+  .card-primary-1{
+
+    background-color: #17a2b8 !important;
+    height: 45px;
+    margin-top: 0px;
 }

@@ -9,13 +9,13 @@
           <ngb-tabset #ctdTabset="ngbTabset">
             <div *ngFor="let docList of docListUrl ; let i = index">
             <ngb-tab [id]="'tab'+(i+1)">
-              <ng-template ngbTabTitle><div [ngClass]="getClass(i)"><h6 style="text-align: center;color: black;">{{docList.fileName}}</h6></div></ng-template>
+              <ng-template ngbTabTitle><div [ngClass]="getClass(i)"><h6 (click)="selectItem(i)"  style="text-align: center;" [ngClass]="getHeadingClass(i)">{{docList.fileName}}</h6></div></ng-template>
               <ng-template ngbTabContent>
                 <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
                   <pdf-viewer [src]="docList.fileUrl" 
                   [original-size]="false"
                     [autoresize]="true" 
-                    [fit-to-page]="true" ></pdf-viewer>
+                    [fit-to-page]="true" ></pdf-viewer> 
                 </div>
               </ng-template>
             </ngb-tab></div>

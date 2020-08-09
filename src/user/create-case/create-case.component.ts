@@ -13,7 +13,7 @@ export class CreateCaseComponent implements OnInit {
   caseId: Observable<string>;
   private stepper: Stepper;
   docList:Observable<DocListModel>[];
-  docListUrl:Observable<DocListModel>[];
+  docListUrl:Observable<DocListModel>[]=[];
 
   med_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_1.pdf";
   lab_test_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_3.pdf";
@@ -39,21 +39,23 @@ export class CreateCaseComponent implements OnInit {
       animation: true
     });
 
-    this.userService.getDocumentList(456,0).subscribe(respData => {
+    this.userService.getDocumentList(this.caseId,0).subscribe(respData => {
         
       var arr1=new Array();
       arr1=new Array(respData);
       this.docList=[];
-      for(var i=0;i<arr1.length;i++){
+      for(var i=0;i<arr1[0].length;i++){
         
           this.docList[i]=Object.assign(new DocListModel, respData[i]);
-       }
+       
         
 
 
        console.log( "Doc list:"+ this.docList);
-       var id=respData[0].docId
-       this.userService.getDocumentListURL(id).subscribe(respData => {
+       
+       var id=respData[i].docId
+         this.getDocURL(id,i);
+      /*  this.userService.getDocumentListURL(id).subscribe(respData => {
        
         var arr=new Array();
         arr=new Array(respData);
@@ -65,12 +67,26 @@ export class CreateCaseComponent implements OnInit {
           
          console.log( "Doc list URL:"+ this.docListUrl);
          
-        });
-      
+        }); */
+        }
       });
   }
 
-
+  getDocURL(id:any,j:number){
+    this.userService.getDocumentListURL(id).subscribe(respData => {
+      var arr=new Array();
+      
+      arr=new Array(respData);
+      //this.docListUrl=[];
+      for(var i=0;i<arr[0].length;i++){
+        
+          this.docListUrl[j]=Object.assign(new DocListModel, respData[i]);
+       }
+        
+       console.log( "Doc list URL:"+ this.docListUrl);
+       
+      });
+  }
   selectedIdx = 0;
   selectItem(i):void{
       this.selectedIdx = i;
@@ -86,5 +102,14 @@ export class CreateCaseComponent implements OnInit {
    }
    return classList;
  }
-
+ getHeadingClass(i){
+     
+  var headClass='';
+  if(this.selectedIdx == i){
+     headClass = 'h3class1'; 
+  }else if (this.selectedIdx != i){
+    headClass = 'not-h3class1';
+  }
+  return headClass;
+}
 }

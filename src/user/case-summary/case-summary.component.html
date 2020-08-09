@@ -23,6 +23,7 @@
           <div class="customTab">
           <ngb-tabset #ctdTabset="ngbTabset">
             <div *ngFor="let docList of docListUrl ; let i = index">
+              <div *ngIf="docList.fileName.includes('.pdf')">
             <ngb-tab [id]="'tab'+(i+1)">
               <ng-template ngbTabTitle><div [ngClass]="getClass(i)"><h6 (click)="selectItem(i)" style="text-align: center;" [ngClass]="getHeadingClass(i)">{{docList.fileName}}</h6></div></ng-template>
               <ng-template ngbTabContent>
@@ -34,6 +35,21 @@
                 </div>
               </ng-template>
             </ngb-tab></div>
+          <div *ngIf="!docList.fileName.includes('.pdf')">
+            <ngb-tab [id]="'tab'+(i+1)">
+              <ng-template ngbTabTitle><div [ngClass]="getClass(i)"><h6 (click)="selectItem(i)" style="text-align: center;" [ngClass]="getHeadingClass(i)">{{docList.fileName}}</h6></div></ng-template>
+              <ng-template ngbTabContent>
+                <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1');selectItem(i)">
+                  <p style="    padding: 22px;">Not able to display document. For downloading document click <a href="{{docList.fileUrl}}" download="{{docList.fileName}}" style="cursor: pointer;color:black;">here</a></p><pdf-viewer [src]="docList.fileUrl" 
+                  [original-size]="false"
+                    [autoresize]="true" 
+                    [fit-to-page]="true" ></pdf-viewer>
+                </div>
+              </ng-template>
+            </ngb-tab>
+<p>hii</p>
+          </div>
+          </div>
 <!--             <ngb-tab id="tab2">
               <ng-template ngbTabTitle><h6 style="text-align: center;color: black;">Leb Test_{{caseId}}</h6></ng-template>
               <ng-template ngbTabContent>
