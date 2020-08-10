@@ -42,8 +42,8 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getDocumentsViewForIndexDetails(caseId: any): Observable<any>{
-    return this.http.get(this.baseUrl + 'doc/inbox/'+caseId, {headers: this.headers}).pipe(catchError(this.errorHandler));
+  getDocumentsViewForIndexDetails(docColletionID: any): Observable<any>{
+    return this.http.get(this.baseUrl + 'doc/inbox/'+docColletionID).pipe(catchError(this.errorHandler));
   }
 
   getInboxDoucmentByDeatilsId(documentId: any){

@@ -25,7 +25,7 @@ export class DocumentsDetailsComponent implements OnInit {
 
 
   docList:Observable<DocListModel>[];
-  docListUrl:Observable<DocListModel>[];
+  docListUrl:Observable<DocListModel>[]=[];
 
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -38,7 +38,7 @@ export class DocumentsDetailsComponent implements OnInit {
   
    ngOnInit() {
     this.caseId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userService.getDocumentListURL(9).subscribe(respData => {
+    /* this.userService.getDocumentListURL(9).subscribe(respData => {
       var arr=new Array();
       arr=new Array(respData);
       this.docListUrl=[];
@@ -49,12 +49,22 @@ export class DocumentsDetailsComponent implements OnInit {
         
        console.log( "Doc list URL:"+ this.docListUrl);
        
-      });
+      }); */
     this.userService.getDocumentsViewForIndexDetails(this.caseId).subscribe(respData => {
-      this.docId_1_data = respData[0].docId;
+      debugger;
+      var arr=new Array();
+      arr=new Array(respData);
+      this.docListUrl=[];
+      for(var i=0;i<arr[0].length;i++){
+        
+          this.docListUrl[i]=Object.assign(new DocListModel, respData[i]);
+       }
+        
+       console.log( "Doc list URL:"+ this.docListUrl);
+     /*  this.docId_1_data = respData[0].docId;
       this.fileUrl_1_data = respData[0].fileUrl;
        this.docId_2_data = respData[1].docId;
-       this.docId_3_data = respData[1].docId;
+       this.docId_3_data = respData[1].docId; */
     });
    }
   
