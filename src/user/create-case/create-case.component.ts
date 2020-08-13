@@ -39,37 +39,23 @@ export class CreateCaseComponent implements OnInit {
       animation: true
     });
 
-    this.userService.getDocumentList(this.caseId,0).subscribe(respData => {
+    this.userService.getDocumentsViewForIndexDetails(this.caseId).subscribe(respData => {
+     
+      var arr=new Array();
+      arr=new Array(respData);
+      this.docListUrl=[];
+      for(var i=0;i<arr[0].length;i++){
         
-      var arr1=new Array();
-      arr1=new Array(respData);
-      this.docList=[];
-      for(var i=0;i<arr1[0].length;i++){
+          this.docListUrl[i]=Object.assign(new DocListModel, respData[i]);
+       }
         
-          this.docList[i]=Object.assign(new DocListModel, respData[i]);
-       
-        
+       console.log( "Doc list URL:"+ this.docListUrl);
+     /*  this.docId_1_data = respData[0].docId;
+      this.fileUrl_1_data = respData[0].fileUrl;
+       this.docId_2_data = respData[1].docId;
+       this.docId_3_data = respData[1].docId; */
+    });
 
-
-       console.log( "Doc list:"+ this.docList);
-       
-       var id=respData[i].docId
-         this.getDocURL(id,i);
-      /*  this.userService.getDocumentListURL(id).subscribe(respData => {
-       
-        var arr=new Array();
-        arr=new Array(respData);
-        this.docListUrl=[];
-        for(var i=0;i<arr.length;i++){
-          
-            this.docListUrl[i]=Object.assign(new DocListModel, respData[i]);
-         }
-          
-         console.log( "Doc list URL:"+ this.docListUrl);
-         
-        }); */
-        }
-      });
   }
 
   getDocURL(id:any,j:number){

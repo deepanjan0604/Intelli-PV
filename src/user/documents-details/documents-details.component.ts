@@ -51,7 +51,7 @@ export class DocumentsDetailsComponent implements OnInit {
        
       }); */
     this.userService.getDocumentsViewForIndexDetails(this.caseId).subscribe(respData => {
-      debugger;
+     
       var arr=new Array();
       arr=new Array(respData);
       this.docListUrl=[];
