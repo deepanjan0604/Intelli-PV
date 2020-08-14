@@ -87,12 +87,12 @@
           <ng-template ngbTabContent>
             <div class="pdf-container" style="height: 600px;" (click)="loadView('tab1')">
               <pdf-viewer [src]="docList.fileUrl" 
-              [original-size]="false"
-                [autoresize]="true" 
-                [fit-to-page]="true"
-                [show-all]="true" 
-                [render-text]="true"
-                [stick-to-page]="true" ></pdf-viewer>
+              [original-size]="true" 
+                    [autoresize]="false" 
+                    [fit-to-page]="false" 
+                    [show-all]="true" 
+                    [render-text]="true"
+                    [stick-to-page]="true" ></pdf-viewer>
             </div>
           </ng-template>
         </ngb-tab></div>

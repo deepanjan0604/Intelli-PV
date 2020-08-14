@@ -39,3 +39,7 @@
     height: 45px;
     margin-top: 0px;
 }
+
+:host /deep/ .ng2-pdf-viewer-container .pdfViewer {
+  height:550px !important;
+}
