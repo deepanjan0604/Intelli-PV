@@ -41,5 +41,11 @@
 }
 
 :host /deep/ .ng2-pdf-viewer-container .pdfViewer {
-  height:550px !important;
+  height:520px !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  color: blue !important;
 }

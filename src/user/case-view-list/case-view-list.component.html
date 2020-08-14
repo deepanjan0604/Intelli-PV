@@ -173,7 +173,7 @@
                                               <td>{{data.rcvdDate| date}}</td>
                                               <td>{{data.srcType}}</td>
                                               <td>{{data.reporterType}}</td>
-                                              <td>{{data.triageStatus}}</td>
+                                              <td>{{data.triageStatusDetails}}</td>
                                               <td><span class="fas fa-circle" *ngIf="data.caseSeriousness.priority !== 0 " [ngClass]="{'priority1':data.caseSeriousness.priority === 1 , 'priority2':data.caseSeriousness.priority === 2 , 'priority3':data.caseSeriousness.priority === 3 , 'priority4':data.caseSeriousness.priority === 0}"></span><div class="profile-hover"><p>Is Serious:{{data.caseSeriousness.isSerious}}, Priority:{{(data.caseSeriousness.priority === 1)?'High':((data.caseSeriousness.priority === 2)?'Medium':((data.caseSeriousness.priority === 3)?'Low':'NA'))}}, Days left:{{data.caseSeriousness.daysLeft}}</p></div></td>
                                               <td>{{data.assignTo}}</td>
                                               <td>{{data.caseCreationDate| date}}</td>
