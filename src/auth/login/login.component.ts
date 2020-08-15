@@ -11,11 +11,13 @@ import { AuthService } from 'src/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
+ 
 
   constructor(private formBuilder: FormBuilder,
     private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.logout();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -31,23 +33,26 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
-        //const formData = new FormData();
-        //formData.append('username', this.loginForm.get('email').value);
-        //formData.append('password', this.loginForm.get('password').value);
-        //formData.append('grant_type', "password");
-        //formData.append('client_id', 'ipv');
 		
 		let params = new URLSearchParams();
-		params.append('username',this.loginForm.get('email').value);
-		params.append('password',this.loginForm.get('password').value);    
-		params.append('grant_type','password');
-		params.append('client_id','ipv');
+     params.append('username',this.loginForm.get('email').value);
+     params.append('password',this.loginForm.get('password').value);    
+     params.append('grant_type','password');
+     params.append('client_id','ipv');
+     params.append('client_secret','1pv!');
 		
-		
-        // this.authService.login(params).subscribe(respData => {
-        //   console.log(respData);
-        // });
-        // localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
-        this.router.navigate(['/user/dashbaord'])  
+     
+         this.authService.login(params).subscribe(respData => {
+           debugger
+           console.log(respData);
+           //localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
+           window.sessionStorage.setItem('token', JSON.stringify(respData));
+           this.router.navigate(['/user/dashbaord'])  
+         },err => {
+          
+          alert('Message: '+err.error.error_description);
+          this.authService.logout();
+        });
+        
     }
 }

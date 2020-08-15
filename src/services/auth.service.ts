@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { throwError, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  
   public baseUrl: string = environment.baseUrl;
   public headers: HttpHeaders = new HttpHeaders();
 
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router: Router) {
     this.headers = this.headers
     .append('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8')
     .append('Authorization', 'Basic '+btoa('ipv:1pv!'));
@@ -27,24 +28,28 @@ export class AuthService {
     return this.currentUserSubject.value;
 }
 
-login(userCredentials:any): Observable<any> {
-	
-
-
-    return this.http.post<any>('https://gateway-ipv.herokuapp.com/IPV/oauth/token', userCredentials.toString(), { headers: this.headers })
-        .pipe(map(user => {
+login(params:any): Observable<any> {
+    return this.http.post<any>('https://gateway-ipv.herokuapp.com/IPV/oauth/token', params.toString(), { headers: this.headers })
+        .pipe(map(data => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            this.currentUserSubject.next(user);
-            return user;
+            localStorage.setItem('accessToken', JSON.stringify(data));
+            this.currentUserSubject.next(data);
+            return data;
         })).pipe(catchError(this.errorHandler));
 }
 
 logout() {
     // remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
+    debugger
+    localStorage.removeItem('accessToken');
+    window.sessionStorage.removeItem('token')
     this.currentUserSubject.next(null);
+    this.router.navigate(['/auth/login'])  
 }
+
+checkCredentials() {
+  return window.sessionStorage.check('access_token');
+} 
    getInboxDoucmentByDeatilsId(documentId: any){
     return this.http.get(this.baseUrl + 'doc/url/'+documentId, {headers: this.headers}).pipe(catchError(this.errorHandler));
   }
