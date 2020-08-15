@@ -90,5 +90,5 @@
 }
 
 :host /deep/ .ng2-pdf-viewer-container .pdfViewer {
-    height:487px !important;
+    height:600px !important;
 }
