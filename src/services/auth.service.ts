@@ -5,6 +5,7 @@ import { throwError, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,8 +30,9 @@ export class AuthService {
 }
 
 login(params:any): Observable<any> {
-    return this.http.post<any>('https://gateway-ipv.herokuapp.com/IPV/oauth/token', params.toString(), { headers: this.headers })
+    return this.http.post<any>('https://ipv-gateway.herokuapp.com/IPV/oauth/token', params.toString(), { headers: this.headers })
         .pipe(map(data => {
+        
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('accessToken', JSON.stringify(data));
             this.currentUserSubject.next(data);
@@ -40,7 +42,7 @@ login(params:any): Observable<any> {
 
 logout() {
     // remove user from local storage and set current user to null
-    debugger
+    
     localStorage.removeItem('accessToken');
     window.sessionStorage.removeItem('token')
     this.currentUserSubject.next(null);
@@ -48,7 +50,9 @@ logout() {
 }
 
 checkCredentials() {
-  return window.sessionStorage.check('access_token');
+   var accessToken={};
+  accessToken=JSON.parse(window.sessionStorage.token);
+  return accessToken["access_token"];
 } 
    getInboxDoucmentByDeatilsId(documentId: any){
     return this.http.get(this.baseUrl + 'doc/url/'+documentId, {headers: this.headers}).pipe(catchError(this.errorHandler));

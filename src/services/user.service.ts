@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Observable, throwError, from } from 'rxjs';
 import { catchError} from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,15 +13,18 @@ export class UserService {
  public context:string= environment.context;
   public headers: HttpHeaders = new HttpHeaders();
   public headers1: HttpHeaders = new HttpHeaders();
-
-  constructor(private http: HttpClient) {
+public authorizationToken:any="";
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.authorizationToken=this.authService.checkCredentials().toString();
     this.headers = this.headers
       .append('Accept', 'application/json')
-      .append('Content-Type', 'application/json');
+      .append('Content-Type', 'application/json')
+      .append('Authorization', 'Bearer '+this.authorizationToken);
       this.headers1 = this.headers1
       .append('Accept', 'application/json')
       .append('Content-Type', 'application/json')
-      .append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+      //.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+      .append('Authorization', 'Bearer '+this.authorizationToken);
    }
 
    /**
@@ -32,7 +36,8 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getDocumentViewForIndex(objModel: any): Observable<any> {
+  getDocumentViewForIndex(objModel: any):  Observable<any> {
+    
     return this.http.post<any>(this.baseUrl + 'doc/fetch/inbox', objModel, {headers: this.headers})
       .pipe(catchError(this.errorHandler));
   }
@@ -64,18 +69,20 @@ export class UserService {
     this.headers1 = this.headers1
       .append('Accept', 'application/json')
       .append('Content-Type', 'application/json')
-      .append('Access-Control-Allow-Origin','http://18.224.1.69:8080')
-      .append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+      //.append('Access-Control-Allow-Origin','http://18.224.1.69:8080')
+      //.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
       .append('enterpriseid','3')
       .append('country','dummy')
       .append('reporter','PU')
       .append('land','EN')
-      .append('loggedinuser','pvi.admin@pvi.vom');
+      .append('loggedinuser','pvi.admin@pvi.vom')
+      .append('Authorization', 'Bearer '+this.authorizationToken);;
    
 
 
-    return this.http.get<any>(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
-  
+    //return this.http.get<any>(this.baseurl1+this.context + '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
+    return this.http.get<any>(this.baseurl1+ '/getCaseSummary/'+caseId, {headers: this.headers1}).pipe(catchError(this.errorHandler));
+
    //return this.http.get<any>('./assets/case-summary.json').pipe(catchError(this.errorHandler));
   }
 

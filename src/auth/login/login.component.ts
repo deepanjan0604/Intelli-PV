@@ -27,14 +27,14 @@ export class LoginComponent implements OnInit {
       // convenience getter for easy access to form fields
       get f() { return this.loginForm.controls; }
 
-      onSubmit() {
+  onSubmit() {
         this.submitted = true;
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
         }
 		
-		let params = new URLSearchParams();
+		  let params = new URLSearchParams();
      params.append('username',this.loginForm.get('email').value);
      params.append('password',this.loginForm.get('password').value);    
      params.append('grant_type','password');
@@ -43,11 +43,11 @@ export class LoginComponent implements OnInit {
 		
      
          this.authService.login(params).subscribe(respData => {
-           debugger
+           
            console.log(respData);
            //localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
            window.sessionStorage.setItem('token', JSON.stringify(respData));
-           this.router.navigate(['/user/dashbaord'])  
+           this.router.navigate(['/user/dashboard'])  
          },err => {
           
           alert('Message: '+err.error.error_description);

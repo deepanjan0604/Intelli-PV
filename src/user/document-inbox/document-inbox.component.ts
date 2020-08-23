@@ -41,6 +41,8 @@ export class DocumentInboxComponent implements OnInit {
       
         this.documentViewForIndexData = respData.response;
       }
+    },err=>{
+      debugger
     });
   }
   openSearchModel(content) {

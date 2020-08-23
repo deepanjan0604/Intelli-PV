@@ -12,7 +12,7 @@ import { DocumentArchiveComponent } from './document-archive/document-archive.co
 import { DocumentViewModel } from 'src/_models/document-view-model';
 
 const routes: Routes = [
-  {path: 'dashbaord', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'document-details/:id', component: DocumentsDetailsComponent},
   {path: 'inbox', component: DocumentInboxComponent},
   {path: 'sent', component: DocumentSentComponent},

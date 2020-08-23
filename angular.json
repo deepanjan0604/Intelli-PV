@@ -27,8 +27,11 @@
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js","src/assets/jquery-splitter.js",
-              "./node_modules/popper.js/dist/umd/popper.min.js"],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "src/assets/jquery-splitter.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -141,6 +144,6 @@
   },
   "defaultProject": "intelli-PV",
   "cli": {
-   
+    "analytics": "453c5406-2f71-4880-a2bd-06d06b9b3a81"
   }
 }

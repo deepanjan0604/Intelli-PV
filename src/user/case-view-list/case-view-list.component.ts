@@ -58,7 +58,7 @@ export class CaseViewListComponent implements OnInit {
   }
   redirectToURL(data:any){
   
-    this.router.navigate(['/user/dashbaord'+data.caseNumber]) 
+    this.router.navigate(['/user/dashboard'+data.caseNumber]) 
 
   }
  
