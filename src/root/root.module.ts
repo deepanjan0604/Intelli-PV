@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RootRoutingModule } from './root-routing.module';
 import { RootComponent } from './root/root.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient }    from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS }    from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AuthInterceptor } from 'src/services/auth.interceptor';
 /* export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient,'assets/i18n/', '.json');
 } */
@@ -35,7 +36,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     }),
     BsDatepickerModule.forRoot(),
   ],
-  providers: [ {provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [ {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [RootComponent]
 })
 export class RootModule { }

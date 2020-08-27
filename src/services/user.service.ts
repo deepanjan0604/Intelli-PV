@@ -15,6 +15,7 @@ export class UserService {
   public headers1: HttpHeaders = new HttpHeaders();
 public authorizationToken:any="";
   constructor(private http: HttpClient, private authService: AuthService) {
+    try{
     this.authorizationToken=this.authService.checkCredentials().toString();
     this.headers = this.headers
       .append('Accept', 'application/json')
@@ -23,8 +24,11 @@ public authorizationToken:any="";
       this.headers1 = this.headers1
       .append('Accept', 'application/json')
       .append('Content-Type', 'application/json')
-      //.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
       .append('Authorization', 'Bearer '+this.authorizationToken);
+
+    }catch(err){
+      console.log("Error_Bad_Request")
+    }
    }
 
    /**
@@ -48,7 +52,7 @@ public authorizationToken:any="";
   }
 
   getDocumentsViewForIndexDetails(docColletionID: any): Observable<any>{
-    return this.http.get(this.baseUrl + 'doc/inbox/'+docColletionID).pipe(catchError(this.errorHandler));
+    return this.http.get(this.baseUrl + 'doc/inbox/'+docColletionID,{headers: this.headers}).pipe(catchError(this.errorHandler));
   }
 
   getInboxDoucmentByDeatilsId(documentId: any){
@@ -69,13 +73,6 @@ public authorizationToken:any="";
     this.headers1 = this.headers1
       .append('Accept', 'application/json')
       .append('Content-Type', 'application/json')
-      //.append('Access-Control-Allow-Origin','http://18.224.1.69:8080')
-      //.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-      .append('enterpriseid','3')
-      .append('country','dummy')
-      .append('reporter','PU')
-      .append('land','EN')
-      .append('loggedinuser','pvi.admin@pvi.vom')
       .append('Authorization', 'Bearer '+this.authorizationToken);;
    
 
@@ -87,10 +84,10 @@ public authorizationToken:any="";
   }
 
    getDocumentList(caseId:any,type:any){
-    return this.http.get(this.baseUrl + 'doc/docId/'+caseId+'/'+type).pipe(catchError(this.errorHandler));
+    return this.http.get(this.baseUrl + 'doc/docId/'+caseId+'/'+type,{headers: this.headers}).pipe(catchError(this.errorHandler));
   }
   getDocumentListURL(docId:any){
-    return this.http.get(this.baseUrl + 'doc/url/'+docId).pipe(catchError(this.errorHandler));
+    return this.http.get(this.baseUrl + 'doc/url/'+docId,{headers: this.headers}).pipe(catchError(this.errorHandler));
   }
 
   errorHandler(respError: HttpErrorResponse | any) {

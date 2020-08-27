@@ -18,19 +18,24 @@ export class AuthService {
   public currentUser: Observable<any>;
   
   constructor(private http: HttpClient,private router: Router) {
+    try{
     this.headers = this.headers
     .append('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8')
     .append('Authorization', 'Basic '+btoa('ipv:1pv!'));
 
       this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
+      }catch(err){
+        console.log("Error_Bad_Request")
+      }
    }
    public get currentUserValue() {
     return this.currentUserSubject.value;
 }
 
-login(params:any): Observable<any> {
-    return this.http.post<any>('https://ipv-gateway.herokuapp.com/IPV/oauth/token', params.toString(), { headers: this.headers })
+login(params:any) {
+
+    return this.http.post<any>(this.baseUrl+'oauth/token', params.toString(), { headers: this.headers })
         .pipe(map(data => {
         
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -44,19 +49,86 @@ logout() {
     // remove user from local storage and set current user to null
     
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('userInfo');
     window.sessionStorage.removeItem('token')
     this.currentUserSubject.next(null);
     this.router.navigate(['/auth/login'])  
 }
 
 checkCredentials() {
+  try{
    var accessToken={};
-  accessToken=JSON.parse(window.sessionStorage.token);
+  accessToken=JSON.parse(localStorage.getItem('accessToken'));
+  if(accessToken !=null && accessToken !="" &&accessToken !=undefined){
+  if(accessToken["access_token"] != undefined && accessToken["access_token"] != null && accessToken["access_token"] != "")
   return accessToken["access_token"];
-} 
-   getInboxDoucmentByDeatilsId(documentId: any){
-    return this.http.get(this.baseUrl + 'doc/url/'+documentId, {headers: this.headers}).pipe(catchError(this.errorHandler));
+  else{
+  return "";}}else{this.router.navigate(['/auth/login']);return "";  }
+  }catch(err){
+
+    console.log("Error_Bad_Request");
+    
   }
+} 
+
+
+getNewRefreshToken(){
+
+  var refreshtoken=localStorage.getItem('accessToken');
+  let refresh_token=JSON.parse(refreshtoken)['refresh_token']
+  var accesstoken=localStorage.getItem('accessToken');
+  let access_token=JSON.parse(refreshtoken)['access_token']
+  const grantType = "refresh_token";
+  let params = new URLSearchParams;
+     params.append('grant_type',grantType);
+     params.append('client_id','ipv');
+     params.append('client_secret','1pv!');
+     params.append('access_token',access_token);
+     params.append('refresh_token',refresh_token);
+    
+
+      return this.http.post<any>(this.baseUrl+'oauth/token', params.toString())
+      .pipe(map(data => {
+  
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('accessToken', JSON.stringify(data));
+          this.currentUserSubject.next(data);
+          return <any>data;
+      })).pipe(catchError(this.errorHandler));
+}
+
+refreshAccessToken(params:any){
+
+  return this.http.post<any>(this.baseUrl+'oauth/token', params.toString(), { headers: this.headers })
+  .pipe(map(data => {
+  
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('accessToken', JSON.stringify(data));
+      this.currentUserSubject.next(data);
+      return data;
+  })).pipe(catchError(this.errorHandler));
+}
+
+checkRefreshTokeCredentials(){
+  try{
+    var accessToken={};
+   accessToken=JSON.parse(localStorage.getItem('accessToken'));
+
+   if(accessToken !=null && accessToken !="" &&accessToken !=undefined){
+   if(accessToken["refresh_token"] != undefined && accessToken["refresh_token"] != null && accessToken["refresh_token"] != "")
+   return accessToken["refresh_token"];
+   else{
+   return "";}}else{this.router.navigate(['/auth/login']);return "";  }
+   }catch(err){
+ 
+     console.log("Error_Bad_Request");
+     
+   }
+
+}
+/*    getInboxDoucmentByDeatilsId(documentId: any){
+    return this.http.get(this.baseUrl + 'doc/url/'+documentId, {headers: this.headers}).pipe(catchError(this.errorHandler));
+  } */
 
   errorHandler(respError: HttpErrorResponse | any) {
     if (respError.error instanceof ErrorEvent) {

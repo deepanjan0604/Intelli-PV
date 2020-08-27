@@ -11,7 +11,7 @@ import { AuthService } from 'src/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
- 
+  isClicked=false;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router, private authService: AuthService) { }
@@ -40,19 +40,19 @@ export class LoginComponent implements OnInit {
      params.append('grant_type','password');
      params.append('client_id','ipv');
      params.append('client_secret','1pv!');
-		
+    this.isClicked=true;
+   
      
-         this.authService.login(params).subscribe(respData => {
+          this.authService.login(params).subscribe(respData => {
            
            console.log(respData);
            //localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
-           window.sessionStorage.setItem('token', JSON.stringify(respData));
+           //window.sessionStorage.setItem('token', JSON.stringify(respData));
            this.router.navigate(['/user/dashboard'])  
          },err => {
           
-          alert('Message: '+err.error.error_description);
+          alert('Login Failed, Bad Credentials !!');
           this.authService.logout();
-        });
-        
-    }
+        }); 
+      }
 }

@@ -17,9 +17,8 @@ export class RightNavComponent implements OnInit {
     this.userService.getCaseviewFoldersList().subscribe(respData => {
      this.caseviewFoldersList =  respData
     },err=>{
-      debugger;
+      
     });
-
      }
 
    ngInitDiv(){

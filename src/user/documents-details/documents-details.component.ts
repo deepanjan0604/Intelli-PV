@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserService } from 'src/services/user.service';
 import { DocListModel } from 'src/object-model/document-list-model';
+import { AuthService } from 'src/services/auth.service';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class DocumentsDetailsComponent implements OnInit {
 
 
   constructor(private activatedRoute: ActivatedRoute,
-    private userService: UserService) {
+    private userService: UserService, private authService:AuthService) {
      
    }
 
@@ -51,7 +52,7 @@ export class DocumentsDetailsComponent implements OnInit {
        
       }); */
     this.userService.getDocumentsViewForIndexDetails(this.caseId).subscribe(respData => {
-     
+    
       var arr=new Array();
       arr=new Array(respData);
       this.docListUrl=[];
@@ -65,6 +66,9 @@ export class DocumentsDetailsComponent implements OnInit {
       this.fileUrl_1_data = respData[0].fileUrl;
        this.docId_2_data = respData[1].docId;
        this.docId_3_data = respData[1].docId; */
+    }, err=>{
+      this.authService.logout();
+      window.close();
     });
    }
   
@@ -72,6 +76,9 @@ export class DocumentsDetailsComponent implements OnInit {
     this.userService.getInboxDoucmentByDeatilsId(event).subscribe(respData => {
       console.log(respData)
       this.fileUrl_1_data = respData[0].fileUrl;
+    }, err=>{
+      this.authService.logout();
+     
     });
    }
    getInboxDoucmentByDeatilsId2(event :any) {

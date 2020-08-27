@@ -6,6 +6,7 @@ import { ConfigurationModel } from 'src/object-model/configuration-model';
 import { DocListModel } from 'src/object-model/document-list-model';
 import * as $AB from 'jquery';
 import { TabListsModel } from 'src/object-model/tab-list-model';
+import { AuthService } from 'src/services/auth.service';
 
 
 @Component({
@@ -34,7 +35,7 @@ docList:Observable<DocListModel>[];
   }
 
 
-  constructor(route: ActivatedRoute, private userService: UserService) {
+  constructor(route: ActivatedRoute, private userService: UserService, private authService:AuthService) {
     
     this.caseId  = route.snapshot.params['id'];
         }
@@ -45,7 +46,10 @@ docList:Observable<DocListModel>[];
        this.caseSum=true;
         console.log( respData);
         
-       });
+       }, err=>{
+        this.authService.logout();
+        window.close();
+      });
        this.userService.getDocumentList(this.caseId,0).subscribe(respData => {
         
         var arr1=new Array();
@@ -63,6 +67,9 @@ docList:Observable<DocListModel>[];
          this.getDocURL(id,i);
         }
        
+        }, err=>{
+          this.authService.logout();
+          //window.close();
         });
       
   }
@@ -81,6 +88,9 @@ docList:Observable<DocListModel>[];
         
        console.log( "Doc list URL:"+ this.docListUrl);
        
+      },err=>{
+        this.authService.logout();
+        //window.close();
       });
   }
 

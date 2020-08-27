@@ -62,7 +62,7 @@
                          <!--    <a [routerLink]="['/auth/register']" class="btn btn-block btn-danger">
                                Register
                             </a> -->
-                            <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-sm" [disabled]="isClicked" >Sign In</button>
                         </div>
                         <div class="col-5">
                             <div class="icheck-primary">
@@ -86,7 +86,7 @@
                     
                    
                         <button  class="btn btn-block btn-primary">
-                            Continue as Guest
+                            Report Anonymously
                         </button>
               
                     

@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from 'src/services/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from 'src/services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,6 @@ import { AuthService } from 'src/services/auth.service';
     RegisterComponent,
     LoginComponent
   ],
-  providers:[AuthService]
+  providers:[AuthService,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}]
 })
 export class AuthModule { }

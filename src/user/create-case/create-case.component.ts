@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import Stepper from 'bs-stepper';
 import { UserService } from 'src/services/user.service';
 import { DocListModel } from 'src/object-model/document-list-model';
+import { AuthService } from 'src/services/auth.service';
 @Component({
   selector: 'app-create-case',
   templateUrl: './create-case.component.html',
@@ -29,7 +30,7 @@ export class CreateCaseComponent implements OnInit {
   }
 
 
-  constructor(route: ActivatedRoute, private userService:UserService) {
+  constructor(route: ActivatedRoute, private userService:UserService, private authService:AuthService) {
     this.caseId  = route.snapshot.params['id'];
     }
 
@@ -54,6 +55,9 @@ export class CreateCaseComponent implements OnInit {
       this.fileUrl_1_data = respData[0].fileUrl;
        this.docId_2_data = respData[1].docId;
        this.docId_3_data = respData[1].docId; */
+    }, err=>{
+      this.authService.logout();
+      window.close();
     });
 
   }

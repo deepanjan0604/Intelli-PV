@@ -11,7 +11,7 @@ import { DocumentArchiveComponent } from './document-archive/document-archive.co
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';  
 import { Ng2SearchPipeModule } from 'ng2-search-filter';  
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DocumentsDetailsComponent } from './documents-details/documents-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
@@ -22,6 +22,7 @@ import { CaseSummaryComponent } from './case-summary/case-summary.component';
 import { CaseViewListComponent } from './case-view-list/case-view-list.component';
 import { CaseSummaryViewComponent } from './case-summary-view/case-summary-view.component';
 import { CaseSummaryViewCtabsComponent } from './case-summary-view-ctabs/case-summary-view-ctabs.component';
+import { AuthInterceptor } from 'src/services/auth.interceptor';
 @NgModule({
   declarations: [
     DashboardComponent, 
@@ -58,6 +59,6 @@ import { CaseSummaryViewCtabsComponent } from './case-summary-view-ctabs/case-su
     CaseViewListComponent
   ],
   entryComponents: [DocumentsDetailsComponent],
-  providers: [UserService]
+  providers: [UserService,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}]
 })
 export class UserModule { }
