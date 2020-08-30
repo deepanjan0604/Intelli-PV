@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { throwError, BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
@@ -55,6 +55,10 @@ logout() {
     this.router.navigate(['/auth/login'])  
 }
 
+getAccessToken() {
+  return localStorage.getItem('accessToken');
+}
+
 checkCredentials() {
   try{
    var accessToken={};
@@ -83,31 +87,23 @@ getNewRefreshToken(){
      params.append('grant_type',grantType);
      params.append('client_id','ipv');
      params.append('client_secret','1pv!');
-     params.append('access_token',access_token);
      params.append('refresh_token',refresh_token);
-    
-
-      return this.http.post<any>(this.baseUrl+'oauth/token', params.toString())
-      .pipe(map(data => {
-  
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('accessToken', JSON.stringify(data));
-          this.currentUserSubject.next(data);
-          return <any>data;
-      })).pipe(catchError(this.errorHandler));
+     
+     var headers1=new HttpHeaders();
+     headers1= headers1.append('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8')
+     .append('Authorization', 'Basic '+btoa('ipv:1pv!'));
+     const  modifiedheaders =headers1;
+      return this.http.post<any>(this.baseUrl+'oauth/token', params.toString(), { headers: this.headers })
+      .pipe(data=>{
+ 
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('accessToken', JSON.stringify(data));
+        this.currentUserSubject.next(data);
+        return <any>data;
+      });
 }
 
-refreshAccessToken(params:any){
 
-  return this.http.post<any>(this.baseUrl+'oauth/token', params.toString(), { headers: this.headers })
-  .pipe(map(data => {
-  
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('accessToken', JSON.stringify(data));
-      this.currentUserSubject.next(data);
-      return data;
-  })).pipe(catchError(this.errorHandler));
-}
 
 checkRefreshTokeCredentials(){
   try{
@@ -129,7 +125,18 @@ checkRefreshTokeCredentials(){
 /*    getInboxDoucmentByDeatilsId(documentId: any){
     return this.http.get(this.baseUrl + 'doc/url/'+documentId, {headers: this.headers}).pipe(catchError(this.errorHandler));
   } */
+/*   refreshAccessToken(params:any){
 
+    return this.http.post<any>(this.baseUrl+'oauth/token', params.toString(), { headers: this.headers })
+    .pipe(map(data => {
+    
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('accessToken', JSON.stringify(data));
+        this.currentUserSubject.next(data);
+        return data;
+    })).pipe(catchError(this.errorHandler));
+  }
+ */
   errorHandler(respError: HttpErrorResponse | any) {
     if (respError.error instanceof ErrorEvent) {
       console.error('Client Side Error: ',  respError);

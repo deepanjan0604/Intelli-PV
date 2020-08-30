@@ -22,30 +22,24 @@ import { AuthService } from './auth.service';
 
     intercept(request : HttpRequest<any>, next : HttpHandler): Observable<HttpEvent<any>> 
     {
+
+        if (this.authService.getAccessToken()) {
+            request = this.attachTokenToRequest(request, this.authService.getAccessToken());
+          }
+      
         // Check if the user is logging in for the first time
 
-        return next.handle(this.attachTokenToRequest(request)).pipe(
-            tap((event : HttpEvent<any>) => {
-/*               var containsUserBody=request.body;
-             if( containsUserBody.includes("username")){
-              console.log("Auth Interceptor Called Successfully");
-             }else{ */
-              
-                if(event instanceof HttpResponse) 
-                {
-                    console.log("Auth Interceptor Called Successfully");
-                    
-                }
-              //}
-            }),
-            catchError((err) : Observable<any> => {
-            
+        return <any>next.handle(request).pipe(
+
+            catchError(err=>{
+               
                 if(err instanceof HttpErrorResponse) {
                     switch((<HttpErrorResponse>err).status) 
                 {
                         case 401:
                             console.log("Token expired. Attempting refresh ...");
                             return this.handleHttpResponseError(request, next);
+                                       
                         case 400:
                             return <any>this.authService.logout();
                     }
@@ -54,9 +48,9 @@ import { AuthService } from './auth.service';
                     return throwError(this.handleError);
                 }
               
-            })
+            }
 
-           );
+           ));
 
     }
 
@@ -80,8 +74,8 @@ import { AuthService } from './auth.service';
     }
 
 
-    
-    private handleHttpResponseError(request : HttpRequest<any>, next : HttpHandler) 
+   
+    private handleHttpResponseError(request : HttpRequest<any>, next : HttpHandler)
     {
 
       
@@ -91,30 +85,24 @@ import { AuthService } from './auth.service';
 
             // Any existing value is set to null
             this.tokenSubject.next(null);
-
+          
             /// call the API to refresh the token
-            return this.authService.getNewRefreshToken().pipe(
+            
+
+            return <any>this.authService.getNewRefreshToken().pipe(
                 switchMap((tokenresponse: any) => {
                     if(tokenresponse) 
-                    {
-                        this.tokenSubject.next(tokenresponse.authToken.token); 
+                    {   
+                        this.isTokenRefreshing = false;
+                        this.tokenSubject.next(tokenresponse); 
                        
                         localStorage.setItem('accessToken', JSON.stringify(tokenresponse));
                          console.log("Token refreshed...");
-                        return next.handle(this.attachTokenToRequest(request));
+                        return next.handle(this.attachTokenToRequest(request,tokenresponse));
 
                 }
-                    return <any>this.authService.logout();
-                }),
-                catchError(err => {
-                    this.authService.logout();
-                    return this.handleError(err);
-                }),
-                finalize(() => {
-                  this.isTokenRefreshing = false;
-                })
-                );
-
+                  
+                }))
         }
         else 
         {
@@ -122,21 +110,22 @@ import { AuthService } from './auth.service';
             return this.tokenSubject.pipe(filter(token => token != null),
                 take(1),
                 switchMap(token => {
-                return next.handle(this.attachTokenToRequest(request));
+                return next.handle(this.attachTokenToRequest(request, token));
                 }));
         }
 
 
-    }
+    } 
 
 
-    private attachTokenToRequest(request: HttpRequest<any>) 
+     private attachTokenToRequest(request: HttpRequest<any>, token:any) 
     {
-     
-        var token = localStorage.getItem('accessToken');
-      if(token!=null)
-        return request.clone({setHeaders: {Authorization: `Bearer ${JSON.parse(token)['access_token']}`}});
-
-        return request;
+      
+       // var token = localStorage.getItem('accessToken');
+      if(token!=null && !request.url.includes("oauth/token"))
+        return <any>request.clone({setHeaders: {Authorization: `Bearer ${JSON.parse(token)['access_token']}`}});
+        else if(request.url.includes("oauth/token"))
+        return <any>request.clone({setHeaders: {Authorization: 'Basic '+btoa('ipv:1pv!')}});
+        return <any>request;
     }
 }
