@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,7 +33,7 @@ import { AuthService } from './auth.service';
         return <any>next.handle(request).pipe(
 
             catchError(err=>{
-               
+              
                 if(err instanceof HttpErrorResponse) {
                     switch((<HttpErrorResponse>err).status) 
                 {
@@ -41,6 +42,9 @@ import { AuthService } from './auth.service';
                             return this.handleHttpResponseError(request, next);
                                        
                         case 400:
+                            return <any>this.authService.logout();
+                           
+                        case 500:
                             return <any>this.authService.logout();
                     }
                 } else 

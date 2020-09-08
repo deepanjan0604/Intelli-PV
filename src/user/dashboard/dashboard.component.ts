@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, NgZone } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Router } from '@angular/router';
+import { UserService } from 'src/services/user.service';
 declare var $: any;
 @Component({
   selector: 'app-dashboard',
@@ -16,8 +18,14 @@ export class DashboardComponent implements OnInit {
   source_cl_canvas: any;
   source_cl_ctx: any;
   @ViewChild('sourceBasedClassificationChart') sourceBasedClassificationChart;
-  
-  constructor() { }
+
+  constructor(private router:Router) {
+
+    this.router.events.subscribe(()=>{
+      this.ngOnInit();
+    })
+
+   }
 
   ngOnInit() {
     
@@ -25,7 +33,6 @@ export class DashboardComponent implements OnInit {
     this.getCaseBreakupData();
   }
  
-
    getCaseBreakupData(){
     // var pieChartCanvas = $('#caseBreakupDataChart').get(0).getContext('2d')
     // var pieData        = {

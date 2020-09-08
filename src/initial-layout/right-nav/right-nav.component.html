@@ -107,10 +107,10 @@
             </li> -->
             
             <li class="nav-item"  *ngFor="let data Of caseviewFoldersList" >
-             
-                <a  [routerLink]="['/user/case-view',data.categoryId]"  class="nav-link" >
+          <!--     [routerLink]="['/user/case-view',data.categoryId]" -->
+                <a  (click)="loadListItem(data.categoryId)"  class="nav-link" >
                 <!-- <i class="far fa-circle nav-icon"></i> -->
-                <p id="sub-menu">{{data.categoryName}}</p>
+                <p id="sub-menu" style="cursor: pointer;">{{data.categoryName}}</p>
                 </a>
              
             </li>

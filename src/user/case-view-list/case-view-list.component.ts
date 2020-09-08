@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, NgZone, OnChanges, OnDestroy } from '@angular/core';
 import { DocumentViewModel } from 'src/_models/document-view-model';
 import { UserService } from 'src/services/user.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   templateUrl: './case-view-list.component.html',
   styleUrls: ['./case-view-list.component.css']
 })
-export class CaseViewListComponent implements OnInit {
+export class CaseViewListComponent implements OnInit, OnDestroy {
 
   filterRecords: string;
   isItemsPerPage = 5;
@@ -32,13 +32,19 @@ export class CaseViewListComponent implements OnInit {
     config: NgbModalConfig, route: ActivatedRoute, private router:Router) {
       config.backdrop = 'static';
     config.keyboard = true;
-
-    this.typeIndex  = parseInt(route.snapshot.params['type']);
-     }
+        this.typeIndex  = parseInt(route.snapshot.params['type']);
+        
+  
+    this.router.events.subscribe(()=>{
+      this.document_view_records=[];
+      this.typeIndex  = parseInt(route.snapshot.params['type']);
+      this.ngOnInit();
+    })
+      }
 
   ngOnInit() {
   
-
+   
     this.userService.getCaseListData(this.typeIndex).subscribe(respData => {
  
       this.headerList= respData.headerCol;
@@ -49,6 +55,21 @@ export class CaseViewListComponent implements OnInit {
      });
   }
 
+  getCaseListData(){
+   
+    this.userService.getCaseListData(this.typeIndex).subscribe(respData => {
+ 
+      this.headerList= respData.headerCol;
+      this.document_view_records = respData.response;
+      //this.value="5";
+      this.pageSize=Math.ceil(respData.response.length/parseInt(this.value));
+      console.log( respData);
+     });
+
+  }
+ngOnDestroy(){
+
+}
   openSearchModel(content) {
     this.modalService.open(content, { size: 'lg' });
   }

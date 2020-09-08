@@ -10,6 +10,7 @@ import { AuthService } from 'src/services/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/services/auth.interceptor';
 
+
 @NgModule({
   declarations: [
     RegisterComponent, 

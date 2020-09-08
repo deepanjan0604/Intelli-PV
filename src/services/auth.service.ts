@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class AuthService {
   
   public baseUrl: string = environment.baseUrl;
   public headers: HttpHeaders = new HttpHeaders();
+  public message:String="";
 
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
@@ -53,6 +55,8 @@ logout() {
     window.sessionStorage.removeItem('token')
     this.currentUserSubject.next(null);
     this.router.navigate(['/auth/login'])  
+  return throwError(this.errorHandler);
+    
 }
 
 getAccessToken() {
@@ -137,7 +141,8 @@ checkRefreshTokeCredentials(){
     })).pipe(catchError(this.errorHandler));
   }
  */
-  errorHandler(respError: HttpErrorResponse | any) {
+  errorHandler(respError: HttpErrorResponse) {
+
     if (respError.error instanceof ErrorEvent) {
       console.error('Client Side Error: ',  respError);
     } else {

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
+
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +14,17 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   isClicked=false;
+  invalidCredentials=false;
+  message:String="";
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router, private authService: AuthService) { }
+    private router: Router, private authService: AuthService, private ngZone:NgZone ) { 
+    
+
+    }
 
   ngOnInit() {
+ 
     this.authService.logout();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required]],
@@ -44,15 +52,28 @@ export class LoginComponent implements OnInit {
    
      
           this.authService.login(params).subscribe(respData => {
-           
+          
            console.log(respData);
            //localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
            //window.sessionStorage.setItem('token', JSON.stringify(respData));
-           this.router.navigate(['/user/dashboard'])  
+           //this.router.navigate(['/user/dashboard'])  
+           this.ngZone.run(() => this.router.navigateByUrl('/user/dashboard'))
          },err => {
+       
+        this.loginForm = this.formBuilder.group({
+          email: ['', [Validators.required]],
+          password: ['', [Validators.required]],
+      });
           
-          alert('Login Failed, Bad Credentials !!');
+           this.invalidCredentials=true;this.isClicked=false;
+
+          console.log('Login Failed, Bad Credentials !!');
           this.authService.logout();
         }); 
+      }
+
+      clearData(){
+
+        this.invalidCredentials=false;this.isClicked=false;
       }
 }

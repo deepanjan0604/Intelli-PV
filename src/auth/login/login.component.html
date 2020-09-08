@@ -34,7 +34,7 @@
 
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" formControlName="email"
+                        <input type="email" class="form-control" placeholder="Email" formControlName="email"  (change)="clearData()"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password" (change)="clearData()"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -55,6 +55,14 @@
                         </div>
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                    <div class="col-mb-12" style="margin-left: 240px;    color: red;" *ngIf="invalidCredentials">
+                        <div class="icheck-primary">
+                            
+                            <label for="remember">
+                                Invalid Credentials, Login Failed
+                            </label>
                         </div>
                     </div>
                     <div class="row">
@@ -72,8 +80,9 @@
                                 </label>
                             </div>
                         </div>
+                     
                         <!-- /.col -->
-                        <div class="col-5">
+                        <div class="col-7">
                             <a href="forgot-password.html">Forgot Password ?</a>
                         </div>
                         <!-- /.col -->

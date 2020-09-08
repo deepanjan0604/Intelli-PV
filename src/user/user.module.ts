@@ -23,6 +23,7 @@ import { CaseViewListComponent } from './case-view-list/case-view-list.component
 import { CaseSummaryViewComponent } from './case-summary-view/case-summary-view.component';
 import { CaseSummaryViewCtabsComponent } from './case-summary-view-ctabs/case-summary-view-ctabs.component';
 import { AuthInterceptor } from 'src/services/auth.interceptor';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     DashboardComponent, 
@@ -46,7 +47,8 @@ import { AuthInterceptor } from 'src/services/auth.interceptor';
     NgbModule,
     PdfViewerModule,
     InitialLayoutModule,
-    BsDatepickerModule
+    BsDatepickerModule,
+    TranslateModule
   ],
   exports:[
     DashboardComponent, 
