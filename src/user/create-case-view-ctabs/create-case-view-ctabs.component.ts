@@ -1,27 +1,24 @@
-import { Component, OnInit, Input,  ElementRef, ViewChild, Inject } from '@angular/core';
-import { CtabsModel } from 'src/object-model/multiple-support-ctabs-model';
 import { DOCUMENT } from '@angular/common';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { CtabsModel } from 'src/object-model/multiple-support-ctabs-model';
 
 @Component({
-  selector: 'app-case-summary-view-ctabs',
-  templateUrl: './case-summary-view-ctabs.component.html',
-  styleUrls: ['./case-summary-view-ctabs.component.css']
+  selector: 'app-create-case-view-ctabs',
+  templateUrl: './create-case-view-ctabs.component.html',
+  styleUrls: ['./create-case-view-ctabs.component.css']
 })
-export class CaseSummaryViewCtabsComponent implements OnInit {
-  
- 
+export class CreateCaseViewCtabsComponent implements OnInit {
+
+
   @Input() cTabs;
-  @Input() idn;
- 
   constructor(private el: ElementRef,@Inject(DOCUMENT) document) { }
-  @ViewChild('app-case-summary-view-ctabs') parentcTabs; 
+  @ViewChild('app-create-case-view-ctabs') parentcTabs;
 
   ngOnInit() {
     console.log("Ctabs:"+this.cTabs)
   }
 
-  
-  
+    
   selectedIdx=-1;
   classType:string="";
   headClass:string="";
@@ -112,10 +109,5 @@ export class CaseSummaryViewCtabsComponent implements OnInit {
     return this.classType;
   
   }
-
-
-  
-   
-
 
 }

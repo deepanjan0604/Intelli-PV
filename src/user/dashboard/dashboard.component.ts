@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   constructor(private router:Router) {
 
     this.router.events.subscribe(()=>{
-      this.ngOnInit();
+      //  this.ngOnInit();
     })
 
    }

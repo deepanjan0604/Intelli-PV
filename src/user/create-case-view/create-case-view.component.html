@@ -1,0 +1,73 @@
+
+
+<div [ngSwitch]="tabListData.canMultiple">
+   <div class="card  collapsed-card" >
+      <div class="card-header headingStyle" *ngSwitchCase="false">
+         <div class="panel panel-default">
+            <div class="panel-body">  <h3  class="card-title headingStyle" [ngClass]="headingStyle">{{tabListData.name}}</h3><br></div></div>
+         <div class="card-tools">
+            <!--   <button type="button" class="btn btn-info1" data-toggle="collapse" [attr.data-target]="'#isNotMultipleP'+(i+1)" title="Collapse" >  -->
+        <!--     <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabNotMultiple(tabListData.id)" >
+               <div [id]="'isNotMultipleP'+(tabListData.id+1)"> <i  class="fas fa-plus"></i></div>
+            </button> -->
+         </div>
+         <div [id]="'isNotMultipleP'+(tabListData.id+1)" >
+            <div *ngFor="let win of tabListData.window">
+               <div *ngFor="let seclist of win.sectionList">
+                  <strong>{{seclist.sName}}</strong>
+                  <div class="row">
+                     <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
+                        <p class="text-muted" *ngIf="fl.fieldType === 9?true:false">
+                           <app-create-case-view-textbox [fieldListData]="fl"></app-create-case-view-textbox>
+                        </p>
+                        <p class="text-muted" *ngIf="fl.fieldType === 17?true:false">
+                           <app-create-case-view-attachment [fieldListData]="fl"></app-create-case-view-attachment>
+                        </p>
+                        <p class="text-muted" *ngIf="fl.fieldType === 2?true:false">
+                           <app-create-case-view-checkbox [fieldListData]="fl"></app-create-case-view-checkbox>
+                        </p>
+                        <p class="text-muted" *ngIf="fl.fieldType === 7?true:false">
+                           <app-create-case-view-datepicker [fieldListData]="fl"></app-create-case-view-datepicker>
+                        </p>
+                        <p class="text-muted" *ngIf="fl.fieldType === 1?true:false">
+                           <app-create-case-view-radio [fieldListData]="fl"></app-create-case-view-radio>
+                        </p>
+                        <p class="text-muted" *ngIf="fl.fieldType === 3?true:false">
+                           <app-create-case-view-select [fieldListData]="fl"></app-create-case-view-select>
+                        </p>
+                        <p class="text-muted" *ngIf="fl.fieldType === 4?true:false">
+                           <app-create-case-view-textarea [fieldListData]="fl"></app-create-case-view-textarea>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmit()">Save</button> -->
+      </div>
+   </div>
+   <!--ngCase==true-->
+   <div class="card  collapsed-card" >
+      <div class="card-header" [ngClass]="selectedIndx === tabListData.id ?classType:''" *ngSwitchCase="true">
+      
+         <div class="panel panel-default" data-toggle="collapse" data-target="#multipleCtabs">
+            <div class="panel-body">  <h3  class="card-title headingStyle" [ngClass]="headingStyle">{{tabListData.name}}</h3>&nbsp;&nbsp;<span class="fa fa-arrow-down"></span><br></div></div> 
+      <div class="card-tools">
+        <!--  <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabMultiple(tabListData.id)" 
+            <div [id]="'isMultipleP'+(tabListData.id+1)"> <i class="fas fa-plus"></i></div>
+         </button> -->
+      </div>
+   </div>
+    <div  id="multipleCtabs" class="collapse">
+       <app-create-case-view-ctabs [cTabs]="tabListData.cTabs" ></app-create-case-view-ctabs>   
+       <!-- <app-case-summary-view-ctabs [cTabs]="tabListData.cTabs"></app-case-summary-view-ctabs> -->
+      
+      </div> 
+   <!--  <button type="submit" class="btn btn-primary btn-sm" (click)="getRulebasedQues()">Add</button> -->
+</div>
+</div>
+
+
+
+
+

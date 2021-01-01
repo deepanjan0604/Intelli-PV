@@ -1,0 +1,38 @@
+<div>
+  <label >{{fieldListData.fieldTxt}}</label>
+<div *ngIf="fieldListData.fieldValueList.length>0">
+<div *ngFor="let enum of fieldListData.fieldValueList">
+<div class="custom-control custom-radio" >
+  <input class="custom-control-input" type="radio" id="enum_answer_{{enum.txt}}_{{fieldListData.fieldId}}" name="{{fieldListData.fieldId}}"  [value]="enum.jCode"  [(ngModel)]="fieldListData.valCode">
+  <label for="enum_answer_{{enum.txt}}_{{fieldListData.fieldId}}" class="custom-control-label">{{enum.txt}}</label>
+ 
+</div>
+<div *ngIf="enum.jCode === fieldListData.valCode && enum.fieldList.length>0">
+  <div *ngFor="let fl of enum.fieldList">
+    <p class="text-muted" *ngIf="fl.fieldType === 9?true:false">
+      <app-create-case-view-textbox [fieldListData]="fl"></app-create-case-view-textbox>                     
+ </p>
+ <p class="text-muted" *ngIf="fl.fieldType === 17?true:false">
+    <app-create-case-view-attachment [fieldListData]="fl"></app-create-case-view-attachment>                   
+ </p>
+ <p class="text-muted" *ngIf="fl.fieldType === 2?true:false">
+<app-create-case-view-checkbox [fieldListData]="fl"></app-create-case-view-checkbox>                    
+</p>
+<p class="text-muted" *ngIf="fl.fieldType === 7?true:false">
+<app-create-case-view-datepicker [fieldListData]="fl"></app-create-case-view-datepicker>                    
+</p>
+<p class="text-muted" *ngIf="fl.fieldType === 1?true:false">
+<app-create-case-view-radio [fieldListData]="fl"></app-create-case-view-radio>                    
+</p>
+<p class="text-muted" *ngIf="fl.fieldType === 3?true:false">
+    <app-create-case-view-select [fieldListData]="fl"></app-create-case-view-select>                 
+</p>
+<p class="text-muted" *ngIf="fl.fieldType === 4?true:false">
+    <app-create-case-view-textarea [fieldListData]="fl"></app-create-case-view-textarea>                   
+</p>
+<!-- <app-create-case-view [tabListData]="en"></app-create-case-view> -->
+</div>
+</div>
+</div>
+</div>
+</div>

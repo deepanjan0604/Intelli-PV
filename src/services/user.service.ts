@@ -4,6 +4,7 @@ import { Observable, throwError, from } from 'rxjs';
 import { catchError} from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { AuthService } from './auth.service';
+import { RuleBasedModel } from 'src/object-model/rulebased-model';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class UserService {
  public context:string= environment.context;
   public headers: HttpHeaders = new HttpHeaders();
   public headers1: HttpHeaders = new HttpHeaders();
+  public headers3: HttpHeaders = new HttpHeaders();
 public authorizationToken:any="";
   constructor(private http: HttpClient, private authService: AuthService) {
     try{
@@ -73,7 +75,7 @@ public authorizationToken:any="";
     this.headers1 = this.headers1
       .append('Accept', 'application/json')
       .append('Content-Type', 'application/json')
-      .append('Authorization', 'Bearer '+this.authorizationToken);;
+      .append('Authorization', 'Bearer '+this.authorizationToken);
    
 
 
@@ -88,6 +90,87 @@ public authorizationToken:any="";
   }
   getDocumentListURL(docId:any){
     return this.http.get(this.baseUrl + 'doc/url/'+docId,{headers: this.headers}).pipe(catchError(this.errorHandler));
+  }
+
+
+  getTabList() {
+    
+    this.headers3 = this.headers3
+    .append('Accept', 'application/json')
+    .append('Content-Type', 'application/json')
+    //.append('Authorization', 'Bearer '+this.authorizationToken)
+    .append('lang', 'en')
+    .append('reporter', 'PU')
+    .append('country', 'AU')
+    .append('loggedInUser', 'ipv.admin@ipv.com')
+    .append('enterpriseId', '3')
+    .append('ipAddress', '10.2.2.56')
+    .append('hostUrl', 'http://localhost:8080')
+    .append('reportID', '132');
+    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/getTabList',{}, {headers: this.headers3})
+      .pipe(catchError(this.errorHandler));
+  }
+
+
+  getTabListData(id: any){
+  
+    this.headers3 = new HttpHeaders();
+    this.headers3 = this.headers3
+    .append('Accept', 'application/json')
+    .append('Content-Type', 'application/json')
+    //.append('Authorization', 'Bearer '+this.authorizationToken)
+    .append('lang', 'en')
+    .append('reporter', 'PU')
+    .append('country', 'AU')
+    .append('loggedInUser', 'ipv.admin@ipv.com')
+    .append('enterpriseId', '3')
+    .append('ipAddress', '10.2.2.56')
+    .append('hostUrl', 'http://localhost:8080')
+    .append('reportID', '132');
+    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/getTabListData/'+id,{}, {headers: this.headers3})
+      .pipe(catchError(this.errorHandler));
+  }
+
+
+  getRuleBasedQues(id: any,ruleBasedModel: RuleBasedModel){
+  
+    this.headers3 = new HttpHeaders();
+    this.headers3 = this.headers3
+    .append('Accept', 'application/json')
+    .append('Content-Type', 'application/json')
+    //.append('Authorization', 'Bearer '+this.authorizationToken)
+    .append('lang', 'en')
+    .append('reporter', 'PU')
+    .append('country', 'AU')
+    .append('loggedInUser', 'ipv.admin@ipv.com')
+    .append('enterpriseId', '3')
+    .append('ipAddress', '10.2.2.56')
+    .append('hostUrl', 'http://localhost:8080')
+    .append('reportID', '132');
+    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/getRuleBasedQuestionnaire/',ruleBasedModel, {headers: this.headers3})
+      .pipe(catchError(this.errorHandler));
+  }
+
+
+  saveCaseData(caseData: any){
+    debugger
+    var submitJson={'questionnaire':caseData,'submitType':1}
+    this.headers3 = new HttpHeaders();
+    this.headers3 = this.headers3
+    .append('Accept', 'application/json')
+    .append('Content-Type', 'application/json')
+    //.append('Authorization', 'Bearer '+this.authorizationToken)
+    .append('lang', 'en')
+    .append('reporter', 'PU')
+    .append('country', 'AU')
+    .append('loggedInUser', 'ipv.admin@ipv.com')
+    .append('enterpriseId', '3')
+    .append('ipAddress', '10.2.2.56')
+    .append('hostUrl', 'http://localhost:8080')
+    .append('reportID', '132')
+    .append('userName', 'test');
+    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/saveCaseData',submitJson, {headers: this.headers3})
+      .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(respError: HttpErrorResponse | any) {

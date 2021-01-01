@@ -45,7 +45,8 @@ import { AuthService } from './auth.service';
                             return <any>this.authService.logout();
                            
                         case 500:
-                            return <any>this.authService.logout();
+                             throwError(this.handleError500);
+                             //return <any>this.authService.logout();
                     }
                 } else 
                 {
@@ -73,10 +74,27 @@ import { AuthService } from './auth.service';
             // The backend returned an unsuccessful response code
         errorMsg = `Backend returned code ${errorResponse.status}, body was: ${errorResponse.error}`;
         }
-
+        <any>this.authService.logout();
          return throwError(errorMsg);
     }
 
+    // Global error handler method 
+    private handleError500(errorResponse : HttpErrorResponse) 
+    {
+        let errorMsg : string;
+
+        if(errorResponse.error instanceof Error) 
+        {
+             // A client-side or network error occurred
+            errorMsg = "An error occured : " + errorResponse.error.message;
+        } else 
+        {
+            // The backend returned an unsuccessful response code
+        errorMsg = `Backend returned code ${errorResponse.status}, body was: ${errorResponse.error}`;
+        }
+       // <any>this.authService.logout();
+         return throwError(errorMsg);
+    }
 
    
     private handleHttpResponseError(request : HttpRequest<any>, next : HttpHandler)
@@ -95,6 +113,7 @@ import { AuthService } from './auth.service';
 
             return <any>this.authService.getNewRefreshToken().pipe(
                 switchMap((tokenresponse: any) => {
+                    
                     if(tokenresponse) 
                     {   
                         this.isTokenRefreshing = false;
@@ -106,7 +125,7 @@ import { AuthService } from './auth.service';
 
                 }
                   
-                }))
+                })).pipe(catchError(this.handleError));
         }
         else 
         {

@@ -1,0 +1,46 @@
+
+/*  .card>.card-header{
+    background: cadetblue;
+    }
+    .collapsed-card>.card-header{
+    background: #ffffff;
+}
+ */
+
+/* app-case-summary-view-ctabs > .card{
+    background: blue
+    }
+
+    app-case-summary-view-ctabs > .collapsed-card{
+        background: grey
+        }  */
+
+
+        .card-header{
+            background: #777979;
+        } 
+        .active
+        {
+            background:#c4eef5 !important; 
+         
+        }
+        
+        
+        .not-active{
+          background: #777979;
+         
+        }
+
+        .h3class{
+            color:black;
+            
+          }
+          .not-h3class{
+            color:white;
+            
+          }
+        
+          .card {
+            box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+            margin-bottom: 5px !important;
+        }

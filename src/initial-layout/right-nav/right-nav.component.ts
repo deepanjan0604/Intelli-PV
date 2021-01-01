@@ -14,9 +14,10 @@ export class RightNavComponent implements OnInit {
   showLi:boolean=false;
   constructor(private ref: ChangeDetectorRef , private userService: UserService, private router:Router, private ngZone:NgZone) {
     this.ref.markForCheck();
-    this.router.events.subscribe(()=>{
-      this.ngOnInit();
-    })
+     this.router.events.subscribe(()=>{
+      //debugger;
+      //this.ngOnInit();
+    }) 
    }
 
   ngOnInit() {

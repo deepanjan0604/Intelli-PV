@@ -24,6 +24,15 @@ import { CaseSummaryViewComponent } from './case-summary-view/case-summary-view.
 import { CaseSummaryViewCtabsComponent } from './case-summary-view-ctabs/case-summary-view-ctabs.component';
 import { AuthInterceptor } from 'src/services/auth.interceptor';
 import { TranslateModule } from '@ngx-translate/core';
+import { CreateCaseViewComponent } from './create-case-view/create-case-view.component';
+import { CreateCaseViewCtabsComponent } from './create-case-view-ctabs/create-case-view-ctabs.component';
+import { CreateCaseViewRadioComponent } from './create-case-view-radio/create-case-view-radio.component';
+import { CreateCaseViewCheckboxComponent } from './create-case-view-checkbox/create-case-view-checkbox.component';
+import { CreateCaseViewSelectComponent } from './create-case-view-select/create-case-view-select.component';
+import { CreateCaseViewTextareaComponent } from './create-case-view-textarea/create-case-view-textarea.component';
+import { CreateCaseViewTextboxComponent } from './create-case-view-textbox/create-case-view-textbox.component';
+import { CreateCaseViewDatepickerComponent } from './create-case-view-datepicker/create-case-view-datepicker.component';
+import { CreateCaseViewAttachmentComponent } from './create-case-view-attachment/create-case-view-attachment.component';
 @NgModule({
   declarations: [
     DashboardComponent, 
@@ -35,7 +44,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CreateCaseComponent, 
     CaseSummaryComponent, 
     CaseViewListComponent, 
-    CaseSummaryViewComponent, CaseSummaryViewCtabsComponent
+    CaseSummaryViewComponent, CaseSummaryViewCtabsComponent, CreateCaseViewComponent, CreateCaseViewTextboxComponent, CreateCaseViewRadioComponent, CreateCaseViewCheckboxComponent, CreateCaseViewSelectComponent, CreateCaseViewTextareaComponent, CreateCaseViewDatepickerComponent, CreateCaseViewAttachmentComponent, CreateCaseViewCtabsComponent
   ],
   imports: [
     CommonModule,

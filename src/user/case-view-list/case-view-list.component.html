@@ -3,8 +3,8 @@
 <p></p>
 <div class="content-wrapper">
   <section class="content">
-      <div class="row">
-        <div class="col-12" style="display:none">
+      <div class="row" >
+        <div class="col-12" style="display:none" *ngIf="!dataVis">
             <div class="card">
                 <div class="card-header">
                     <button type="button" class="btn btn-default btn-sm" (click)="openSearchModel(content)">Search</button>
@@ -133,7 +133,7 @@
           </ng-template>
 
 
-          <div class="col-12" style="padding: 40px;">
+          <div class="col-12" style="padding: 40px;" *ngIf="!dataVis">
            
             <form>
               <div class="row">
@@ -302,7 +302,14 @@
               <!-- /.card -->
           </div>
           <!-- /.col -->
+
+          
       </div>
+      <div class="col-12" style="padding: 40px;" *ngIf="dataVis">
+        <H4 style="background-color: #17a2b8 ; border-radius: 
+10px; color: #000000 ; padding: 10px;"> Oops! 
+<br> No Record Found </H4> <br>
+        </div>
       <!-- /.row -->
   </section>
 </div>

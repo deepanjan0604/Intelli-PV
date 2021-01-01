@@ -104,7 +104,7 @@ getNewRefreshToken(){
         localStorage.setItem('accessToken', JSON.stringify(data));
         this.currentUserSubject.next(data);
         return <any>data;
-      });
+      }).pipe(catchError(this.errorHandler));
 }
 
 

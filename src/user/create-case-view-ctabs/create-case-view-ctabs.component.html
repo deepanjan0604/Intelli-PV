@@ -1,0 +1,70 @@
+
+<div *ngFor="let ctbs of cTabs ; let i = index"> 
+  <div  *ngIf="ctbs.canMultiple == true && ctbs.cTabs">
+    <div class="card-header parent-tab">
+       <h3 class="card-title" >{{ctbs.name}}</h3>
+       <div class="card-tools">
+        <button type="button" class="btn btn-info1" data-card-widget="collapse" data-toggle="tooltip" title="Collapse" (click)="selectedTabMultiple(i)">
+           <div [id]="'isMultipleC'+(i+1)">  <i class="fas fa-plus"></i></div></button>
+       </div>
+    </div>
+    <div   class="collapse card-body" style="text-align: left;">
+      <app-create-case-view-ctabs [cTabs]="ctbs.cTabs"  *ngIf="ctbs.cTabs" ></app-create-case-view-ctabs>
+      <div  *ngIf="ctbs.canMultiple == true">
+       <div *ngFor="let win of ctbs.window">
+          <div *ngFor="let seclist of win.sectionList">
+             <strong> {{seclist.sName}}</strong>
+             <div class="row">
+                <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
+                   <p class="text-muted">
+                      <Strong>{{fl.fieldTxt}} : </Strong> {{fl.val}}
+                   </p>
+                </div>
+             </div>
+          </div>
+       </div></div>
+    </div>
+  </div>
+  
+   <div class="card  collapsed-card" *ngIf="ctbs.canMultiple == false">
+    <div class="card-header" style="width: 98%;margin-left: 7px;">
+       <h3 class="card-title" >{{ctbs.name}}</h3>
+       <div class="card-tools">
+        <button type="button" class="btn btn-info1"  data-card-widget="collapse" data-toggle="tooltip" title="Collapse" (click)="selectedTabNotMultiple(i)">
+           <div [id]="'isNotMultipleC'+(i+1)"> <i class="fas fa-plus"></i></div></button>
+       </div>
+    </div>
+    <div  class="collapse card-body" style="text-align: left;">
+       <div *ngFor="let win of ctbs.window">
+          <div *ngFor="let seclist of win.sectionList">
+             <strong> {{seclist.sName}}</strong>
+             <div class="row">
+                <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
+                  <p class="text-muted" *ngIf="fl.fieldType === 9?true:false">
+                     <app-create-case-view-textbox [fieldListData]="fl"></app-create-case-view-textbox>                     
+                </p>
+                <p class="text-muted" *ngIf="fl.fieldType === 17?true:false">
+                   <app-create-case-view-attachment [fieldListData]="fl"></app-create-case-view-attachment>                   
+                </p>
+                <p class="text-muted" *ngIf="fl.fieldType === 2?true:false">
+               <app-create-case-view-checkbox [fieldListData]="fl"></app-create-case-view-checkbox>                    
+               </p>
+               <p class="text-muted" *ngIf="fl.fieldType === 7?true:false">
+               <app-create-case-view-datepicker [fieldListData]="fl"></app-create-case-view-datepicker>                    
+               </p>
+               <p class="text-muted" *ngIf="fl.fieldType === 1?true:false">
+               <app-create-case-view-radio [fieldListData]="fl"></app-create-case-view-radio>                    
+               </p>
+               <p class="text-muted" *ngIf="fl.fieldType === 3?true:false">
+                   <app-create-case-view-select [fieldListData]="fl"></app-create-case-view-select>                 
+               </p>
+               <p class="text-muted" *ngIf="fl.fieldType === 4?true:false">
+                   <app-create-case-view-textarea [fieldListData]="fl"></app-create-case-view-textarea>                   
+               </p>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+   </div> 
