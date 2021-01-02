@@ -21,7 +21,7 @@ export class CreateCaseComponent implements OnInit {
   docList:Observable<DocListModel>[];
   docListUrl:Observable<DocListModel>[]=[];
   configData:Observable<ConfigurationModel>;
-  @Input() tabList:Observable<TabListsModel>[];
+  tabList:Observable<TabListsModel>[];
   tabListData:Observable<TabListsModel>;
   ruleBasedModelData:RuleBasedModel;
   tabDataVis:boolean=false;
@@ -51,7 +51,7 @@ export class CreateCaseComponent implements OnInit {
 
   constructor(route: ActivatedRoute, private userService:UserService, private authService:AuthService,private cd : ChangeDetectorRef) {
     this.caseId  = route.snapshot.params['id'];
-    debugger
+    
     if(this.tabList == undefined){
       this.tabList=[];
     this.userService.getTabList().subscribe(respData => {
@@ -81,7 +81,7 @@ export class CreateCaseComponent implements OnInit {
        
        this.tabListData=Object.assign(new TabListsModel, respData);
        this.tabDataVis=true;
-       debugger
+       
            }, err=>{
         //this.authService.logout();
         
@@ -173,7 +173,6 @@ export class CreateCaseComponent implements OnInit {
 loadTab(id:any){
   this.saveTabData(this.tabListData['id'])
   this.clicked=false;
-  debugger
   this.tabListDataonAddTab=[];
   this.addTab=false;
 this.tabID=id;
@@ -182,7 +181,6 @@ this.tabID=id;
 if(this.tabList[id]['canMultiple']==false){
   if(this.tabList[id]['window'].length==0){
 this.userService.getTabListData(this.tabList[id]['id']).subscribe(respData => {
-       debugger
   this.tabListData=Object.assign(new TabListsModel, respData);
   this.tabDataVis=true;
   
@@ -201,24 +199,23 @@ this.userService.getTabListData(this.tabList[id]['id']).subscribe(respData => {
 
 onAddTab(){
   this.clicked=true;
-  debugger
  this.tabListDataonAddTab=[];
  var tabListdata=new TabListsModel();
  Object.assign(tabListdata,this.tabListData);
   this.tabID=tabListdata.id;
   this.userService.getTabListData(this.tabID).subscribe(respData => {
-    debugger;
     this.tabListDataonAddTab=Object.assign(new TabListsModel, respData);
     this.addTab=true;
     this.clicked=false;
   
         }, err=>{
     // this.authService.logout();
+    this.clicked=false;
    });
 }
 
 onTabSubmit(tabData:any){
-debugger
+
 var tablstData=new TabListsModel();
 var success=false;
 Object.assign(tablstData,this.tabListData)
@@ -252,7 +249,7 @@ switch(criteria){
 if(success==true){
   this.ruleBasedModelData=this.buildRuleBasedJSON(tabData,tablstData);
   this.userService.getRuleBasedQues(tablstData.id,this.ruleBasedModelData).subscribe(respData => {
-    debugger;
+    
     var flag=false;
     var selectedIdxs=-1;
   if(respData!=null && respData!=undefined){
@@ -296,7 +293,6 @@ if(success==true){
 }
 
 buildRuleBasedJSON(tabData:TabListsModel,tablstData:TabListsModel){
-  debugger
   var ruleBasedModeldata=new RuleBasedModel();
   ruleBasedModeldata=this.ruleBasedModelData;
   ruleBasedModeldata.tabId=tablstData.id;
@@ -318,7 +314,7 @@ buildRuleBasedJSON(tabData:TabListsModel,tablstData:TabListsModel){
           break;
           case "REP":
           ruleBasedModeldata.ruleObject[2].criteriaId="REP";
-          ruleBasedModeldata.ruleObject[2].values.push("RC:"+tabData.window[0].sectionList[0].fieldList[2].val+";FN:"+tabData.window[0].sectionList[0].fieldList[0].val+";LN:"+tabData.window[0].sectionList[0].fieldList[1].val);
+          ruleBasedModeldata.ruleObject[2].values.push("RC:"+(tabData.window[0].sectionList[0].fieldList[2].val)+";FN:"+tabData.window[0].sectionList[0].fieldList[0].val+";LN:"+tabData.window[0].sectionList[0].fieldList[1].val);
           break;
       }
 
@@ -330,7 +326,6 @@ buildRuleBasedJSON(tabData:TabListsModel,tablstData:TabListsModel){
 
 saveTabData(id:any){
   this.clicked=true;
-  debugger;
 this.tabID=id;
 for(var i=0;i<this.tabList.length;i++){
   if(this.tabList[i]['id']==this.tabID && this.tabList[i]['canMultiple']==false){
@@ -347,12 +342,12 @@ onSubmitCase(){
   this.clicked=true;
   this.configData['tabList']=this.tabList
   this.userService.saveCaseData(this.configData).subscribe(respData => {
-    debugger;
     this.clicked=false;
     //Redirection to Ack
-    alert("Submitted Successfully")
+    alert("Submitted Successfully, Case ID:" + respData['data']['caseId'])
         }, err=>{
           this.clicked=false;
+          alert("Saving Case Failed:"+err);
     // this.authService.logout();
    });
 

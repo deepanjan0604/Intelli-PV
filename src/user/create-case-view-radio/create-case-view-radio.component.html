@@ -3,7 +3,7 @@
 <div *ngIf="fieldListData.fieldValueList.length>0">
 <div *ngFor="let enum of fieldListData.fieldValueList">
 <div class="custom-control custom-radio" >
-  <input class="custom-control-input" type="radio" id="enum_answer_{{enum.txt}}_{{fieldListData.fieldId}}" name="{{fieldListData.fieldId}}"  [value]="enum.jCode"  [(ngModel)]="fieldListData.valCode">
+  <input class="custom-control-input" type="radio" id="enum_answer_{{enum.txt}}_{{fieldListData.fieldId}}" name="{{fieldListData.fieldId}}"  [value]="enum.id"  [(ngModel)]="fieldListData.val">
   <label for="enum_answer_{{enum.txt}}_{{fieldListData.fieldId}}" class="custom-control-label">{{enum.txt}}</label>
  
 </div>

@@ -100,7 +100,7 @@
                </div>
             </div>
          </div><div style="float: right;">
-          <button type="submit" class="btn btn-primary btn-sm" (click)="saveTabData(tabListData.id)" [disabled]="clicked">Save Data </button>&nbsp;&nbsp;
+         <!--  <button type="submit" class="btn btn-primary btn-sm" (click)="saveTabData(tabListData.id)" [disabled]="clicked">Save Data </button>&nbsp;&nbsp; -->
          <button type="submit" class="btn btn-primary btn-sm" (click)="onAddTab()" *ngIf="!addTab&&tabListData.canMultiple" [disabled]="clicked">Add New</button>&nbsp;&nbsp;
           <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmitCase()" [disabled]="clicked">Submit Case </button>
         </div></div>

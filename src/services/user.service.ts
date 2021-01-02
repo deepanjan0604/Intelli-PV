@@ -15,6 +15,7 @@ export class UserService {
   public headers: HttpHeaders = new HttpHeaders();
   public headers1: HttpHeaders = new HttpHeaders();
   public headers3: HttpHeaders = new HttpHeaders();
+  public submitJson:FormData=new FormData();
 public authorizationToken:any="";
   constructor(private http: HttpClient, private authService: AuthService) {
     try{
@@ -152,14 +153,17 @@ public authorizationToken:any="";
   }
 
 
-  saveCaseData(caseData: any){
-    debugger
-    var submitJson={'questionnaire':caseData,'submitType':1}
+  saveCaseData(caseData: any):Observable<any>{
+    caseData=JSON.stringify(caseData);
+
+    let submitJson1:FormData=new FormData();
+    submitJson1.append('questionnaire',caseData);
+    submitJson1.append('submitType','1');
+
+    
     this.headers3 = new HttpHeaders();
     this.headers3 = this.headers3
-    .append('Accept', 'application/json')
-    .append('Content-Type', 'application/json')
-    //.append('Authorization', 'Bearer '+this.authorizationToken)
+    .append('Accept', '*/*')
     .append('lang', 'en')
     .append('reporter', 'PU')
     .append('country', 'AU')
@@ -169,7 +173,7 @@ public authorizationToken:any="";
     .append('hostUrl', 'http://localhost:8080')
     .append('reportID', '132')
     .append('userName', 'test');
-    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/saveCaseData',submitJson, {headers: this.headers3})
+    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/saveCaseData',submitJson1, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
 
@@ -182,3 +186,5 @@ public authorizationToken:any="";
     return throwError(respError || 'Server Downgrade Error');
   }
 }
+
+

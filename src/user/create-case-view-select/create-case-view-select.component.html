@@ -1,6 +1,6 @@
 <div class="form-group">
   <label>{{fieldListData.fieldTxt}}</label>
   <select class="form-control" [(ngModel)]="fieldListData.val">
-    <option *ngFor="let obj of fieldListData.fieldValueList" [value]="obj.jVal" >{{obj.txt}}</option>
+    <option *ngFor="let obj of fieldListData.fieldValueList" [value]="obj.jCode" >{{obj.txt}}</option>
   </select>
 </div>
