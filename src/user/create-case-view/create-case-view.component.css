@@ -28,3 +28,14 @@ color:black;
     box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
     margin-bottom: 5px !important;
 }
+
+.customPanel{
+
+    height: 55px;
+    background: #02027b;
+    color: white;
+    padding: 17px;
+    width: 105%;
+    margin-left: -17px;
+    margin-bottom: 7px;
+}

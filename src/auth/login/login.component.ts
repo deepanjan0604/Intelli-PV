@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
      params.append('client_secret','1pv!');
     this.isClicked=true;
    
-     
           this.authService.login(params).subscribe(respData => {
           
            console.log(respData);
@@ -58,8 +57,10 @@ export class LoginComponent implements OnInit {
            //window.sessionStorage.setItem('token', JSON.stringify(respData));
            //this.router.navigate(['/user/dashboard'])  
            this.ngZone.run(() => this.router.navigateByUrl('/user/dashboard'))
+           this.ngZone.run(() => this.router.navigateByUrl('/user/create-case/393'))
+
          },err => {
-       
+          
         this.loginForm = this.formBuilder.group({
           email: ['', [Validators.required]],
           password: ['', [Validators.required]],
@@ -69,6 +70,7 @@ export class LoginComponent implements OnInit {
 
           console.log('Login Failed, Bad Credentials !!');
           this.authService.logout();
+          
         }); 
       }
 

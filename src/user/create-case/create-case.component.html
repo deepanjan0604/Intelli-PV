@@ -31,12 +31,12 @@
           <div class="container">
             <div id="stepper1" class="bs-stepper">
                <div class="bs-stepper-header">
-                <div  *ngFor="let tblst of tabList ; let i = index">
+                <div  *ngFor="let tblst of tabListMod ; let i = index">
                 <div class="line"></div>
-                <div class="step" >
-                  <button class="step-trigger" (click)="loadTab(i)">
+                <div class="tab" style="height: 103px;">
+                  <button class="tablinks" style="width: 100%;  height: 100%" [ngClass]="{'active': (selectedTab == 'Tab'+i) }" (click)="loadTab(i,'OnTab');makeActive('Tab'+i)">
                     <span   [id]="'selectTab'+(i+1)"></span>
-                    <span class="bs-stepper-label">{{tblst.name}}</span>
+                    <span class="bs-stepper-label"><h5 style="font-size: 1rem;">{{tblst.name}}</h5></span><div *ngIf="tblst.visited==='Yes'&& i!=5"><span class="fas fa-check-circle green-color"></span></div>
                   </button>
                 </div></div>
       
@@ -56,19 +56,27 @@
             </div>
          
             <div *ngIf="tabDataVis"> <app-create-case-view [tabListData]="tabListData" ></app-create-case-view></div>
-            
+            <div class="container">
+              <div id="summary" class="content text-center">
+                <div class="col-sm-12" style= "margin-top: 7px;" *ngIf="tabDataVis1">
+                  
+                  <app-case-summary-view [tabList]="tabList"></app-case-summary-view>
+                
+                </div>
+              </div>
+            </div>
           </div>
 
 
           <!--Add new tab-->
-          <div class="card  collapsed-card" >
+          <div class="card  collapsed-card" style="width: 95%;margin-left: 16px;">
             <div class="card-header" [ngClass]="selectedIndx === i?classType:''" *ngIf="addTab">
-              <div class="panel panel-default" ><!-- data-toggle="collapse" data-target="#multiple"> -->
+              <div class="panel panel-default customPanelTab" ><!-- data-toggle="collapse" data-target="#multiple"> -->
                 <div class="panel-body">  <h3  class="card-title headingStyle" [ngClass]="headingStyle">Add New {{tabListDataonAddTab.name}}</h3><br></div></div>
                <div   >
                   <div *ngFor="let win of tabListDataonAddTab.window">
                      <div *ngFor="let seclist of win.sectionList">
-                        <strong>{{seclist.sName}}</strong>
+                        <strong style="color:#057bff">{{seclist.sName}}</strong>
                         <div class="row">
                            <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
                               <p class="text-muted" *ngIf="fl.fieldType === 9?true:false">
@@ -97,12 +105,19 @@
                      </div>
                   </div>
                   <button type="submit" class="btn btn-primary btn-sm" (click)="onTabSubmit(tabListDataonAddTab)" >Add</button>&nbsp;
+                  <button type="submit" class="btn btn-primary btn-sm" (click)="onTabCancel()" >Cancel</button>&nbsp;
+
                </div>
             </div>
-         </div><div style="float: right;">
-         <!--  <button type="submit" class="btn btn-primary btn-sm" (click)="saveTabData(tabListData.id)" [disabled]="clicked">Save Data </button>&nbsp;&nbsp; -->
-         <button type="submit" class="btn btn-primary btn-sm" (click)="onAddTab()" *ngIf="!addTab&&tabListData.canMultiple" [disabled]="clicked">Add New</button>&nbsp;&nbsp;
-          <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmitCase()" [disabled]="clicked">Submit Case </button>
+         </div>
+         <div style="margin-left : 7px">
+          <button type="submit" class="btn btn-primary btn-sm" (click)="onAddTab()" *ngIf="!addTab&&tabListData.canMultiple && selectedIdx!=5" [disabled]="clicked">Add New</button>&nbsp;&nbsp;
+         </div>
+
+         <div style="float: right;">
+          <button type="submit" class="btn btn-primary btn-sm" (click)="loadTab(selectedIdx+1, 'Save');;makeActive1(selectedIdx)" [disabled]="clicked" *ngIf="selectedIdx!==5">Save & Continue </button>
+
+                 <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmitCase()" [disabled]="clicked" *ngIf="selectedIdx===5">Submit Case </button>
         </div></div>
       </div></div>
    

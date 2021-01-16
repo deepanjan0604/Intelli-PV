@@ -20,7 +20,7 @@ export class CreateCaseViewComponent implements OnInit {
   tabID:any;
   
     constructor(private el:ElementRef,@Inject(DOCUMENT) document,private userService:UserService) {
-      debugger
+      
       this.tabListData;
       this.cardStyle='cardStyle-collapsed';
       this.tabListDataonAddTab=[];
@@ -36,18 +36,18 @@ export class CreateCaseViewComponent implements OnInit {
   }
   onSubmit(){
 
-    debugger
+    
   }
 
   getRulebasedQues(){
-    debugger;
+    
   }
 
   selectedIndx=-1;
   classType:string="";
   headingStyle:string="";
   selectedTabNotMultiple(index){
-    debugger;
+    
    this.selectedIndx =index;
     var element:any;
     var elementClass="";
@@ -60,7 +60,7 @@ export class CreateCaseViewComponent implements OnInit {
   }
 
   selectedTabNotMultipleAdd(index){
-    debugger;
+    
    this.selectedIndx =index;
     var element:any;
     var elementClass="";
@@ -73,7 +73,7 @@ export class CreateCaseViewComponent implements OnInit {
   }
 
   selectedTabMultiple(index){
-    debugger;
+    
     this.selectedIndx =index;
      var element:any;
      var elementClass="";
@@ -100,11 +100,10 @@ export class CreateCaseViewComponent implements OnInit {
   }
 
   onAddTab(id:any){
-    debugger
+    
    this.tabListDataonAddTab=[];
     this.tabID=id;
     this.userService.getTabListData(this.tabID).subscribe(respData => {
-      debugger;
       this.tabListDataonAddTab=Object.assign(new TabListsModel, respData);
       //this.addTab=true;
     

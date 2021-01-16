@@ -27,7 +27,7 @@
   </div>
   
    <div class="card  collapsed-card" *ngIf="ctbs.canMultiple == false">
-    <div class="card-header" style="width: 98%;margin-left: 7px;">
+    <div class="card-header" style="width: 97%;margin-left: 8px;">
        <h3 class="card-title" >{{ctbs.name}}</h3>
        <div class="card-tools">
         <button type="button" class="btn btn-info1"  data-card-widget="collapse" data-toggle="tooltip" title="Collapse" (click)="selectedTabNotMultiple(i)">
@@ -37,7 +37,7 @@
     <div  class="collapse card-body" style="text-align: left;">
        <div *ngFor="let win of ctbs.window">
           <div *ngFor="let seclist of win.sectionList">
-             <strong> {{seclist.sName}}</strong>
+             <strong style="color:#057bff"> {{seclist.sName}}</strong>
              <div class="row">
                 <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
                   <p class="text-muted" *ngIf="fl.fieldType === 9?true:false">

@@ -3,7 +3,7 @@
 <div [ngSwitch]="tabListData.canMultiple">
    <div class="card  collapsed-card" >
       <div class="card-header headingStyle" *ngSwitchCase="false">
-         <div class="panel panel-default">
+         <div class="panel panel-default customPanel">
             <div class="panel-body">  <h3  class="card-title headingStyle" [ngClass]="headingStyle">{{tabListData.name}}</h3><br></div></div>
          <div class="card-tools">
             <!--   <button type="button" class="btn btn-info1" data-toggle="collapse" [attr.data-target]="'#isNotMultipleP'+(i+1)" title="Collapse" >  -->
@@ -14,7 +14,7 @@
          <div [id]="'isNotMultipleP'+(tabListData.id+1)" >
             <div *ngFor="let win of tabListData.window">
                <div *ngFor="let seclist of win.sectionList">
-                  <strong>{{seclist.sName}}</strong>
+                  <strong style="color:#057bff">{{seclist.sName}}</strong>
                   <div class="row">
                      <div class="col-sm-4" *ngFor="let fl of seclist.fieldList">
                         <p class="text-muted" *ngIf="fl.fieldType === 9?true:false">
@@ -50,7 +50,7 @@
    <div class="card  collapsed-card" >
       <div class="card-header" [ngClass]="selectedIndx === tabListData.id ?classType:''" *ngSwitchCase="true">
       
-         <div class="panel panel-default" data-toggle="collapse" data-target="#multipleCtabs">
+         <div class="panel panel-default customPanel" data-toggle="collapse" data-target="#multipleCtabs">
             <div class="panel-body">  <h3  class="card-title headingStyle" [ngClass]="headingStyle">{{tabListData.name}}</h3>&nbsp;&nbsp;<span class="fa fa-arrow-down"></span><br></div></div> 
       <div class="card-tools">
         <!--  <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabMultiple(tabListData.id)" 

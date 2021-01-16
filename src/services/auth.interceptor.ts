@@ -42,7 +42,7 @@ import { AuthService } from './auth.service';
                             return this.handleHttpResponseError(request, next);
                                        
                         case 400:
-                            return <any>this.authService.logout();
+                            return ;//<any>this.authService.logout();
                            
                         case 500:
                              throwError(this.handleError500);
@@ -74,7 +74,7 @@ import { AuthService } from './auth.service';
             // The backend returned an unsuccessful response code
         errorMsg = `Backend returned code ${errorResponse.status}, body was: ${errorResponse.error}`;
         }
-        <any>this.authService.logout();
+        //<any>this.authService.logout();
          return throwError(errorMsg);
     }
 

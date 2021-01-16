@@ -22,17 +22,39 @@ export class CreateCaseComponent implements OnInit {
   docListUrl:Observable<DocListModel>[]=[];
   configData:Observable<ConfigurationModel>;
   tabList:Observable<TabListsModel>[];
+  tabListMod:{'id':any,'indx':any,'name':String,'visited':String}[];
   tabListData:Observable<TabListsModel>;
   ruleBasedModelData:RuleBasedModel;
   tabDataVis:boolean=false;
+  tabDataVis1:boolean=false;
   tabID:any;
   addTab:boolean=false;
   tabListDataonAddTab:TabListsModel[];
   currentIndex:any=0;
   clicked:boolean=false;
+  selectedTab:String="Tab0";
 
   
-
+  makeActive(tab: string) {
+    var status=false;
+    for(var i=0;i<this.tabListMod.length;i++){
+      if(this.tabListMod[i]['visited']=='Yes'){
+        status=true;
+      }
+      else{
+      status=false;break;
+      }
+    }
+    debugger
+    if(status==true){
+      this.selectedTab = tab;
+    }
+  }
+  makeActive1(tab: any) {
+    debugger
+    
+      this.selectedTab = "Tab"+parseInt(tab).toString();
+  }
  /*  med_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_1.pdf";
   lab_test_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_3.pdf";
   ecg_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_3.pdf";
@@ -54,16 +76,23 @@ export class CreateCaseComponent implements OnInit {
     
     if(this.tabList == undefined){
       this.tabList=[];
+      this.tabListMod=[];
     this.userService.getTabList().subscribe(respData => {
       this.configData=Object.assign(new ConfigurationModel, respData);
       for(var i=0;i<respData.tabList.length;i++){
         this.tabList[i]=Object.assign(new TabListsModel, respData.tabList[i]);
+        var data=Object.assign(new TabListsModel, respData.tabList[i]);
+        this.tabListMod[i]={'id':data['id'],'indx':i,'name':data['name'],'visited':'No'};
+        console.log(this.tabListMod[i]);
+        
         this.tabList[i]['window']=[];
         this.tabList[i]['cTabs']=[];
         console.log("Tab "+i);
         
        
       }
+      var len=this.tabListMod.length;
+      this.tabListMod[len]={'id':0,'indx':5,'name':'Summary','visited':'Yes'};
       var tablist=new TabListsModel();
       Object.assign(tablist,this.tabList[0]);//tablist.id
 
@@ -170,7 +199,58 @@ export class CreateCaseComponent implements OnInit {
   }
   return headClass;
 }
-loadTab(id:any){
+loadTab(id:any,op:String){
+  this.tabDataVis1=false;
+  var status=false;
+  for(var i=0;i<this.tabListMod.length;i++){
+    if(this.tabListMod[i]['visited']=='Yes'){
+      status=true;
+    }
+    else{
+    status=false;break;
+    }
+  }
+  debugger
+  if(op=="OnTab" && status==true && id!=5){
+    this.tabDataVis=true;
+  if(id>0)
+  this.tabListMod[id-1]['visited']='Yes';
+  if(op=="Save")
+  this.selectedIdx=this.selectedIdx+1;
+  else if(op=="OnTab")
+  this.selectedIdx=id;
+  this.saveTabData(this.tabListData['id'])
+  this.clicked=false;
+  this.tabListDataonAddTab=[];
+  this.addTab=false;
+  this.tabID=id;
+
+
+if(this.tabList[id]['canMultiple']==false){
+  if(this.tabList[id]['window'].length==0){
+this.userService.getTabListData(this.tabList[id]['id']).subscribe(respData => {
+  this.tabListData=Object.assign(new TabListsModel, respData);
+  this.tabDataVis=true;
+  
+      }, err=>{
+  // this.authService.logout();
+   
+ }); 
+}else{
+  this.tabListData=Object.assign(new TabListsModel, this.tabList[this.tabID]);
+}
+}else{
+  this.tabListData=Object.assign(new TabListsModel, this.tabList[this.tabID]);
+  this.cd.detectChanges();
+}
+  }else if(op=="Save" || op=="NotSave"){
+    if(id!=5){
+    if(id>0)
+  this.tabListMod[id-1]['visited']='Yes';
+  if(op=="Save")
+  this.selectedIdx=this.selectedIdx+1;
+  else if(op=="OnTab")
+  this.selectedIdx=id;
   this.saveTabData(this.tabListData['id'])
   this.clicked=false;
   this.tabListDataonAddTab=[];
@@ -195,6 +275,16 @@ this.userService.getTabListData(this.tabList[id]['id']).subscribe(respData => {
   this.tabListData=Object.assign(new TabListsModel, this.tabList[this.tabID]);
   this.cd.detectChanges();
 }
+  }else{
+  this.tabDataVis1=true;
+  this.tabDataVis=false;
+  this.selectedIdx=this.selectedIdx+1;
+  this.tabListMod[id-1]['visited']='Yes';
+
+
+  }
+  }else if(status==true)
+  this.tabDataVis1=true;
 }
 
 onAddTab(){
@@ -281,7 +371,7 @@ if(success==true){
 
     }
     Object.assign(this.tabList,tablst);
-    this.loadTab(selectedIdxs);
+    this.loadTab(selectedIdxs,"NotSave");
   }
   
         }, err=>{
@@ -322,6 +412,11 @@ buildRuleBasedJSON(tabData:TabListsModel,tablstData:TabListsModel){
     
   
   return this.ruleBasedModelData;
+}
+
+onTabCancel(){
+  this.addTab=false;
+  this.tabListDataonAddTab=[];
 }
 
 saveTabData(id:any){
