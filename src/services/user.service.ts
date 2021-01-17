@@ -108,7 +108,7 @@ public authorizationToken:any="";
     .append('ipAddress', '10.2.2.56')
     .append('hostUrl', 'http://localhost:8080')
     .append('reportID', '132');
-    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/getTabList',{}, {headers: this.headers3})
+    return this.http.post<any>(this.baseurl1+'/getTabList',{}, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
 
@@ -128,7 +128,7 @@ public authorizationToken:any="";
     .append('ipAddress', '10.2.2.56')
     .append('hostUrl', 'http://localhost:8080')
     .append('reportID', '132');
-    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/getTabListData/'+id,{}, {headers: this.headers3})
+    return this.http.post<any>(this.baseurl1+'/getTabListData/'+id,{}, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
 
@@ -148,7 +148,7 @@ public authorizationToken:any="";
     .append('ipAddress', '10.2.2.56')
     .append('hostUrl', 'http://localhost:8080')
     .append('reportID', '132');
-    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/getRuleBasedQuestionnaire/',ruleBasedModel, {headers: this.headers3})
+    return this.http.post<any>(this.baseurl1+'/getRuleBasedQuestionnaire/',ruleBasedModel, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
 
@@ -173,7 +173,7 @@ public authorizationToken:any="";
     .append('hostUrl', 'http://localhost:8080')
     .append('reportID', '132')
     .append('userName', 'test');
-    return this.http.post<any>('http://18.224.1.69:8080/pvi-web/saveCaseData',submitJson1, {headers: this.headers3})
+    return this.http.post<any>(this.baseurl1+'/saveCaseData',submitJson1, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
 

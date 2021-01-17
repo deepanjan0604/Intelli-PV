@@ -1,6 +1,6 @@
 <p></p>
 
-<div clas="container" style="width: 99%;padding: 8px;margin-left: 3px;">
+<div clas="container" style="width: 99%;padding: 8px;margin-left: 3px;" >
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6  summary-comp-left">
           <div class="card-header card-primary card-outline">
@@ -21,15 +21,15 @@
             </ngb-tab></div>
           </ngb-tabset> 
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 summary-comp">
+        <div class="col-lg-6 col-md-6 col-sm-6 summary-comp" *ngIf="dataVis">
           <div class="card-header card-primary card-outline case-info">
                 
-            <h3 class="card-title float-center">Case Information <br> &nbsp;&nbsp;{{caseId}}</h3>
-            <a class="card-title float-right"><i class="fas fa-file-signature" style="font-size: 40px;"></i></a>
-                          </div>
+            <h3 class="card-title float-center">Create Case<br> &nbsp;&nbsp;</h3>
+            
+          </div>
 
           <div class="container">
-            <div id="stepper1" class="bs-stepper">
+            <div id="stepper1" class="bs-stepper" style="float:left;">
                <div class="bs-stepper-header">
                 <div  *ngFor="let tblst of tabListMod ; let i = index">
                 <div class="line"></div>
@@ -53,23 +53,23 @@
                 </div>
                
               </div>
-            </div>
+            </div> 
          
-            <div *ngIf="tabDataVis"> <app-create-case-view [tabListData]="tabListData" ></app-create-case-view></div>
-            <div class="container">
+            <div *ngIf="tabDataVis && dataVis"> <app-create-case-view [tabListData]="tabListData" ></app-create-case-view></div>
+            <div class="container" *ngIf="dataVis">
               <div id="summary" class="content text-center">
                 <div class="col-sm-12" style= "margin-top: 7px;" *ngIf="tabDataVis1">
                   
-                  <app-case-summary-view [tabList]="tabList"></app-case-summary-view>
+                  <app-case-summary-view [tabList]="tabList" style="float: left;width: 100%;"></app-case-summary-view>
                 
                 </div>
               </div>
             </div>
-          </div>
-
+         
+</div>
 
           <!--Add new tab-->
-          <div class="card  collapsed-card" style="width: 95%;margin-left: 16px;">
+          <div class="card  collapsed-card" style="width: 95%;margin-left: 16px;" *ngIf="dataVis">
             <div class="card-header" [ngClass]="selectedIndx === i?classType:''" *ngIf="addTab">
               <div class="panel panel-default customPanelTab" ><!-- data-toggle="collapse" data-target="#multiple"> -->
                 <div class="panel-body">  <h3  class="card-title headingStyle" [ngClass]="headingStyle">Add New {{tabListDataonAddTab.name}}</h3><br></div></div>
@@ -111,14 +111,16 @@
             </div>
          </div>
          <div style="margin-left : 7px">
-          <button type="submit" class="btn btn-primary btn-sm" (click)="onAddTab()" *ngIf="!addTab&&tabListData.canMultiple && selectedIdx!=5" [disabled]="clicked">Add New</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary btn-sm" (click)="onAddTab()" *ngIf="!addTab && tabListData.canMultiple && selectedIdx!=5" [disabled]="clicked">Add New</button>&nbsp;&nbsp;
          </div>
 
          <div style="float: right;">
           <button type="submit" class="btn btn-primary btn-sm" (click)="loadTab(selectedIdx+1, 'Save');;makeActive1(selectedIdx)" [disabled]="clicked" *ngIf="selectedIdx!==5">Save & Continue </button>
 
                  <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmitCase()" [disabled]="clicked" *ngIf="selectedIdx===5">Submit Case </button>
-        </div></div>
-      </div></div>
+        </div>
+        </div>
+      </div>
+    </div>
    
  

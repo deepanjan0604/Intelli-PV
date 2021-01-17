@@ -1,7 +1,7 @@
 
 
 <div [ngSwitch]="tabListData.canMultiple">
-   <div class="card  collapsed-card" >
+   <div class="card  collapsed-card" style="margin-left: -1px;">
       <div class="card-header headingStyle" *ngSwitchCase="false">
          <div class="panel panel-default customPanel">
             <div class="panel-body">  <h3  class="card-title headingStyle" [ngClass]="headingStyle">{{tabListData.name}}</h3><br></div></div>
@@ -47,7 +47,7 @@
       </div>
    </div>
    <!--ngCase==true-->
-   <div class="card  collapsed-card" >
+   <div class="card  collapsed-card" style="margin-left: -1px;">
       <div class="card-header" [ngClass]="selectedIndx === tabListData.id ?classType:''" *ngSwitchCase="true">
       
          <div class="panel panel-default customPanel" data-toggle="collapse" data-target="#multipleCtabs">

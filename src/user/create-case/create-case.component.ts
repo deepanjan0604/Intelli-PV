@@ -33,6 +33,7 @@ export class CreateCaseComponent implements OnInit {
   currentIndex:any=0;
   clicked:boolean=false;
   selectedTab:String="Tab0";
+  dataVis:boolean=false;
 
   
   makeActive(tab: string) {
@@ -45,15 +46,17 @@ export class CreateCaseComponent implements OnInit {
       status=false;break;
       }
     }
-    debugger
+    
     if(status==true){
       this.selectedTab = tab;
     }
   }
   makeActive1(tab: any) {
-    debugger
+    
     
       this.selectedTab = "Tab"+parseInt(tab).toString();
+      window.scrollTo(0,0);
+
   }
  /*  med_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_1.pdf";
   lab_test_watch_src = "../../assets/pdf/FDA-3500_11-26-2019_3.pdf";
@@ -109,6 +112,8 @@ export class CreateCaseComponent implements OnInit {
       this.userService.getTabListData(this.tabID).subscribe(respData => {
        
        this.tabListData=Object.assign(new TabListsModel, respData);
+       this.dataVis=true;
+       
        this.tabDataVis=true;
        
            }, err=>{
@@ -128,10 +133,10 @@ export class CreateCaseComponent implements OnInit {
   ngOnInit() {
    
     
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+   /*  this.stepper = new Stepper(document.querySelector('#stepper1'), {
       linear: false,
       animation: true
-    });
+    }); */
 
     this.userService.getDocumentsViewForIndexDetails(this.caseId).subscribe(respData => {
   
@@ -210,7 +215,7 @@ loadTab(id:any,op:String){
     status=false;break;
     }
   }
-  debugger
+  
   if(op=="OnTab" && status==true && id!=5){
     this.tabDataVis=true;
   if(id>0)

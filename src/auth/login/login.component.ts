@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
            //window.sessionStorage.setItem('token', JSON.stringify(respData));
            //this.router.navigate(['/user/dashboard'])  
            this.ngZone.run(() => this.router.navigateByUrl('/user/dashboard'))
-           this.ngZone.run(() => this.router.navigateByUrl('/user/create-case/393'))
+           //this.ngZone.run(() => this.router.navigateByUrl('/user/create-case/393'))
 
          },err => {
           
