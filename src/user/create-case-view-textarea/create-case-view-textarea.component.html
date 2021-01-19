@@ -1,4 +1,4 @@
 <div class="form-group">
   <label>{{fieldListData.fieldTxt}}</label>
-  <textarea class="form-control" rows="3" placeholder="Enter ..."  [(ngModel)]="fieldListData.val"></textarea>
+  <textarea class="form-control" rows="3" placeholder="Enter ..."  [(ngModel)]="fieldListData.val" (blur)="onBlurEvent()"></textarea>
 </div>

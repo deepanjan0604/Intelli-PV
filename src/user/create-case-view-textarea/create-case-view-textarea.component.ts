@@ -14,5 +14,7 @@ export class CreateCaseViewTextareaComponent implements OnInit {
     console.log("Inside Create Case View:"+this.fieldListData);
   
   }
-
+  onBlurEvent(){
+    this.fieldListData.engVal=this.fieldListData.val
+  }
 }

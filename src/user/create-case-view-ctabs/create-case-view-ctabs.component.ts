@@ -15,6 +15,7 @@ export class CreateCaseViewCtabsComponent implements OnInit {
   @ViewChild('app-create-case-view-ctabs') parentcTabs;
 
   ngOnInit() {
+   
     console.log("Ctabs:"+this.cTabs)
   }
 

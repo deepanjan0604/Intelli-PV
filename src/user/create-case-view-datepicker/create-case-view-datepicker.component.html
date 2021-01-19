@@ -1,5 +1,5 @@
 
   <div class="form-group">
     <label>{{fieldListData.fieldTxt}}</label>
-    <input type="text" bsDatepicker [bsConfig]="{ rangeInputFormat: 'MMMM Do YYYY, h:mm:ss a' }" class="form-control" placeholder="Select Date" [(ngModel)]="fieldListData.val"> 
+    <input type="text" bsDatepicker [bsConfig]="{ rangeInputFormat: 'MMMM Do YYYY, h:mm:ss a' }" class="form-control" placeholder="Select Date" [(ngModel)]="fieldListData.val" (bsValueChange)="onBlurEvent($event)"> 
   </div>

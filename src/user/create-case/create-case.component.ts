@@ -53,7 +53,7 @@ export class CreateCaseComponent implements OnInit {
   }
   makeActive1(tab: any) {
     
-    
+    debugger;
       this.selectedTab = "Tab"+parseInt(tab).toString();
       window.scrollTo(0,0);
 
@@ -409,7 +409,7 @@ buildRuleBasedJSON(tabData:TabListsModel,tablstData:TabListsModel){
           break;
           case "REP":
           ruleBasedModeldata.ruleObject[2].criteriaId="REP";
-          ruleBasedModeldata.ruleObject[2].values.push("RC:"+(tabData.window[0].sectionList[0].fieldList[2].val)+";FN:"+tabData.window[0].sectionList[0].fieldList[0].val+";LN:"+tabData.window[0].sectionList[0].fieldList[1].val);
+          ruleBasedModeldata.ruleObject[2].values.push("RC:"+(tabData.window[0].sectionList[0].fieldList[2].engVal)+";FN:"+tabData.window[0].sectionList[0].fieldList[0].val+";LN:"+tabData.window[0].sectionList[0].fieldList[1].val);
           break;
       }
 

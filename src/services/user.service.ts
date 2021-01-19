@@ -100,14 +100,14 @@ public authorizationToken:any="";
     .append('Accept', 'application/json')
     .append('Content-Type', 'application/json')
     //.append('Authorization', 'Bearer '+this.authorizationToken)
-    .append('lang', 'en')
+/*  .append('lang', 'en')
     .append('reporter', 'PU')
     .append('country', 'AU')
     .append('loggedInUser', 'ipv.admin@ipv.com')
     .append('enterpriseId', '3')
     .append('ipAddress', '10.2.2.56')
     .append('hostUrl', 'http://localhost:8080')
-    .append('reportID', '132');
+    .append('reportID', '132'); */
     return this.http.post<any>(this.baseurl1+'/getTabList',{}, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
@@ -120,14 +120,14 @@ public authorizationToken:any="";
     .append('Accept', 'application/json')
     .append('Content-Type', 'application/json')
     //.append('Authorization', 'Bearer '+this.authorizationToken)
-    .append('lang', 'en')
+/*  .append('lang', 'en')
     .append('reporter', 'PU')
     .append('country', 'AU')
     .append('loggedInUser', 'ipv.admin@ipv.com')
     .append('enterpriseId', '3')
     .append('ipAddress', '10.2.2.56')
     .append('hostUrl', 'http://localhost:8080')
-    .append('reportID', '132');
+    .append('reportID', '132'); */
     return this.http.post<any>(this.baseurl1+'/getTabListData/'+id,{}, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
@@ -140,14 +140,14 @@ public authorizationToken:any="";
     .append('Accept', 'application/json')
     .append('Content-Type', 'application/json')
     //.append('Authorization', 'Bearer '+this.authorizationToken)
-    .append('lang', 'en')
+/*  .append('lang', 'en')
     .append('reporter', 'PU')
     .append('country', 'AU')
     .append('loggedInUser', 'ipv.admin@ipv.com')
     .append('enterpriseId', '3')
     .append('ipAddress', '10.2.2.56')
     .append('hostUrl', 'http://localhost:8080')
-    .append('reportID', '132');
+    .append('reportID', '132'); */
     return this.http.post<any>(this.baseurl1+'/getRuleBasedQuestionnaire/',ruleBasedModel, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }
@@ -164,7 +164,7 @@ public authorizationToken:any="";
     this.headers3 = new HttpHeaders();
     this.headers3 = this.headers3
     .append('Accept', '*/*')
-    .append('lang', 'en')
+/*     .append('lang', 'en')
     .append('reporter', 'PU')
     .append('country', 'AU')
     .append('loggedInUser', 'ipv.admin@ipv.com')
@@ -172,7 +172,7 @@ public authorizationToken:any="";
     .append('ipAddress', '10.2.2.56')
     .append('hostUrl', 'http://localhost:8080')
     .append('reportID', '132')
-    .append('userName', 'test');
+    .append('userName', 'test'); */
     return this.http.post<any>(this.baseurl1+'/saveCaseData',submitJson1, {headers: this.headers3})
       .pipe(catchError(this.errorHandler));
   }

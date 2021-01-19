@@ -47,13 +47,13 @@
                    <app-create-case-view-attachment [fieldListData]="fl"></app-create-case-view-attachment>                   
                 </p>
                 <p class="text-muted" *ngIf="fl.fieldType === 2?true:false">
-               <app-create-case-view-checkbox [fieldListData]="fl"></app-create-case-view-checkbox>                    
+               <app-create-case-view-checkbox [fieldListData1]="{'fieldListDt':fl,'cTabs':ctbs}"></app-create-case-view-checkbox>                    
                </p>
                <p class="text-muted" *ngIf="fl.fieldType === 7?true:false">
                <app-create-case-view-datepicker [fieldListData]="fl"></app-create-case-view-datepicker>                    
                </p>
                <p class="text-muted" *ngIf="fl.fieldType === 1?true:false">
-               <app-create-case-view-radio [fieldListData]="fl"></app-create-case-view-radio>                    
+               <app-create-case-view-radio [fieldListData1]="{'fieldListDt':fl,'cTabs':ctbs}"></app-create-case-view-radio>                    
                </p>
                <p class="text-muted" *ngIf="fl.fieldType === 3?true:false">
                    <app-create-case-view-select [fieldListData]="fl"></app-create-case-view-select>                 

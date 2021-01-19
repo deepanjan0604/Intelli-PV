@@ -18,4 +18,8 @@ export class CreateCaseViewTextboxComponent implements OnInit {
   
   }
 
+  onBlurEvent(){
+    this.fieldListData.engVal=this.fieldListData.val
+  }
+
 }

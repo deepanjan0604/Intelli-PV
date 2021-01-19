@@ -22,7 +22,8 @@ export class FieldListModel {
     position: string;
     valCode: any;
     fieldOrder: number;
-	colSpan: number;
+    colSpan: number;
+    engVal:String;
 
   
     constructor() {

@@ -10,6 +10,7 @@
         <!--     <button type="button" class="btn btn-tool1" data-card-widget="collapse" data-toggle="tooltip1" title="Collapse" (click)="selectedTabNotMultiple(tabListData.id)" >
                <div [id]="'isNotMultipleP'+(tabListData.id+1)"> <i  class="fas fa-plus"></i></div>
             </button> -->
+            
          </div>
          <div [id]="'isNotMultipleP'+(tabListData.id+1)" >
             <div *ngFor="let win of tabListData.window">
@@ -24,13 +25,13 @@
                            <app-create-case-view-attachment [fieldListData]="fl"></app-create-case-view-attachment>
                         </p>
                         <p class="text-muted" *ngIf="fl.fieldType === 2?true:false">
-                           <app-create-case-view-checkbox [fieldListData]="fl"></app-create-case-view-checkbox>
+                           <app-create-case-view-checkbox [fieldListData1]="{'fieldListDt':fl,'cTabs':{'name':'notMultiple'}}"></app-create-case-view-checkbox>
                         </p>
                         <p class="text-muted" *ngIf="fl.fieldType === 7?true:false">
                            <app-create-case-view-datepicker [fieldListData]="fl"></app-create-case-view-datepicker>
                         </p>
                         <p class="text-muted" *ngIf="fl.fieldType === 1?true:false">
-                           <app-create-case-view-radio [fieldListData]="fl"></app-create-case-view-radio>
+                           <app-create-case-view-radio [fieldListData1]="{'fieldListDt':fl,'cTabs':{'name':'notMultiSelect'}}"></app-create-case-view-radio>
                         </p>
                         <p class="text-muted" *ngIf="fl.fieldType === 3?true:false">
                            <app-create-case-view-select [fieldListData]="fl"></app-create-case-view-select>
@@ -58,7 +59,7 @@
          </button> -->
       </div>
    </div>
-    <div  id="multipleCtabs" class="panel-collapse collapse show">
+    <div  [id]="'isMultipleP'+(tabListData.id+1)" class="panel-collapse collapse show">
        <app-create-case-view-ctabs [cTabs]="tabListData.cTabs" ></app-create-case-view-ctabs>   
        <!-- <app-case-summary-view-ctabs [cTabs]="tabListData.cTabs"></app-case-summary-view-ctabs> -->
       

@@ -1,4 +1,4 @@
 <div class="custom-control custom-checkbox">
-  <input class="custom-control-input" type="checkbox" id="customCheckbox1"  [(ngModel)]="fieldListData.val">
-  <label for="customCheckbox1" class="custom-control-label">{{fieldListData.fieldTxt}}</label>
+  <input class="custom-control-input" type="checkbox" id="customCheckbox1_{{fieldListData1.cTabs.name}}"  [(ngModel)]="checkboxVal" (change)="onChange()">
+  <label for="customCheckbox1_{{fieldListData1.cTabs.name}}" class="custom-control-label">{{fieldListData.fieldTxt}}</label>
 </div>

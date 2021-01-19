@@ -16,4 +16,9 @@ export class CreateCaseViewDatepickerComponent implements OnInit {
  
   }
 
+  onBlurEvent(event){
+    
+    this.fieldListData.engVal=event;
+  }
+
 }

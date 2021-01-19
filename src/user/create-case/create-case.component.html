@@ -21,13 +21,13 @@
             </ngb-tab></div>
           </ngb-tabset> 
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 summary-comp" *ngIf="dataVis">
+        <div class="col-lg-6 col-md-6 col-sm-6 summary-comp" >
           <div class="card-header card-primary card-outline case-info">
                 
             <h3 class="card-title float-center">Create Case<br> &nbsp;&nbsp;</h3>
             
           </div>
-
+          <div *ngIf="dataVis">
           <div class="container">
             <div id="stepper1" class="bs-stepper" style="float:left;">
                <div class="bs-stepper-header">
@@ -55,7 +55,7 @@
               </div>
             </div> 
          
-            <div *ngIf="tabDataVis && dataVis"> <app-create-case-view [tabListData]="tabListData" ></app-create-case-view></div>
+            <div *ngIf="tabDataVis && dataVis"> <app-create-case-view [tabListData]="tabListData" style="float: left;width: 100%;" ></app-create-case-view></div>
             <div class="container" *ngIf="dataVis">
               <div id="summary" class="content text-center">
                 <div class="col-sm-12" style= "margin-top: 7px;" *ngIf="tabDataVis1">
@@ -86,13 +86,13 @@
                                  <app-create-case-view-attachment [fieldListData]="fl"></app-create-case-view-attachment>
                               </p>
                               <p class="text-muted" *ngIf="fl.fieldType === 2?true:false">
-                                 <app-create-case-view-checkbox [fieldListData]="fl"></app-create-case-view-checkbox>
+                                 <app-create-case-view-checkbox [fieldListData1]="{'fieldListDt':fl,'cTabs':{'name':'notMultiple'}}"></app-create-case-view-checkbox>
                               </p>
                               <p class="text-muted" *ngIf="fl.fieldType === 7?true:false">
                                  <app-create-case-view-datepicker [fieldListData]="fl"></app-create-case-view-datepicker>
                               </p>
                               <p class="text-muted" *ngIf="fl.fieldType === 1?true:false">
-                                 <app-create-case-view-radio [fieldListData]="fl"></app-create-case-view-radio>
+                                 <app-create-case-view-radio [fieldListData1]="{'fieldListDt':fl,'cTabs':{'name':'notMultiSelect'}}"></app-create-case-view-radio>
                               </p>
                               <p class="text-muted" *ngIf="fl.fieldType === 3?true:false">
                                  <app-create-case-view-select [fieldListData]="fl"></app-create-case-view-select>
@@ -119,8 +119,10 @@
 
                  <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmitCase()" [disabled]="clicked" *ngIf="selectedIdx===5">Submit Case </button>
         </div>
+      </div>
+        </div>
         </div>
       </div>
-    </div>
+    
    
  
