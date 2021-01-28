@@ -67,8 +67,8 @@ export class DocumentsDetailsComponent implements OnInit {
        this.docId_2_data = respData[1].docId;
        this.docId_3_data = respData[1].docId; */
     }, err=>{
-      this.authService.logout();
-      window.close();
+      //this.authService.logout();
+      //window.close();
     });
    }
   
@@ -77,7 +77,7 @@ export class DocumentsDetailsComponent implements OnInit {
       console.log(respData)
       this.fileUrl_1_data = respData[0].fileUrl;
     }, err=>{
-      this.authService.logout();
+     // this.authService.logout();
      
     });
    }
@@ -120,6 +120,12 @@ export class DocumentsDetailsComponent implements OnInit {
       headClass = 'not-h3class2';
     }
     return headClass;
+  }
+
+  close_window() {
+    if (confirm("Are you sure you want to close window?")) {
+      close();
+    }
   }
 
 }

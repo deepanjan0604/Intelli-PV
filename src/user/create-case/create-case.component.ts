@@ -17,6 +17,7 @@ import { ConfigurationModel } from 'src/object-model/configuration-model';
 })
 export class CreateCaseComponent implements OnInit {
   caseId: Observable<string>;
+  opCode: string;
   private stepper: Stepper;
   docList:Observable<DocListModel>[];
   docListUrl:Observable<DocListModel>[]=[];
@@ -34,6 +35,8 @@ export class CreateCaseComponent implements OnInit {
   clicked:boolean=false;
   selectedTab:String="Tab0";
   dataVis:boolean=false;
+  parentDiv:boolean=false;
+  caserefId:String;
 
   
   makeActive(tab: string) {
@@ -53,7 +56,7 @@ export class CreateCaseComponent implements OnInit {
   }
   makeActive1(tab: any) {
     
-    debugger;
+    
       this.selectedTab = "Tab"+parseInt(tab).toString();
       window.scrollTo(0,0);
 
@@ -75,12 +78,16 @@ export class CreateCaseComponent implements OnInit {
 
 
   constructor(route: ActivatedRoute, private userService:UserService, private authService:AuthService,private cd : ChangeDetectorRef) {
-    this.caseId  = route.snapshot.params['id'];
     
+    this.caseId  = route.snapshot.params['id'];
+    this.opCode= route.snapshot.params['op'];
+   
+    if(this.opCode == "Create"){
     if(this.tabList == undefined){
       this.tabList=[];
       this.tabListMod=[];
     this.userService.getTabList().subscribe(respData => {
+     
       this.configData=Object.assign(new ConfigurationModel, respData);
       for(var i=0;i<respData.tabList.length;i++){
         this.tabList[i]=Object.assign(new TabListsModel, respData.tabList[i]);
@@ -126,7 +133,58 @@ export class CreateCaseComponent implements OnInit {
      });
 
     }
- 
+  }else {
+    //edit case script
+    this.tabList=[];
+    this.tabListMod=[];
+  this.userService.getCaseListSummary(this.caseId).subscribe(respData => {
+   
+    this.configData=Object.assign(new ConfigurationModel, respData);
+    for(var i=0;i<this.configData['configuration']['tabList'].length;i++){
+      this.tabList[i]=Object.assign(new TabListsModel, this.configData['configuration']['tabList'][i]);
+      var data=Object.assign(new TabListsModel, this.configData['configuration']['tabList'][i]);
+      this.tabListMod[i]={'id':data['id'],'indx':i,'name':data['name'],'visited':'Yes'};
+      console.log(this.tabListMod[i]);
+      console.log("Tab "+i);
+      
+     
+    }
+   
+    var len=this.tabListMod.length;
+    this.tabListMod[len]={'id':0,'indx':5,'name':'Summary','visited':'Yes'};
+    var tablist=new TabListsModel();
+    Object.assign(tablist,this.tabList[0]);//tablist.id
+
+    this.tabID=tablist.id
+
+    this.ruleBasedModelData=new RuleBasedModel();
+    this.ruleBasedModelData.tabId=-1;
+    this.ruleBasedModelData.ruleObject=[];
+    this.ruleBasedModelData.ruleObject[0]={criteriaId:"PRD",values:[]};
+    this.ruleBasedModelData.ruleObject[1]={criteriaId:"AE",values:[]};
+    this.ruleBasedModelData.ruleObject[2]={criteriaId:"REP",values:[]};
+    
+    this.tabListData=this.tabList[0];
+    this.dataVis=true;
+     
+    this.tabDataVis=true;
+   /*  this.userService.getTabListData(this.tabID).subscribe(respData => {
+     
+     this.tabListData=Object.assign(new TabListsModel, respData);
+     this.dataVis=true;
+     
+     this.tabDataVis=true;
+     
+         }, err=>{
+      //this.authService.logout();
+      
+    }); */
+   }, err=>{
+     //this.authService.logout();
+    
+   });
+
+  }
  
     }
 
@@ -409,7 +467,7 @@ buildRuleBasedJSON(tabData:TabListsModel,tablstData:TabListsModel){
           break;
           case "REP":
           ruleBasedModeldata.ruleObject[2].criteriaId="REP";
-          ruleBasedModeldata.ruleObject[2].values.push("RC:"+(tabData.window[0].sectionList[0].fieldList[2].engVal)+";FN:"+tabData.window[0].sectionList[0].fieldList[0].val+";LN:"+tabData.window[0].sectionList[0].fieldList[1].val);
+          ruleBasedModeldata.ruleObject[2].values.push("RC:"+(tabData.window[0].sectionList[0].fieldList[2].val)+";FN:"+tabData.window[0].sectionList[0].fieldList[0].val+";LN:"+tabData.window[0].sectionList[0].fieldList[1].val);
           break;
       }
 
@@ -443,8 +501,11 @@ onSubmitCase(){
   this.configData['tabList']=this.tabList
   this.userService.saveCaseData(this.configData).subscribe(respData => {
     this.clicked=false;
+    this.caserefId=respData['data']['caseId'];
+  
     //Redirection to Ack
-    alert("Submitted Successfully, Case ID:" + respData['data']['caseId'])
+    //alert("Submitted Successfully, Case ID:" + respData['data']['caseId']);
+    this.parentDiv=true;
         }, err=>{
           this.clicked=false;
           alert("Saving Case Failed:"+err);

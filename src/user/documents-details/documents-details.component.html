@@ -15,7 +15,7 @@
       </div>
       
       <div class="col-6">
-        <button type="button" class="btn btn-default btn-sm float-right" [routerLink]="['/user/document-view']">X</button>
+        <button type="button" class="btn btn-default btn-sm float-right" (click)="close_window();">X</button>
 
       </div>
     </div>
@@ -147,7 +147,7 @@
               </p>
             </li>
             <li class="nav-item">
-            <p>  <button class="btn btn-primary-info" [routerLink]="['/user/create-case/', caseId]" target="_blank">Create Case</button></p>
+            <p>  <button class="btn btn-primary-info" [routerLink]="['/user/create-case/', 'Create',caseId]" target="_blank">Create Case</button></p>
             
             </li>
             <li class="nav-item">

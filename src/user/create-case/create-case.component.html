@@ -1,5 +1,5 @@
 <p></p>
-
+<div *ngIf="!parentDiv">
 <div clas="container" style="width: 99%;padding: 8px;margin-left: 3px;" >
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6  summary-comp-left">
@@ -24,7 +24,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 summary-comp" >
           <div class="card-header card-primary card-outline case-info">
                 
-            <h3 class="card-title float-center">Create Case<br> &nbsp;&nbsp;</h3>
+            <h3 class="card-title float-center">{{opCode}} Case<br> &nbsp;&nbsp;</h3>
             
           </div>
           <div *ngIf="dataVis">
@@ -124,5 +124,25 @@
         </div>
       </div>
     
-   
+   </div>
+
+   <div class="jumbotron text-center" *ngIf="parentDiv">
+    <div class="card-header card-primary card-outline case-info-ack">
+                
+      <h3 class="case-ack">Case Creation Acknowledgement<br> &nbsp;&nbsp;</h3>
+      
+    </div>
+    <h5 class="display-3">Thank You for reporting the adverse event!</h5>
+    <p class="lead">Your case is created successfully, and your case creation reference number is: <strong>{{caserefId}}</strong></p>
+    <div class="container"><div class="row">
+      
+      <div class="col-sm-6" style="text-align: right;">
+    <p class="lead">
+      <a class="btn btn-primary" style="    background-color: blue !important;" href="/user/create-case/Create/{{caseId}}" role="button">Continue Reporting</a>
+    </p>&nbsp;</div>
+    <div class="col-sm-6" style="text-align: left;">
+    <p class="lead">
+      <a class="btn btn-primary" style="    background-color: blue !important;" href="/user/case-summary/{{caserefId}}" role="button">Go to Case Summary</a>
+    </p></div></div></div>
+  </div>
  

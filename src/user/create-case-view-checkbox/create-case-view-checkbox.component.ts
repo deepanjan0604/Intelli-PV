@@ -14,12 +14,12 @@ export class CreateCaseViewCheckboxComponent implements OnInit {
 
   ngOnInit() {
     this.fieldListData=this.fieldListData1['fieldListDt']
-    this.fieldListData.engVal="No"
+    //this.fieldListData.engVal="No"
     console.log("Inside Create Case View:"+this.fieldListData);
-    debugger;
+    this.checkboxVal=this.fieldListData.val;
   }
   onChange(){
-    debugger;
+   
     
     this.fieldListData.val=this.checkboxVal;
     if(this.checkboxVal==true)

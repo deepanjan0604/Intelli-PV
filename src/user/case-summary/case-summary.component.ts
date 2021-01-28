@@ -47,8 +47,8 @@ docList:Observable<DocListModel>[];
         console.log( respData);
         
        }, err=>{
-        this.authService.logout();
-        window.close();
+      //  this.authService.logout();
+      //  window.close();
       });
        this.userService.getDocumentList(this.caseId,0).subscribe(respData => {
         
@@ -68,10 +68,16 @@ docList:Observable<DocListModel>[];
         }
        
         }, err=>{
-          this.authService.logout();
+        //  this.authService.logout();
           //window.close();
         });
       
+  }
+
+  close_window() {
+    if (confirm("Are you sure you want to close window?")) {
+      close();
+    }
   }
 
 
@@ -88,7 +94,7 @@ docList:Observable<DocListModel>[];
        console.log( "Doc list URL:"+ this.docListUrl);
        
       },err=>{
-        this.authService.logout();
+       // this.authService.logout();
         //window.close();
       });
   }

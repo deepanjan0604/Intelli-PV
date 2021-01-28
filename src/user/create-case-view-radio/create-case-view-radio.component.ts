@@ -11,23 +11,27 @@ export class CreateCaseViewRadioComponent implements OnInit {
   @Input() fieldListData1:any;
  // @Input() tablistDt:TabListsModel;
   options:string="";
-  radioVal:any;
+  radioVal:any//{'id':string,'name':string};
   fieldListData:FieldListModel;
   
   constructor() { }
 
   ngOnInit() {
-   debugger;
-  this.fieldListData=this.fieldListData1['fieldListDt']
-    console.log(this.fieldListData)
+   
+    this.fieldListData=this.fieldListData1['fieldListDt']
     console.log("Inside Create Case View:"+this.fieldListData);
-  
+    this.radioVal={'id':this.fieldListData.val,'name':this.fieldListData.engVal};
+   
   }
 
-  onChange(){
-       
-    this.fieldListData.val=this.radioVal['id'];
-    this.fieldListData.engVal=this.radioVal['name'];
+
+
+  onChange(event){
+   
+   this.fieldListData.val=this.fieldListData.fieldValueList[event].id
+   this.fieldListData.engVal=this.fieldListData.fieldValueList[event].txt;
+   // this.fieldListData.val=this.radioVal['id'];
+   // this.fieldListData.engVal=this.radioVal['name'];
     this.fieldListData1['fieldListDt']=this.fieldListData;
   }
 

@@ -42,10 +42,12 @@ import { AuthService } from './auth.service';
                             return this.handleHttpResponseError(request, next);
                                        
                         case 400:
-                            return ;//<any>this.authService.logout();
+                            return this.handleHttpResponseError(request, next);
+                            //return ;//<any>this.authService.logout();
                            
                         case 500:
                              throwError(this.handleError500);
+                             return this.handleHttpResponseError(request, next);
                              //return <any>this.authService.logout();
                     }
                 } else 

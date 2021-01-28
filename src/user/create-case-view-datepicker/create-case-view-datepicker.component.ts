@@ -12,6 +12,8 @@ export class CreateCaseViewDatepickerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
+    this.fieldListData.val=new Date(this.fieldListData.val).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
     console.log("Inside Create Case View:"+this.fieldListData);
  
   }

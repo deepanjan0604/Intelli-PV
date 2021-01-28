@@ -27,8 +27,6 @@ export class CreateCaseViewCtabsComponent implements OnInit {
   selectedTabNotMultiple(index){
     var iteration=false;
     
-    
-    
    
 
    this.selectedIdx =index;
