@@ -1,6 +1,6 @@
 <div class="form-group">
   <label>{{fieldListData.fieldTxt}}</label>
-  <select  class="form-control" [(ngModel)]="selectVal" #ipvSelect (change)="onChange()">
-    <option *ngFor="let obj of fieldListData.fieldValueList" [value]="{'id':obj.id,'name':obj.txt}" >{{obj.txt}}</option>
+  <select  class="form-control"  [(ngModel)]="selectVal"  (change)="onChange()" >
+    <option *ngFor="let obj of fieldListData.fieldValueList;let i=index" [value]="obj.id" >{{obj.txt}}</option>
   </select>
 </div>
